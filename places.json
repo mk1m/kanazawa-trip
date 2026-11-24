@@ -1,10 +1,9 @@
 [
 {
-"id": "p0",
+"id": "kmq",
 "cat": "book",
 "en": "Komatsu Airport (KMQ)",
 "ko": "고마쓰 공항",
-"tag": "",
 "lat": 36.3928,
 "lng": 136.406,
 "nen": "IN: Wed 25 Nov KE2189 ICN 07:25 → KMQ 09:15. OUT: Sat 28 Nov KE2190 KMQ 10:50 → ICN 12:50. Limousine bus to Kanazawa Station leaves from Stop 1 outside arrivals, 10–15 min after each landing (~40 min, ¥1,300 each).",
@@ -12,11 +11,10 @@
 "pid": "ChIJb2kmYTZR-F8Rb2lWatuVL5Q"
 },
 {
-"id": "p1",
+"id": "hotel",
 "cat": "book",
 "en": "Hyatt House Kanazawa (hotel)",
 "ko": "하얏트 하우스 가나자와",
-"tag": "",
 "lat": 36.58,
 "lng": 136.6484,
 "nen": "Our hotel, 3 min from the West Exit. Breakfast included.",
@@ -24,11 +22,10 @@
 "pid": "ChIJIcPuB0Ez-F8REfYt1QX4fVU"
 },
 {
-"id": "p2",
+"id": "stop4",
 "cat": "book",
 "en": "Bus stop 4 · Shirakawa-go bus (West Exit)",
 "ko": "시라카와고행 버스 4번 승강장",
-"tag": "",
 "lat": 36.57827,
 "lng": 136.64649,
 "nen": "Thu 26 Nov 11:10 → Shirakawa-go 12:25. Nohi Bus, car 01, seats 8C 8D 9C 9D. Be here by 10:55 with the e-ticket. The 17:30 return bus also drops off here (18:45).",
@@ -36,11 +33,10 @@
 "pid": ""
 },
 {
-"id": "p3",
+"id": "stop3",
 "cat": "book",
 "en": "Bus stop 3 · Airport bus (West Exit)",
 "ko": "공항 리무진 3번 승강장",
-"tag": "",
 "lat": 36.578,
 "lng": 136.6462,
 "nen": "Sat 28 Nov: limousine bus to Komatsu Airport (~40 min, ¥1,300 each). Check the departure times at the stop the day before; aim to be at the airport ~2 h before the 10:50 flight.",
@@ -48,11 +44,10 @@
 "pid": ""
 },
 {
-"id": "p4",
+"id": "skterm",
 "cat": "book",
 "en": "Shirakawa-go Bus Terminal",
 "ko": "시라카와고 버스터미널",
-"tag": "",
 "lat": 36.26195,
 "lng": 136.90689,
 "nen": "Arrive 12:25 Thu. Return bus 17:30 → Kanazawa 18:45. Hokuriku Railroad, car 01, seats 9C 9D 10C 10D. Coin lockers behind the building (100-yen coins).",
@@ -60,11 +55,10 @@
 "pid": "ChIJKx0Jc79x-F8RdUi6Khf_-Is"
 },
 {
-"id": "p5",
+"id": "higashi",
 "cat": "see",
 "en": "Higashi Chaya District",
 "ko": "히가시차야 거리",
-"tag": "",
 "lat": 36.5725,
 "lng": 136.6664,
 "nen": "Edo-era geisha teahouse streets with gold-leaf, Kutani pottery and craft shops. Side lanes are quieter. Bus to Hashiba-cho.",
@@ -72,11 +66,10 @@
 "pid": "ChIJsfC6oXQz-F8RdA1qXiF6jLs"
 },
 {
-"id": "p6",
+"id": "kazue",
 "cat": "see",
 "en": "Kazuemachi teahouse lane",
 "ko": "가즈에마치 찻집 거리",
-"tag": "",
 "lat": 36.5723,
 "lng": 136.6637,
 "nen": "Small, quiet chaya lane on the Asano River, across from Higashi Chaya. Best photos from the riverbank.",
@@ -84,11 +77,10 @@
 "pid": "ChIJR-yGmXMz-F8Rf07-P4u1PUM"
 },
 {
-"id": "p7",
+"id": "kenroku",
 "cat": "see",
 "en": "Kenroku-en Garden",
 "ko": "겐로쿠엔",
-"tag": "",
 "lat": 36.5621,
 "lng": 136.6627,
 "nen": "One of Japan's three great gardens. Late Nov: last autumn colour and yukitsuri rope 'umbrellas' on the pines. 8:00–17:00, small fee. Best on a sunny day (Fri forecast).",
@@ -96,11 +88,10 @@
 "pid": "ChIJBVmy-YMz-F8R5PID8D17Cpc"
 },
 {
-"id": "p8",
+"id": "castle",
 "cat": "see",
 "en": "Kanazawa Castle Park",
 "ko": "가나자와성 공원",
-"tag": "",
 "lat": 36.5659,
 "lng": 136.6588,
 "nen": "Free grounds with white-roofed turrets and stone walls. Ishikawa-mon gate leads straight to Kenroku-en.",
@@ -108,11 +99,10 @@
 "pid": "ChIJlUfxPYIz-F8RSh7ml54YJ6g"
 },
 {
-"id": "p9",
+"id": "oyama",
 "cat": "see",
 "en": "Oyama Shrine",
 "ko": "오야마 신사",
-"tag": "",
 "lat": 36.5661,
 "lng": 136.6554,
 "nen": "Gate with stained-glass windows and a pond garden. Grounds close 17:00.",
@@ -120,23 +110,24 @@
 "pid": "ChIJwQG-F3kz-F8RAfWyK1svniU"
 },
 {
-"id": "p10",
+"id": "museum21",
 "cat": "see",
 "en": "21st Century Museum",
 "ko": "21세기 미술관",
-"tag": "",
 "lat": 36.5608,
 "lng": 136.6588,
 "nen": "Book a timed slot online for 'The Swimming Pool'. Free public zone. Closed Mondays.",
 "nko": "'수영장' 작품은 온라인 시간 예약 필요. 무료 구역 있음. 월요일 휴관.",
-"pid": "ChIJAbhT24Az-F8RwWhli9sBKlE"
+"pid": "ChIJAbhT24Az-F8RwWhli9sBKlE",
+"closed": [
+1
+]
 },
 {
-"id": "p11",
+"id": "nagamachi",
 "cat": "see",
 "en": "Nagamachi Samurai District",
 "ko": "나가마치 무사 저택 거리",
-"tag": "",
 "lat": 36.5638,
 "lng": 136.651,
 "nen": "Earthen walls, canals and samurai houses; quieter than Higashi Chaya.",
@@ -144,11 +135,10 @@
 "pid": "ChIJhycOJtYz-F8RO54LaTG6_p0"
 },
 {
-"id": "p12",
+"id": "tsuzumi",
 "cat": "see",
 "en": "Tsuzumi-mon Gate",
 "ko": "쓰즈미몬",
-"tag": "",
 "lat": 36.5778,
 "lng": 136.6491,
 "nen": "The station's giant wooden drum gate (East Exit). Lit up at night.",
@@ -156,11 +146,10 @@
 "pid": "ChIJYwWDHWoz-F8RfWIvAKx4jrk"
 },
 {
-"id": "p13",
+"id": "deck",
 "cat": "see",
 "en": "Shiroyama observation deck",
 "ko": "시로야마 전망대",
-"tag": "",
 "lat": 36.263,
 "lng": 136.9086,
 "nen": "The postcard view over the thatched roofs. Deck 9:30–15:30; free castle-ruins viewpoint beside it. Shuttle from near Wada House (¥200, last up 15:40) or 15–20 min uphill walk — may be icy.",
@@ -168,11 +157,10 @@
 "pid": "ChIJ4xHe8r9x-F8RybxsbX5Rr-o"
 },
 {
-"id": "p14",
+"id": "wada",
 "cat": "see",
 "en": "Wada House",
 "ko": "와다 가옥",
-"tag": "",
 "lat": 36.2599,
 "lng": 136.9076,
 "nen": "The village's biggest gassho farmhouse (Edo period). 9:00–17:00, small fee.",
@@ -180,11 +168,10 @@
 "pid": "ChIJdRv_s75x-F8R94Uw560g-iM"
 },
 {
-"id": "p15",
+"id": "myozenji",
 "cat": "see",
 "en": "Myozenji Temple",
 "ko": "묘젠지",
-"tag": "",
 "lat": 36.2558,
 "lng": 136.9067,
 "nen": "Thatched temple and bell tower with a museum of village life.",
@@ -192,11 +179,10 @@
 "pid": "ChIJ9SgIkbpx-F8RldT2VCFP5aA"
 },
 {
-"id": "p16",
+"id": "deai",
 "cat": "see",
 "en": "Deai Bridge",
 "ko": "데아이바시",
-"tag": "",
 "lat": 36.2565,
 "lng": 136.9038,
 "nen": "Long suspension footbridge over the Sho River; lovely at dusk.",
@@ -204,11 +190,10 @@
 "pid": "ChIJnf-NBwBx-F8R9DtoQUZlvbc"
 },
 {
-"id": "p17",
+"id": "minkaen",
 "cat": "see",
 "en": "Gassho-zukuri Minka-en",
 "ko": "갓쇼즈쿠리 민가원",
-"tag": "",
 "lat": 36.2551,
 "lng": 136.9023,
 "nen": "Open-air museum of farmhouses across Deai Bridge. 8:40–17:00, ~45 min.",
@@ -216,11 +201,10 @@
 "pid": "ChIJZS8K5LBx-F8R3iMSHZ_7Tis"
 },
 {
-"id": "p18",
+"id": "omicho",
 "cat": "eat",
 "en": "Omicho Market",
 "ko": "오미초 시장",
-"tag": "",
 "lat": 36.5717,
 "lng": 136.6559,
 "nen": "Kaisendon, crab croquettes, grilled oysters. Late Nov = kobako crab season. Your Wed lunch picks are open, but many produce and fish stalls close on Wednesdays. Come back Thu or Fri morning for the full market.",
@@ -228,71 +212,84 @@
 "pid": "ChIJ0xPT93Az-F8RpTSlbHwo9L8"
 },
 {
-"id": "p19",
+"id": "miyuki",
 "cat": "eat",
 "en": "Miyuki (Kanazawa oden)",
 "ko": "미유키 (가나자와 오뎅)",
-"tag": "",
 "lat": 36.5588,
 "lng": 136.6527,
 "nen": "Local-style oden. 16:00–21:30, closed Sun. Queues of an hour are common, so go early.",
 "nko": "가나자와식 오뎅. 16:00–21:30, 일요일 휴무. 1시간 대기 흔함, 일찍 가기.",
-"pid": "ChIJl6t16X40-F8RYwsD7bsKwjw"
+"pid": "ChIJl6t16X40-F8RYwsD7bsKwjw",
+"closed": [
+0
+]
 },
 {
-"id": "p20",
+"id": "odenjun",
 "cat": "eat",
 "en": "Oden Kisetsu Odenjun",
 "ko": "오뎅준",
-"tag": "",
 "lat": 36.5601,
 "lng": 136.6506,
 "nen": "One-chef oden counter. 18:00–23:00, closed Mon; takes bookings.",
 "nko": "셰프 혼자 운영하는 오뎅 카운터. 18:00–23:00, 월요일 휴무, 예약 가능.",
-"pid": "ChIJRZxd9aE1-F8RhKgow2LK6c8"
+"pid": "ChIJRZxd9aE1-F8RhKgow2LK6c8",
+"closed": [
+1
+]
 },
 {
-"id": "p21",
+"id": "irori",
 "cat": "eat",
 "en": "Irori (Hida beef, Shirakawa-go)",
 "ko": "이로리 (히다규)",
-"tag": "",
 "lat": 36.26094,
 "lng": 136.90689,
 "nen": "Hida beef with hoba miso by the hearth, 2 min from the bus terminal. Thu 10:00–14:00; expect a queue. Closed Wed.",
 "nko": "화로 옆에서 먹는 히다규 호바미소. 버스터미널 도보 2분. 목 10:00–14:00, 대기 예상. 수요일 휴무.",
-"pid": "ChIJRf1c375x-F8R1WjQtwQbBEk"
+"pid": "ChIJRf1c375x-F8R1WjQtwQbBEk",
+"closed": [
+3
+]
 },
 {
-"id": "p22",
+"id": "shiraogi",
 "cat": "eat",
 "en": "Shiraogi (Shirakawa-go)",
 "ko": "시라오기",
-"tag": "",
 "lat": 36.2573,
 "lng": 136.9064,
 "nen": "Hida beef sets and miso katsu. 11:30–15:00, closed Wed. Write your name on the list outside.",
 "nko": "히다규 정식, 미소카츠. 11:30–15:00, 수요일 휴무. 밖의 대기명단에 이름 적기.",
-"pid": "ChIJ-ZlNRrpx-F8Rewrn9nLYrIs"
+"pid": "ChIJ-ZlNRrpx-F8Rewrn9nLYrIs",
+"closed": [
+3
+]
 },
 {
-"id": "p23",
+"id": "hiiragi",
 "cat": "eat",
 "en": "Hiiragi (Shirakawa-go)",
 "ko": "히이라기",
-"tag": "",
 "lat": 36.2647,
 "lng": 136.9071,
 "nen": "Family-run tatami restaurant: hoba miso beef, sukiyaki. Thu 11:00–15:00.",
 "nko": "가족 운영 다다미 식당. 호바미소 소고기, 스키야키. 목 11:00–15:00.",
-"pid": "ChIJb_yEnupx-F8R28VsmQk-b9k"
+"pid": "ChIJb_yEnupx-F8R28VsmQk-b9k",
+"closed": [
+0,
+1,
+2,
+5,
+6
+]
 },
 {
-"id": "p24",
+"id": "hakuichi",
 "cat": "cafe",
 "en": "Hakuichi (gold-leaf soft serve)",
 "ko": "하쿠이치 금박 아이스크림",
-"tag": "",
 "lat": 36.5723,
 "lng": 136.6665,
 "nen": "Soft serve under a whole sheet of gold leaf; gold-leaf gifts. 9:00–18:00.",
@@ -300,23 +297,25 @@
 "pid": "ChIJ12QUl3Qz-F8Rf8aIc9cRDwc"
 },
 {
-"id": "p25",
+"id": "kyoshu",
 "cat": "cafe",
 "en": "Kyoshu coffee (Shirakawa-go)",
 "ko": "쿄슈 카페",
-"tag": "",
 "lat": 36.2561,
 "lng": 136.9059,
 "nen": "Tatami window seats over the fields; apple cheesecake. 10:00–16:00, closed Wed & Sat.",
 "nko": "논밭 전망 다다미 창가석, 사과 치즈케이크. 10:00–16:00, 수·토 휴무.",
-"pid": "ChIJt1fifbpx-F8RSn4tbjUiRGo"
+"pid": "ChIJt1fifbpx-F8RSn4tbjUiRGo",
+"closed": [
+3,
+6
+]
 },
 {
-"id": "p26",
+"id": "ochudo",
 "cat": "cafe",
 "en": "Ochudo Cafe (Shirakawa-go)",
 "ko": "오추도 카페",
-"tag": "",
 "lat": 36.2575,
 "lng": 136.9072,
 "nen": "Curry and red-bean zenzai around an irori hearth. 11:00–15:30.",
@@ -324,11 +323,10 @@
 "pid": "ChIJVSGcTLpx-F8RTUqfsKacAPY"
 },
 {
-"id": "p27",
+"id": "anto",
 "cat": "shop",
 "en": "Kanazawa Hyakubangai / Anto (station)",
 "ko": "가나자와 햐쿠반가이·안토",
-"tag": "",
 "lat": 36.5779,
 "lng": 136.6477,
 "nen": "Station mall: local sweets, gold-leaf gifts, sake, restaurants. 8:30–20:00. Next to the hotel.",
@@ -336,11 +334,10 @@
 "pid": "ChIJvS6BAUIz-F8RIZ_CxwoR9VQ"
 },
 {
-"id": "p28",
+"id": "tatemachi",
 "cat": "shop",
 "en": "Korinbo & Tatemachi",
 "ko": "고린보·다테마치",
-"tag": "",
 "lat": 36.5622,
 "lng": 136.6537,
 "nen": "Department stores at Korinbo plus Tatemachi street: fashion, homeware, cafés.",
@@ -348,11 +345,10 @@
 "pid": ""
 },
 {
-"id": "p29",
+"id": "ikiiki",
 "cat": "eat",
 "en": "Iki-iki Tei",
 "ko": "이키이키테이 (오미초)",
-"tag": "Wed lunch",
 "lat": 36.57187,
 "lng": 136.65638,
 "nen": "Kaisendon and nodoguro sushi. Open 7:00–13:30 (Wed). Write your name and order on the sheet at the door. Get here by ~12:30.",
@@ -360,11 +356,10 @@
 "pid": "ChIJh9CWN3Az-F8RNVCyCT8xvxA"
 },
 {
-"id": "p30",
+"id": "yamasan",
 "cat": "eat",
 "en": "Yamasan Sushi Honten",
 "ko": "야마산 스시 본점 (오미초)",
-"tag": "Wed lunch",
 "lat": 36.57174,
 "lng": 136.65691,
 "nen": "Generous kaisendon at a market entrance; roomier than most. 9:00–16:00.",
@@ -372,11 +367,10 @@
 "pid": "ChIJKVl-tnEz-F8RCPPlrOUAMS8"
 },
 {
-"id": "p31",
+"id": "morimori",
 "cat": "eat",
 "en": "Mori Mori Sushi",
 "ko": "모리모리 스시 (오미초)",
-"tag": "Wed lunch",
 "lat": 36.57172,
 "lng": 136.65618,
 "nen": "Popular conveyor-style sushi. 8:00–16:00. Waits of 1–2 h are common: take a number, then browse the market.",
@@ -384,11 +378,10 @@
 "pid": "ChIJh9CWN3Az-F8RstcmUpAlsBc"
 },
 {
-"id": "p32",
+"id": "tonariya",
 "cat": "eat",
 "en": "Tonariya (nodoguro rice pot)",
 "ko": "도나리야 노도구로 솥밥 (오미초)",
-"tag": "Wed lunch",
 "lat": 36.57085,
 "lng": 136.65603,
 "nen": "Nodoguro kamameshi cooked to order (~20 min). 7:00–14:30.",
@@ -396,59 +389,68 @@
 "pid": "ChIJCzGWsz8z-F8Rzo_h7N4ytnI"
 },
 {
-"id": "p33",
+"id": "higashide",
 "cat": "cafe",
 "en": "Higashide Coffee",
 "ko": "히가시데 커피 (東出珈琲店)",
-"tag": "",
 "lat": 36.57068,
 "lng": 136.65707,
 "nen": "Retro kissaten near Omicho; famous pudding. 9:00–18:00. CLOSED WED & SUN, so go Thu morning (before the bus) or Fri.",
 "nko": "오미초 근처 레트로 킷사텐, 푸딩 유명. 9:00–18:00. 수·일 휴무 → 목요일 오전(버스 전) 또는 금요일.",
-"pid": "ChIJa8iu93Az-F8RkjT-kOzUFgQ"
+"pid": "ChIJa8iu93Az-F8RkjT-kOzUFgQ",
+"closed": [
+3,
+0
+]
 },
 {
-"id": "p34",
+"id": "itaru",
 "cat": "eat",
 "en": "Itaru Honten",
 "ko": "이타루 본점",
-"tag": "Wed dinner",
 "lat": 36.56087,
 "lng": 136.65595,
 "nen": "Busy izakaya with excellent sashimi, 5 min from the 21st Century Museum. 17:30–22:30, closed Sun. Book ahead.",
 "nko": "회가 훌륭한 인기 이자카야. 21세기 미술관에서 도보 5분. 17:30–22:30, 일요일 휴무. 예약 권장.",
-"pid": "ChIJH0dij4Az-F8RX9W0FHnAhJY"
+"pid": "ChIJH0dij4Az-F8RX9W0FHnAhJY",
+"closed": [
+0
+]
 },
 {
-"id": "p35",
+"id": "danshaku",
 "cat": "eat",
 "en": "Danshaku (steak)",
 "ko": "단샤쿠 (스테이크)",
-"tag": "Wed dinner",
 "lat": 36.55491,
 "lng": 136.6591,
 "nen": "Chef Shigeru's small steak house, south across the Sai River (~15 min walk from the museum). 17:00–22:00, closed Sun. Book ahead.",
 "nko": "셰프 시게루의 작은 스테이크 하우스. 사이강 건너 남쪽(미술관에서 도보 약 15분). 17:00–22:00, 일요일 휴무. 예약 권장.",
-"pid": "ChIJhwcoQXc0-F8R2CZpP9RD_Yc"
+"pid": "ChIJhwcoQXc0-F8R2CZpP9RD_Yc",
+"closed": [
+0
+]
 },
 {
-"id": "p36",
+"id": "kikuichi",
 "cat": "eat",
 "en": "Kiku Ichi (oden)",
 "ko": "기쿠이치 (오뎅)",
-"tag": "",
 "lat": 36.5619,
 "lng": 136.65325,
 "nen": "Small oden counter in Katamachi. 17:30–21:30. CLOSED TUE & WED, so try Thu or Fri. Line up ~25 min before opening.",
 "nko": "가타마치의 작은 오뎅집. 17:30–21:30. 화·수 휴무 → 목·금 추천. 오픈 25분 전 줄서기.",
-"pid": "ChIJB5KhBoAz-F8RtHnvdTU3gGQ"
+"pid": "ChIJB5KhBoAz-F8RtHnvdTU3gGQ",
+"closed": [
+2,
+3
+]
 },
 {
-"id": "p37",
+"id": "taiga",
 "cat": "eat",
 "en": "Ramen Taiga",
 "ko": "라멘 다이가",
-"tag": "",
 "lat": 36.57882,
 "lng": 136.6523,
 "nen": "Rich miso ramen near the station. 11:00–14:30 & 17:30–22:30. Queue forms ~10:20. Opens after your 11:10 bus leaves on Thu, so try Wed or Fri lunch, or any evening.",
@@ -456,11 +458,10 @@
 "pid": "ChIJC57BjGoz-F8Rp62XKDFihg4"
 },
 {
-"id": "p38",
+"id": "townsfolk",
 "cat": "cafe",
 "en": "townsfolk coffee",
 "ko": "타운스포크 커피",
-"tag": "Thu brunch",
 "lat": 36.56843,
 "lng": 136.6516,
 "nen": "Specialty coffee and cardamom buns. 8:00–17:30. ~15 min by taxi/bus from the station; leave by 10:30 for the 11:10 bus.",
@@ -468,23 +469,25 @@
 "pid": "ChIJlxkp4W8z-F8RnXKksnTqsMI"
 },
 {
-"id": "p39",
+"id": "hippo",
 "cat": "cafe",
 "en": "hippo (bakery)",
 "ko": "히포 베이커리",
-"tag": "Thu brunch",
 "lat": 36.57114,
 "lng": 136.65467,
 "nen": "Popular bakery by Omicho: curry bread, salt bread. Thu 8:00–16:00, closed Tue & Wed. Cash only; sells out by midday.",
 "nko": "오미초 옆 인기 빵집: 카레빵, 소금빵. 목 8:00–16:00, 화·수 휴무. 현금만, 점심 전 매진.",
-"pid": "ChIJRX5p1cwz-F8R-EY5g99DLjs"
+"pid": "ChIJRX5p1cwz-F8R-EY5g99DLjs",
+"closed": [
+2,
+3
+]
 },
 {
-"id": "p40",
+"id": "uogashi",
 "cat": "eat",
 "en": "Uogashi Shokudo (Central Market)",
 "ko": "우오가시 식당 중앙시장점",
-"tag": "Thu dinner",
 "lat": 36.58654,
 "lng": 136.63362,
 "nen": "Great-value seafood bowls by the central fish market. Dinner 17:00–20:30. ~10 min taxi from the station: go straight from the 18:45 bus. Take a number from the machine outside.",
@@ -492,39 +495,288 @@
 "pid": "ChIJ_YkVl0sz-F8RyMiu6WyIw-o"
 },
 {
-"id": "p41",
+"id": "aburaya",
 "cat": "eat",
 "en": "Aburaya (soupless noodles)",
 "ko": "아부라야 (마제소바)",
-"tag": "Thu dinner",
 "lat": 36.57365,
 "lng": 136.65631,
 "nen": "One-man brothless ramen shop near Omicho. 17:30–20:45, closed Sun.",
 "nko": "오미초 근처 1인 운영 국물 없는 라멘. 17:30–20:45, 일요일 휴무.",
-"pid": "ChIJ4Trf3r4z-F8RMJyUDIJqPVU"
+"pid": "ChIJ4Trf3r4z-F8RMJyUDIJqPVU",
+"closed": [
+0
+]
 },
 {
-"id": "p42",
+"id": "yabuken",
 "cat": "eat",
 "en": "Yabuken Soba",
 "ko": "야부켄 소바",
-"tag": "Thu dinner",
 "lat": 36.56974,
 "lng": 136.65562,
 "nen": "Handmade soba; duck nanban is the dish. Thu dinner 18:00–20:30, only 8 seats. Cash only. Closed Tue.",
 "nko": "수타 소바, 오리 난반 추천. 목 저녁 18:00–20:30, 8석. 현금만. 화요일 휴무.",
-"pid": "ChIJ__-KeHoz-F8RFTEv9Xm7uRw"
+"pid": "ChIJ__-KeHoz-F8RFTEv9Xm7uRw",
+"closed": [
+2
+]
 },
 {
-"id": "p43",
+"id": "kissa",
 "cat": "cafe",
 "en": "Kissa & Co.",
 "ko": "킷사 앤 코",
-"tag": "Fri brunch",
 "lat": 36.56814,
 "lng": 136.65406,
 "nen": "Modern tea/coffee café with traditional sweets. Opens 11:00, and has no full lunch dishes, so pair it with a meal.",
 "nko": "전통 화과자와 차·커피의 모던 카페. 11:00 오픈, 식사 메뉴는 없음 → 식사와 함께 계획.",
 "pid": "ChIJV6Ecy3sz-F8RRiCaxkeQZ-I"
+},
+{
+"id": "myoryuji",
+"cat": "see",
+"en": "Myoryuji (Ninja Temple)",
+"ko": "묘류지 (닌자 사원)",
+"lat": 36.55538,
+"lng": 136.649,
+"pid": "ChIJuYLrXHs0-F8RGY1Ld3voBB4",
+"nen": "Temple full of hidden traps and secret passages. Entry is by guided tour only (in Japanese, with an English booklet), ~40 min. Phone ahead to book: +81 76-241-0888. 9:00–16:00.",
+"nko": "숨은 함정과 비밀 통로가 가득한 사원. 가이드 투어로만 입장(일본어, 영어 안내책자 제공), 약 40분. 전화 예약 필요: +81 76-241-0888. 9:00–16:00."
+},
+{
+"id": "nomura",
+"cat": "see",
+"en": "Nomura-ke Samurai House",
+"ko": "노무라 가문 무사 저택",
+"lat": 36.56421,
+"lng": 136.65003,
+"pid": "ChIJF_AqPH4z-F8Rmtm1IKiShVQ",
+"nen": "The one samurai residence in Nagamachi fully open inside, with a beautiful small garden and koi pond. ~¥550. 8:30–16:00.",
+"nko": "나가마치에서 내부를 볼 수 있는 무사 저택. 잉어 연못이 있는 아름다운 정원. 약 550엔. 8:30–16:00."
+},
+{
+"id": "ashigaru",
+"cat": "see",
+"en": "Ashigaru Museum (foot-soldier houses)",
+"ko": "아시가루 자료관 (하급 무사 집)",
+"lat": 36.56591,
+"lng": 136.64985,
+"pid": "ChIJR2o_Mnwz-F8RTJdAGan3YLY",
+"nen": "Two preserved foot-soldier homes in Nagamachi. Free. 9:30–17:00.",
+"nko": "나가마치의 하급 무사 가옥 2채. 무료. 9:30–17:00."
+},
+{
+"id": "suzuki",
+"cat": "see",
+"en": "D.T. Suzuki Museum",
+"ko": "스즈키 다이세쓰관",
+"lat": 36.55766,
+"lng": 136.66091,
+"pid": "ChIJBRk3CXg0-F8RYaKpk9GoiiE",
+"nen": "Calm, minimalist museum with the reflective Water Mirror Garden. 9:30–17:00, closed Mon.",
+"nko": "고요한 미니멀 건축과 물 거울 정원. 9:30–17:00, 월요일 휴관.",
+"closed": [
+1
+]
+},
+{
+"id": "gyokusen",
+"cat": "see",
+"en": "Gyokusen-inmaru Garden",
+"ko": "교쿠센인마루 정원",
+"lat": 36.56527,
+"lng": 136.6573,
+"pid": "ChIJPQy5s3gz-F8RjGATOrCygR0",
+"nen": "Terraced garden below the castle walls, at its best in autumn. Free. 8:00–17:00.",
+"nko": "성벽 아래 입체 정원, 가을에 특히 아름다움. 무료. 8:00–17:00."
+},
+{
+"id": "seisonkaku",
+"cat": "see",
+"en": "Seisonkaku Villa",
+"ko": "세이손카쿠",
+"lat": 36.56105,
+"lng": 136.66317,
+"pid": "ChIJtVQVn4Yz-F8RaJkTOYa7jEM",
+"nen": "A Maeda lord's villa built for his mother, beside Kenroku-en. ~¥700. 9:00–17:00, closed Wed.",
+"nko": "겐로쿠엔 옆 마에다 영주가 어머니를 위해 지은 별저. 약 700엔. 9:00–17:00, 수요일 휴관.",
+"closed": [
+3
+]
+},
+{
+"id": "shima",
+"cat": "see",
+"en": "Ochaya Shima (geisha house)",
+"ko": "오차야 시마 (게이샤 찻집)",
+"lat": 36.57261,
+"lng": 136.66692,
+"pid": "ChIJw51tpHQz-F8R5n-nNQg9TPs",
+"nen": "Original 1820 geisha teahouse you can walk through, with matcha and sweets in the tearoom. ~¥500. 9:30–17:30.",
+"nko": "1820년 게이샤 찻집 내부 관람, 다실에서 말차와 화과자. 약 500엔. 9:30–17:30."
+},
+{
+"id": "goldleaf",
+"cat": "see",
+"en": "Yasue Gold Leaf Museum",
+"ko": "야스에 금박 공예관",
+"lat": 36.57369,
+"lng": 136.66582,
+"pid": "ChIJm2u_NXMz-F8RJaruTAOl7jA",
+"nen": "Small hands-on museum on how Kanazawa gold leaf is made; next to Higashi Chaya. 9:30–17:00, closed Tue.",
+"nko": "가나자와 금박 제작 과정을 보는 체험형 박물관. 히가시차야 옆. 9:30–17:00, 화요일 휴관.",
+"closed": [
+2
+]
+},
+{
+"id": "nishichaya",
+"cat": "see",
+"en": "Nishi Chaya District",
+"ko": "니시차야 거리",
+"lat": 36.55697,
+"lng": 136.64744,
+"pid": "ChIJD5ZW73w0-F8RZelpmCV1f3A",
+"nen": "Small, quiet teahouse street; a 5-min walk from the Ninja Temple.",
+"nko": "작고 조용한 찻집 거리. 닌자 사원에서 도보 5분."
+},
+{
+"id": "teramachi",
+"cat": "see",
+"en": "Teramachi temple district",
+"ko": "데라마치 사찰 거리",
+"lat": 36.55045,
+"lng": 136.65452,
+"pid": "ChIJmYLBKnA0-F8RThDTBSZ28uU",
+"nen": "Quiet lanes lined with dozens of old temples; pairs with the Ninja Temple and Nishi Chaya.",
+"nko": "오래된 절이 늘어선 조용한 골목. 닌자 사원·니시차야와 함께."
+},
+{
+"id": "crafts",
+"cat": "see",
+"en": "National Crafts Museum",
+"ko": "국립공예관",
+"lat": 36.55904,
+"lng": 136.6617,
+"pid": "ChIJ2yTIEp0z-F8RFB6u_JK9rUg",
+"nen": "Japanese crafts in restored Meiji-era buildings, next to Kenroku-en. 9:30–17:30, closed Mon.",
+"nko": "메이지 시대 건물에 전시된 일본 공예품. 겐로쿠엔 옆. 9:30–17:30, 월요일 휴관.",
+"closed": [
+1
+]
+},
+{
+"id": "prefart",
+"cat": "see",
+"en": "Ishikawa Prefectural Museum of Art",
+"ko": "이시카와 현립미술관",
+"lat": 36.56019,
+"lng": 136.66117,
+"pid": "ChIJDeyz4IYz-F8R8VbGywT27Js",
+"nen": "Kutani ware, Kaga-yuzen and fine art; nice café. 9:30–18:00.",
+"nko": "구타니 도자기, 가가유젠, 미술품. 카페도 좋음. 9:30–18:00."
+},
+{
+"id": "kanda",
+"cat": "see",
+"en": "Kanda House (Shirakawa-go)",
+"ko": "간다 가옥",
+"lat": 36.25782,
+"lng": 136.90705,
+"pid": "ChIJOZbTy7tx-F8RVTadbZ_7tfg",
+"nen": "Well-preserved gassho farmhouse with views over the fields from the upper floors. 10:00–16:00, closed Wed.",
+"nko": "잘 보존된 갓쇼 가옥, 위층에서 논밭 전망. 10:00–16:00, 수요일 휴무.",
+"closed": [
+3
+]
+},
+{
+"id": "nagase",
+"cat": "see",
+"en": "Nagase House (Shirakawa-go)",
+"ko": "나가세 가옥",
+"lat": 36.25736,
+"lng": 136.90766,
+"pid": "ChIJVfFL-wxx-F8RhXRq1bEVAJU",
+"nen": "The village's tallest farmhouse: five floors, quieter than Wada House. ~¥400. 9:00–16:00.",
+"nko": "마을에서 가장 높은 5층 가옥, 와다 가옥보다 한적. 약 400엔. 9:00–16:00."
+},
+{
+"id": "hachiman",
+"cat": "see",
+"en": "Shirakawa Hachiman Shrine",
+"ko": "시라카와 하치만 신사",
+"lat": 36.25481,
+"lng": 136.9058,
+"pid": "ChIJg9GHFbBx-F8RktT5UpJ-oOs",
+"nen": "Old shrine in the cedar trees at the south end of the village.",
+"nko": "마을 남쪽 끝 삼나무 숲의 오래된 신사."
+},
+{
+"id": "forus",
+"cat": "shop",
+"en": "Kanazawa Forus (by the station)",
+"ko": "가나자와 포러스 (역 앞)",
+"lat": 36.57915,
+"lng": 136.64975,
+"pid": "ChIJZXfN0UEz-F8RTW-OF6xGbvE",
+"nen": "Big mall at the East Exit: Uniqlo, Muji, ABC-Mart, Pokémon Center and more; restaurants on 6F. 10:00–20:00.",
+"nko": "동쪽 출구 대형 쇼핑몰: 유니클로, 무인양품, ABC마트, 포켓몬센터 등. 6층 식당가. 10:00–20:00."
+},
+{
+"id": "uniqlo",
+"cat": "shop",
+"en": "Uniqlo (Kanazawa Forus)",
+"ko": "유니클로 (포러스)",
+"lat": 36.57917,
+"lng": 136.64967,
+"pid": "ChIJzz-rSgAz-F8Rw6Q7d4ZA2-k",
+"nen": "Closest Uniqlo, right by the station. Tax-free with passport. 10:00–20:00.",
+"nko": "역 바로 옆 유니클로. 여권 지참 시 면세. 10:00–20:00."
+},
+{
+"id": "gu",
+"cat": "shop",
+"en": "GU (Aeon Town Shimeno)",
+"ko": "GU (이온타운 시메노)",
+"lat": 36.58147,
+"lng": 136.61866,
+"pid": "ChIJl3T1EFYz-F8RV9fFNYcXoKo",
+"nen": "Nearest GU; ~3 km west of the station, about 10 min by taxi. 10:00–21:00.",
+"nko": "가장 가까운 GU. 역에서 서쪽 약 3km, 택시 약 10분. 10:00–21:00."
+},
+{
+"id": "abcmart",
+"cat": "shop",
+"en": "ABC-Mart (Forus 5F): shoes",
+"ko": "ABC마트 (포러스 5층): 신발",
+"lat": 36.57929,
+"lng": 136.64983,
+"pid": "ChIJNa820EEz-F8RSOcICNgfeEI",
+"nen": "Shoe chain by the station. Looking for Haruta loafers? I couldn't confirm a Kanazawa stockist, so ask here or at the Daiwa and M'za shoe floors. 10:00–20:00.",
+"nko": "역 앞 신발 매장. 하루타(Haruta) 로퍼는 취급점 확인이 안 됐어요 → 여기나 다이와·엠자 백화점 신발 매장에 문의. 10:00–20:00."
+},
+{
+"id": "daiwa",
+"cat": "shop",
+"en": "Daiwa Korinbo (department store)",
+"ko": "다이와 고린보 (백화점)",
+"lat": 36.56318,
+"lng": 136.65409,
+"pid": "ChIJW4LunH8z-F8RRLfP2t0L3c8",
+"nen": "Department store with a big food floor in the basement; try the shoe floor for Haruta. 10:00–19:00.",
+"nko": "지하 식품관이 큰 백화점. 하루타는 신발 매장에 문의. 10:00–19:00."
+},
+{
+"id": "mza",
+"cat": "shop",
+"en": "Kanazawa M'za (department store)",
+"ko": "가나자와 엠자 (백화점)",
+"lat": 36.57201,
+"lng": 136.65501,
+"pid": "ChIJq6qqKXAz-F8RU4E7PZUZtMQ",
+"nen": "Next to Omicho Market; local sweets and a huge food hall in the basement. 10:00–19:30.",
+"nko": "오미초 시장 옆. 지하에 지역 과자와 큰 식품관. 10:00–19:30."
 }
 ]
