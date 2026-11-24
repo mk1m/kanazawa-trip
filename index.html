@@ -32,12 +32,16 @@ header small{display:block;font-size:12px;font-weight:400;opacity:.9;margin-top:
 .wxd b{font-size:11px;color:var(--mute);font-weight:700;margin-right:4px}.wxd .t{font-size:14px;font-weight:900}
 .wxd.trip{border-color:var(--red)}
 .wxbtn{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.2}
-.dayhd{display:flex;align-items:center;gap:8px;padding:10px 14px 4px}
-.daysel{position:relative;flex:1;display:block}
-.daysel select{appearance:none;-webkit-appearance:none;width:100%;font-size:16px;font-weight:900;padding:11px 36px 11px 12px;border:1.5px solid var(--red);border-radius:12px;background:var(--bg);color:var(--ink);cursor:pointer;min-height:46px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
-.daysel .car{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--red);pointer-events:none;font-size:14px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.daywx{flex:none;font-size:13px;font-weight:700;background:var(--soft);border-radius:10px;padding:6px 9px;white-space:nowrap}
+.days{display:flex;align-items:stretch;position:sticky;top:0;background:var(--bg);z-index:500;border-bottom:1px solid var(--line)}
+.dtabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none;padding:6px 6px 0 10px}
+.dtabs::-webkit-scrollbar{display:none}
+.dtabs button{flex:1 0 auto;border:0;background:none;padding:8px 8px 9px;font-weight:700;font-size:14px;cursor:pointer;color:var(--mute);border-bottom:3px solid transparent;min-height:44px;line-height:1.1}
+.dtabs button small{display:block;font-size:11px;font-weight:400}
+.dtabs button[aria-selected=true]{color:var(--red);border-color:var(--red)}
+.fold{flex:none;border:0;border-left:1px solid var(--line);background:var(--bg);color:var(--red);font-weight:700;font-size:12px;padding:0 12px;cursor:pointer;min-width:64px;line-height:1.15}
+#itwrap.folded{display:none}
+.wrap.nolist{grid-template-columns:minmax(0,1fr)!important}
 .rain{margin:6px 14px 2px;padding:8px 11px;border-radius:10px;background:#e8f1fb;color:#1d4f8a;font-size:13px;line-height:1.35}
 @media(prefers-color-scheme:dark){.rain{background:#18283a;color:#a9c8ee}}
 .wrap{display:grid;grid-template-columns:minmax(0,1fr)}
@@ -96,9 +100,9 @@ h2{font-size:18px;margin:18px 0 6px;font-weight:900}
 <body>
 <header><h1 id="title"></h1><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
 <div class="wx" id="wx"></div>
-<div class="dayhd"><label class="daysel"><span class="sr" id="daylbl"></span><select id="daysel"></select><span class="car">▾</span></label><div id="daywx" class="daywx"></div></div><div id="rain" class="rain" hidden></div>
+<nav class="days"><div class="dtabs" id="days" role="tablist"></div><button class="fold" id="fold" aria-expanded="true"></button></nav>
 <div class="wrap">
- <div><ol class="it" id="it"></ol></div>
+ <div id="itwrap"><div id="rain" class="rain" hidden></div><ol class="it" id="it"></ol></div>
  <div class="mapcol"><div id="map"></div></div>
 </div>
 <main>
@@ -139,7 +143,7 @@ const T={
 const COL={book:'#2f5aa8',see:'#a3263a',eat:'#d0671a',cafe:'#8a5a2b',shop:'#7b4b9a',mine:'#0f8a6b'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
 const ITIN=[
- {k:'wed',w:3,date:'2026-11-25',en:'Arrival · teahouses & art',ko:'도착 · 찻집 거리 & 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
+ {k:'wed',tab:{en:'Arrival',ko:'도착'},w:3,date:'2026-11-25',en:'Arrival · teahouses & art',ko:'도착 · 찻집 거리 & 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
   S('09:15','Land at Komatsu · KE2189','고마쓰 도착 · KE2189',['kmq'],{fx:1,nen:'Immigration and bags take ~30–45 min.',nko:'입국심사·수하물 약 30–45분.'}),
   S('10:00','Airport bus → Kanazawa','공항 리무진 → 가나자와',['kmq'],{fx:1,nen:'Stop 1 outside arrivals, leaves 10–15 min after landing. ~40 min, ¥1,300 each. Get off at the West Exit.',nko:'도착장 앞 1번 승강장, 착륙 10–15분 후 출발. 약 40분, 1인 1,300엔. 서쪽 출구 하차.'}),
   S('10:50','Drop bags','짐 맡기기',['hotel'],{fx:1}),
@@ -149,7 +153,7 @@ const ITIN=[
   S('15:30','Museum','미술관',['museum21','suzuki','crafts','prefart']),
   S('17:00','Shopping (indoors)','쇼핑 (실내)',['forus','uniqlo','daiwa','mza','tatemachi']),
   S('18:30','Dinner','저녁',['itaru','danshaku','miyuki','odenjun'])]},
- {k:'thu',w:4,date:'2026-11-26',en:'Omicho morning · Shirakawa-go',ko:'오미초 아침 · 시라카와고',slots:[
+ {k:'thu',tab:{en:'Shirakawa-go',ko:'시라카와고'},w:4,date:'2026-11-26',en:'Omicho morning · Shirakawa-go',ko:'오미초 아침 · 시라카와고',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
   S('09:15','Coffee & bakery','커피 & 빵',['higashide','hippo','townsfolk']),
   S('09:45','Morning stroll','아침 산책',['omicho','mza','forus']),
@@ -161,7 +165,7 @@ const ITIN=[
   S('16:00','Riverside & dusk','강변 & 해질녘',['deai','minkaen','hachiman']),
   S('17:30','Bus back to Kanazawa','가나자와행 버스',['skterm'],{fx:1,bk:1,nen:'Arrives West Exit Stop 4 at 18:45. Hokuriku Railroad car 01, seats 9C 9D 10C 10D.',nko:'18:45 서쪽 출구 4번 도착. 호쿠리쿠철도 1호차, 좌석 9C 9D 10C 10D.'}),
   S('19:00','Dinner','저녁',['uogashi','aburaya','yabuken','kikuichi'])]},
- {k:'fri',w:5,date:'2026-11-27',en:'Gardens, samurai & shopping',ko:'정원, 무사 거리 & 쇼핑',slots:[
+ {k:'fri',tab:{en:'Gardens & shops',ko:'정원 & 쇼핑'},w:5,date:'2026-11-27',en:'Gardens, samurai & shopping',ko:'정원, 무사 거리 & 쇼핑',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
   S('09:30','Garden & castle','정원 & 성',['kenroku','castle','gyokusen','seisonkaku']),
   S('11:15','Coffee break','커피',['kissa','higashide','townsfolk']),
@@ -170,7 +174,7 @@ const ITIN=[
   S('15:00','Temples & old streets','사찰 & 옛 거리',['myoryuji','nishichaya','teramachi','oyama']),
   S('16:30','Shopping','쇼핑',['forus','uniqlo','tatemachi','daiwa','abcmart','gu','anto']),
   S('18:30','Farewell dinner','마지막 저녁',['kikuichi','miyuki','danshaku','itaru','odenjun'])]},
- {k:'sat',w:6,date:'2026-11-28',en:'Fly home',ko:'귀국',slots:[
+ {k:'sat',tab:{en:'Fly home',ko:'귀국'},w:6,date:'2026-11-28',en:'Fly home',ko:'귀국',slots:[
   S('06:45','Quick breakfast','간단한 조식',['hotel'],{fx:1,nen:'Check the breakfast start time at check-in.',nko:'체크인 때 조식 시작 시간 확인.'}),
   S('07:20','Check out','체크아웃',['hotel'],{fx:1}),
   S('07:40','Airport bus → Komatsu','공항 리무진 → 고마쓰',['stop3'],{fx:1,nen:'West Exit Stop 3, ~40 min, ¥1,300 each. Check exact times at the stop the day before.',nko:'서쪽 출구 3번, 약 40분, 1인 1,300엔. 전날 시간표 확인.'}),
@@ -179,7 +183,7 @@ const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e)
 const jstDate=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
 let L_=store.get('lang',(navigator.language||'').startsWith('ko')?'ko':'en'),cat='all',sel=null,picking=false,pickLL=null,open=null;
 let day=(ITIN.find(d=>d.date===jstDate())||ITIN[0]).k;
-let done=store.get('done',{}),mine=store.get('mine',[]),choice=store.get('choice',{});
+let folded=store.get('folded',false),done=store.get('done',{}),mine=store.get('mine',[]),choice=store.get('choice',{});
 let base=[];try{base=await (await fetch('places.json',{cache:'no-cache'})).json()}catch(e){}
 const $=s=>document.querySelector(s),t=k=>T[L_][k];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -235,10 +239,9 @@ function goList(id){const d=D(),i=d.slots.findIndex((s,k)=>pick(d,k)===id);map.c
  if(i>=0){open=d.k+i;renderIt();document.querySelector(`.slot[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
  cat='all';renderCats();renderList();const el=document.getElementById('pl-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='var(--sel)';setTimeout(()=>el.style.background='',2500)}}
 // render
-function renderDays(){const d=D();$('#daysel').innerHTML=ITIN.map(x=>`<option value="${x.k}"${x.k===day?' selected':''}>${t('wd')[x.w]} ${x.date.slice(5).replace('-','/')} · ${esc(x[L_])}</option>`).join('');$('#daylbl').textContent=L_==='ko'?'날짜 선택':'Choose day';
+function renderDays(){const d=D();$('#days').innerHTML=ITIN.map(x=>`<button role="tab" data-k="${x.k}" aria-selected="${x.k===day}">${t('wd')[x.w]} ${x.date.slice(8)}<small>${esc(x.tab[L_])}</small></button>`).join('');
  const r=$('#rain');if(d.rain){r.hidden=false;r.textContent='☂︎ '+d.rain[L_]}else r.hidden=true;
- let w='';if(wx&&wx.d){const A=Array.isArray(wx.d)?wx.d:[wx.d],loc=A[0],i=loc&&loc.daily?loc.daily.time.indexOf(d.date):-1;if(i>=0)w=`${WMO(loc.daily.weather_code[i]).i} ${Math.round(loc.daily.temperature_2m_max[i])}°/${Math.round(loc.daily.temperature_2m_min[i])}° ☂︎${loc.daily.precipitation_probability_max[i]??'–'}%`}
- const dw=$('#daywx');dw.textContent=w;dw.hidden=!w}
+ const f=$('#fold');f.innerHTML=folded?(L_==='ko'?'일정<br>펼치기 ▾':'Show<br>plan ▾'):(L_==='ko'?'일정<br>접기 ▴':'Hide<br>plan ▴');f.setAttribute('aria-expanded',!folded);$('#itwrap').classList.toggle('folded',folded);document.querySelector('.wrap').classList.toggle('nolist',folded);setTimeout(()=>map.invalidateSize(),50)}
 function renderIt(){const d=D();
  $('#it').innerHTML=d.slots.map((s,i)=>{const id=pick(d,i),p=byId(id)||{},sid=d.k+i,c=COL[p.cat]||'#555',cl=isClosed(p,d.w);
   const optsH=s.opts.length>1?`<div class="swap">${t('swap')}</div><div class="opts">${s.opts.map(o=>{const q=byId(o);if(!q)return'';const qc=isClosed(q,d.w);
@@ -281,6 +284,8 @@ function renderWx(){let h='';const today=jstDate();
 document.addEventListener('click',e=>{const b=e.target.closest('button,[data-show]');if(!b)return;
  if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
  if(b.id==='wxbtn'){loadWx();return}
+ if(b.id==='fold'){folded=!folded;store.set('folded',folded);renderDays();return}
+ if(b.dataset.k){day=b.dataset.k;open=null;sel=null;if(folded){folded=false;store.set('folded',false)}render(true);return}
  
  if(b.hasAttribute('data-tg')){const sid=day+b.closest('.slot').dataset.s;open=open===sid?null:sid;renderIt();if(open){sel=pick(D(),+b.closest('.slot').dataset.s);drawMap()}return}
  if(b.dataset.sw){const i=+b.closest('.slot').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();toast(t('swapped'));return}
@@ -291,7 +296,6 @@ document.addEventListener('click',e=>{const b=e.target.closest('button,[data-sho
  if(b.hasAttribute('data-del')){mine=mine.filter(x=>x.id!==id);store.set('mine',mine);renderCats();renderList();drawMap();return}
  if(b.id==='pickmap'){picking=true;toast(t('pickmsg'));$('#map').scrollIntoView({behavior:'smooth',block:'center'});return}
  if(b.id==='usehere'){locate(false,ll=>{pickLL=ll;$('#f-loc').value=ll[0].toFixed(5)+', '+ll[1].toFixed(5);toast(t('gotloc'))});return}});
-$('#daysel').addEventListener('change',e=>{day=e.target.value;open=null;sel=null;render(true)});
 map.on('click',e=>{if(!picking)return;picking=false;pickLL=[e.latlng.lat,e.latlng.lng];$('#f-loc').value=pickLL[0].toFixed(5)+', '+pickLL[1].toFixed(5);toast(t('gotloc'));$('#addf').scrollIntoView({behavior:'smooth'})});
 $('#addf').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),v=(f.get('loc')||'').trim();
  let m=v.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||v.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||v.match(/[?&](?:q|query|ll|destination)=(-?\d+\.\d+)(?:,|%2C)(-?\d+\.\d+)/)||v.match(/^(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$/);
