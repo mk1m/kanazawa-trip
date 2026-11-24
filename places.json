@@ -8,7 +8,15 @@
 "lng": 136.406,
 "nen": "IN: Wed 25 Nov KE2189 ICN 07:25 → KMQ 09:15. OUT: Sat 28 Nov KE2190 KMQ 10:50 → ICN 12:50. Limousine bus to Kanazawa Station leaves from Stop 1 outside arrivals, 10–15 min after each landing (~40 min, ¥1,300 each).",
 "nko": "도착: 11/25(수) KE2189 인천 07:25 → 고마쓰 09:15. 출발: 11/28(토) KE2190 고마쓰 10:50 → 인천 12:50.. 가나자와역행 리무진 버스는 도착장 앞 1번 승강장, 착륙 10–15분 후 출발 (약 40분, 1인 1,300엔).",
-"pid": "ChIJb2kmYTZR-F8Rb2lWatuVL5Q"
+"pid": "ChIJb2kmYTZR-F8Rb2lWatuVL5Q",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/KomatsuAirportTerminal_02.jpg/960px-KomatsuAirportTerminal_02.jpg",
+"https://commons.wikimedia.org/wiki/File:KomatsuAirportTerminal_02.jpg",
+"＋－",
+"CC BY-SA 3.0"
+]
+]
 },
 {
 "id": "hotel",
@@ -52,7 +60,33 @@
 "lng": 136.90689,
 "nen": "Arrive 12:25 Thu. Return bus 17:30 → Kanazawa 18:45. Hokuriku Railroad, car 01, seats 9C 9D 10C 10D. Coin lockers behind the building (100-yen coins).",
 "nko": "목요일 12:25 도착. 귀가 버스 17:30 → 가나자와 18:45. 호쿠리쿠철도 1호차, 좌석 9C 9D 10C 10D. 건물 뒤 코인로커(100엔 동전).",
-"pid": "ChIJKx0Jc79x-F8RdUi6Khf_-Is"
+"pid": "ChIJKx0Jc79x-F8RdUi6Khf_-Is",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Shirakawa-go_-_Shirakawa156.jpg/960px-Shirakawa-go_-_Shirakawa156.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-go_-_Shirakawa156.jpg",
+"lumoplank",
+"CC0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Shirakawa-go_-_Shirakawa170.jpg/960px-Shirakawa-go_-_Shirakawa170.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-go_-_Shirakawa170.jpg",
+"lumoplank",
+"CC0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Shirakawa-go_-_Shirakawa161.jpg/960px-Shirakawa-go_-_Shirakawa161.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-go_-_Shirakawa161.jpg",
+"lumoplank",
+"CC0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Shirakawa-go_-_Shirakawa178.jpg/960px-Shirakawa-go_-_Shirakawa178.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-go_-_Shirakawa178.jpg",
+"lumoplank",
+"CC0"
+]
+]
 },
 {
 "id": "higashi",
@@ -63,7 +97,33 @@
 "lng": 136.6664,
 "nen": "Edo-era geisha teahouse streets with gold-leaf, Kutani pottery and craft shops. Side lanes are quieter. Bus to Hashiba-cho.",
 "nko": "에도시대 게이샤 찻집 거리. 금박·구타니 도자기·공예품 가게. 골목이 더 한적함. 하시바초 정류장 하차.",
-"pid": "ChIJsfC6oXQz-F8RdA1qXiF6jLs"
+"pid": "ChIJsfC6oXQz-F8RdA1qXiF6jLs",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/%E6%9D%B1%E8%8C%B6%E5%B1%8B%E8%A1%97_%28%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E6%9D%B1%E5%B1%B1%29_-_panoramio_-_gundam2345_%282%29.jpg/960px-%E6%9D%B1%E8%8C%B6%E5%B1%8B%E8%A1%97_%28%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E6%9D%B1%E5%B1%B1%29_-_panoramio_-_gundam2345_%282%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E6%9D%B1%E8%8C%B6%E5%B1%8B%E8%A1%97_%28%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E6%9D%B1%E5%B1%B1%29_-_panoramio_-_gundam2345_%282%29.jpg",
+"gundam2345",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio.jpg/960px-%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio.jpg",
+"gundam2345",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio_-_gundam2345.jpg/960px-%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio_-_gundam2345.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio_-_gundam2345.jpg",
+"gundam2345",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio_-_gundam2345_%281%29.jpg/960px-%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio_-_gundam2345_%281%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97_-_panoramio_-_gundam2345_%281%29.jpg",
+"gundam2345",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "kazue",
@@ -74,7 +134,33 @@
 "lng": 136.6637,
 "nen": "Small, quiet chaya lane on the Asano River, across from Higashi Chaya. Best photos from the riverbank.",
 "nko": "히가시차야 건너편 아사노강변의 작고 조용한 찻집 거리. 강변에서 찍는 사진이 예쁨.",
-"pid": "ChIJR-yGmXMz-F8Rf07-P4u1PUM"
+"pid": "ChIJR-yGmXMz-F8Rf07-P4u1PUM",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%92.jpg/960px-%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%92.jpg",
+"https://commons.wikimedia.org/wiki/File:%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%92.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%93.jpg/960px-%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%93.jpg",
+"https://commons.wikimedia.org/wiki/File:%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%93.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%94.jpg/960px-%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%94.jpg",
+"https://commons.wikimedia.org/wiki/File:%E6%B5%85%E9%87%8E%E5%B7%9D%E5%A4%A7%E6%A9%8B%EF%BC%94.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/%E3%81%82%E3%81%8B%E3%82%8A%E5%9D%82%EF%BC%91.jpg/960px-%E3%81%82%E3%81%8B%E3%82%8A%E5%9D%82%EF%BC%91.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%82%E3%81%8B%E3%82%8A%E5%9D%82%EF%BC%91.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+]
+]
 },
 {
 "id": "kenroku",
@@ -85,7 +171,33 @@
 "lng": 136.6627,
 "nen": "One of Japan's three great gardens. Late Nov: last autumn colour and yukitsuri rope 'umbrellas' on the pines. 8:00–17:00, small fee. Best on a sunny day (Fri forecast).",
 "nko": "일본 3대 정원. 11월 말 단풍 끝물과 소나무 눈막이 유키쓰리. 8:00–17:00, 입장료 있음. 맑은 날 추천(금요일 예보).",
-"pid": "ChIJBVmy-YMz-F8R5PID8D17Cpc"
+"pid": "ChIJBVmy-YMz-F8R5PID8D17Cpc",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%283%29.jpg/960px-%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%283%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%283%29.jpg",
+"kanesue",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%284%29.jpg/960px-%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%284%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%284%29.jpg",
+"kanesue",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%286%29.jpg/960px-%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%286%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%286%29.jpg",
+"kanesue",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%2810%29.jpg/960px-%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%2810%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E5%85%BC%E5%85%AD%E5%9C%92_-_panoramio_%2810%29.jpg",
+"kanesue",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "castle",
@@ -96,7 +208,33 @@
 "lng": 136.6588,
 "nen": "Free grounds with white-roofed turrets and stone walls. Ishikawa-mon gate leads straight to Kenroku-en.",
 "nko": "무료 입장. 흰 지붕 망루와 돌담. 이시카와몬을 지나면 바로 겐로쿠엔.",
-"pid": "ChIJlUfxPYIz-F8RSh7ml54YJ6g"
+"pid": "ChIJlUfxPYIz-F8RSh7ml54YJ6g",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Kanazawa_Castle_-_22_-_2016-04-16.jpg/960px-Kanazawa_Castle_-_22_-_2016-04-16.jpg",
+"https://commons.wikimedia.org/wiki/File:Kanazawa_Castle_-_22_-_2016-04-16.jpg",
+"MathieuMD",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Kanazawa_Castle_park_-_13_-_2016-04-16.jpg/960px-Kanazawa_Castle_park_-_13_-_2016-04-16.jpg",
+"https://commons.wikimedia.org/wiki/File:Kanazawa_Castle_park_-_13_-_2016-04-16.jpg",
+"MathieuMD",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Kanazawa_Castle_park_-_14_-_2016-04-16.jpg/960px-Kanazawa_Castle_park_-_14_-_2016-04-16.jpg",
+"https://commons.wikimedia.org/wiki/File:Kanazawa_Castle_park_-_14_-_2016-04-16.jpg",
+"MathieuMD",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/%E9%87%91%E6%B2%A2%E5%9F%8E%E5%85%AC%E5%9C%9212_-_panoramio.jpg/960px-%E9%87%91%E6%B2%A2%E5%9F%8E%E5%85%AC%E5%9C%9212_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%87%91%E6%B2%A2%E5%9F%8E%E5%85%AC%E5%9C%9212_-_panoramio.jpg",
+"baggio4ever",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "oyama",
@@ -107,7 +245,33 @@
 "lng": 136.6554,
 "nen": "Gate with stained-glass windows and a pond garden. Grounds close 17:00.",
 "nko": "스테인드글라스 신문과 연못 정원. 17:00 폐문.",
-"pid": "ChIJwQG-F3kz-F8RAfWyK1svniU"
+"pid": "ChIJwQG-F3kz-F8RAfWyK1svniU",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Haiden_of_Oyama_Shrine.JPG/960px-Haiden_of_Oyama_Shrine.JPG",
+"https://commons.wikimedia.org/wiki/File:Haiden_of_Oyama_Shrine.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Haiden_of_Oyama_Shrine_2.JPG/960px-Haiden_of_Oyama_Shrine_2.JPG",
+"https://commons.wikimedia.org/wiki/File:Haiden_of_Oyama_Shrine_2.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Gate_of_Oyama_Shrine_from_inner_side.jpg/960px-Gate_of_Oyama_Shrine_from_inner_side.jpg",
+"https://commons.wikimedia.org/wiki/File:Gate_of_Oyama_Shrine_from_inner_side.jpg",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Gate_of_Oyama_Shrine_from_Haiden.JPG/960px-Gate_of_Oyama_Shrine_from_Haiden.JPG",
+"https://commons.wikimedia.org/wiki/File:Gate_of_Oyama_Shrine_from_Haiden.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "museum21",
@@ -121,6 +285,32 @@
 "pid": "ChIJAbhT24Az-F8RwWhli9sBKlE",
 "closed": [
 1
+],
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Inside_the_Swimming_Pool%2C_21st_Century_Museum_of_Contemporary_Art.jpg/960px-Inside_the_Swimming_Pool%2C_21st_Century_Museum_of_Contemporary_Art.jpg",
+"https://commons.wikimedia.org/wiki/File:Inside_the_Swimming_Pool%2C_21st_Century_Museum_of_Contemporary_Art.jpg",
+"ajari from Japan",
+"CC BY 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Swimming_Pool_from_above%2C_21st_Century_Museum_of_Contemporary_Art.jpg/960px-Swimming_Pool_from_above%2C_21st_Century_Museum_of_Contemporary_Art.jpg",
+"https://commons.wikimedia.org/wiki/File:Swimming_Pool_from_above%2C_21st_Century_Museum_of_Contemporary_Art.jpg",
+"ajari from Japan",
+"CC BY 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/%E9%87%91%E6%B2%A221%E4%B8%96%E7%B4%80%E7%BE%8E%E8%A1%93%E9%A4%A8%EF%BC%95.jpg/960px-%E9%87%91%E6%B2%A221%E4%B8%96%E7%B4%80%E7%BE%8E%E8%A1%93%E9%A4%A8%EF%BC%95.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%87%91%E6%B2%A221%E4%B8%96%E7%B4%80%E7%BE%8E%E8%A1%93%E9%A4%A8%EF%BC%95.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/%E9%87%91%E6%B2%A221%E4%B8%96%E7%B4%80%E7%BE%8E%E8%A1%93%E9%A4%A8%EF%BC%96.jpg/960px-%E9%87%91%E6%B2%A221%E4%B8%96%E7%B4%80%E7%BE%8E%E8%A1%93%E9%A4%A8%EF%BC%96.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%87%91%E6%B2%A221%E4%B8%96%E7%B4%80%E7%BE%8E%E8%A1%93%E9%A4%A8%EF%BC%96.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+]
 ]
 },
 {
@@ -132,7 +322,33 @@
 "lng": 136.651,
 "nen": "Earthen walls, canals and samurai houses; quieter than Higashi Chaya.",
 "nko": "흙담과 수로, 무사 저택. 히가시차야보다 한적함.",
-"pid": "ChIJhycOJtYz-F8RO54LaTG6_p0"
+"pid": "ChIJhycOJtYz-F8RO54LaTG6_p0",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%91.jpg/960px-%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%91.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%91.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%92.jpg/960px-%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%92.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%92.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%93.jpg/960px-%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%93.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%93.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%94.jpg/960px-%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%94.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%95%B7%E7%94%BA%E6%AD%A6%E5%AE%B6%E5%B1%8B%E6%95%B7%E8%B7%A1%EF%BC%94.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+]
+]
 },
 {
 "id": "tsuzumi",
@@ -143,7 +359,33 @@
 "lng": 136.6491,
 "nen": "The station's giant wooden drum gate (East Exit). Lit up at night.",
 "nko": "가나자와역 동쪽 출구의 거대한 북 모양 목조 게이트. 밤 조명이 예쁨.",
-"pid": "ChIJYwWDHWoz-F8RfWIvAKx4jrk"
+"pid": "ChIJYwWDHWoz-F8RfWIvAKx4jrk",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/%E9%BC%93%E9%96%80%EF%BC%91.jpg/960px-%E9%BC%93%E9%96%80%EF%BC%91.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%BC%93%E9%96%80%EF%BC%91.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/%E9%BC%93%E9%96%80%EF%BC%94.jpg/960px-%E9%BC%93%E9%96%80%EF%BC%94.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%BC%93%E9%96%80%EF%BC%94.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/%E9%BC%93%E9%96%80%EF%BC%95.jpg/960px-%E9%BC%93%E9%96%80%EF%BC%95.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%BC%93%E9%96%80%EF%BC%95.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/%E9%87%91%E6%B2%A2%E9%A7%85%E5%89%8D_-_panoramio.jpg/960px-%E9%87%91%E6%B2%A2%E9%A7%85%E5%89%8D_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%87%91%E6%B2%A2%E9%A7%85%E5%89%8D_-_panoramio.jpg",
+"くろふね",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "deck",
@@ -154,7 +396,33 @@
 "lng": 136.9086,
 "nen": "The postcard view over the thatched roofs. Deck 9:30–15:30; free castle-ruins viewpoint beside it. Shuttle from near Wada House (¥200, last up 15:40) or 15–20 min uphill walk — may be icy.",
 "nko": "초가지붕 마을 전경 명소. 전망대 9:30–15:30, 옆에 무료 성터 전망대. 와다 가옥 근처 셔틀(200엔, 상행 막차 15:40) 또는 도보 15–20분 오르막(빙판 주의).",
-"pid": "ChIJ4xHe8r9x-F8RybxsbX5Rr-o"
+"pid": "ChIJ4xHe8r9x-F8RybxsbX5Rr-o",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Shirakawago_Ogimachi%2C_february_2008_%282274408982%29.jpg/960px-Shirakawago_Ogimachi%2C_february_2008_%282274408982%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawago_Ogimachi%2C_february_2008_%282274408982%29.jpg",
+"tsuda",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%E3%81%8B%E3%82%89%29_-_panoramio.jpg/960px-%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%E3%81%8B%E3%82%89%29_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%E3%81%8B%E3%82%89%29_-_panoramio.jpg",
+"gundam2345",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%E3%81%8B%E3%82%89%29_-_panoramio_-_gundam2345.jpg/960px-%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%E3%81%8B%E3%82%89%29_-_panoramio_-_gundam2345.jpg",
+"https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%E3%81%8B%E3%82%89%29_-_panoramio_-_gundam2345.jpg",
+"gundam2345",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%29_-_panoramio.jpg/960px-%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%29_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B7%9D%E9%83%B7%28%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%B3%E5%A4%A9%E5%AE%88%E9%96%A3%E3%81%AE%E5%B1%95%E6%9C%9B%E5%8F%B0%29_-_panoramio.jpg",
+"gundam2345",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "wada",
@@ -165,7 +433,27 @@
 "lng": 136.9076,
 "nen": "The village's biggest gassho farmhouse (Edo period). 9:00–17:00, small fee.",
 "nko": "마을에서 가장 큰 갓쇼즈쿠리 가옥(에도시대). 9:00–17:00, 입장료 있음.",
-"pid": "ChIJdRv_s75x-F8R94Uw560g-iM"
+"pid": "ChIJdRv_s75x-F8R94Uw560g-iM",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Residence_of_Wada_Family_in_snow.JPG/960px-Residence_of_Wada_Family_in_snow.JPG",
+"https://commons.wikimedia.org/wiki/File:Residence_of_Wada_Family_in_snow.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Moya_of_Residence_of_Wada_Family_in_snow.JPG/960px-Moya_of_Residence_of_Wada_Family_in_snow.JPG",
+"https://commons.wikimedia.org/wiki/File:Moya_of_Residence_of_Wada_Family_in_snow.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Ditch_in_front_of_Residence_of_Wada_Family.JPG/960px-Ditch_in_front_of_Residence_of_Wada_Family.JPG",
+"https://commons.wikimedia.org/wiki/File:Ditch_in_front_of_Residence_of_Wada_Family.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "myozenji",
@@ -176,7 +464,33 @@
 "lng": 136.9067,
 "nen": "Thatched temple and bell tower with a museum of village life.",
 "nko": "초가지붕 사찰과 종루, 생활사 전시.",
-"pid": "ChIJ9SgIkbpx-F8RldT2VCFP5aA"
+"pid": "ChIJ9SgIkbpx-F8RldT2VCFP5aA",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Myozenji_Ogi_Shirakawa14s3s4592.jpg/960px-Myozenji_Ogi_Shirakawa14s3s4592.jpg",
+"https://commons.wikimedia.org/wiki/File:Myozenji_Ogi_Shirakawa14s3s4592.jpg",
+"663highland",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Myozenji_Ogi_Shirakawa15s3s4110.jpg/960px-Myozenji_Ogi_Shirakawa15s3s4110.jpg",
+"https://commons.wikimedia.org/wiki/File:Myozenji_Ogi_Shirakawa15s3s4110.jpg",
+"663highland",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/%E6%98%8E%E5%96%84%E5%AF%BA_-_panoramio.jpg/960px-%E6%98%8E%E5%96%84%E5%AF%BA_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E6%98%8E%E5%96%84%E5%AF%BA_-_panoramio.jpg",
+"YOSHIFUMI OGISO",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Myozen-ji_temple_%2C_%E6%98%8E%E5%96%84%E5%AF%BA_-_panoramio_%283%29.jpg/960px-Myozen-ji_temple_%2C_%E6%98%8E%E5%96%84%E5%AF%BA_-_panoramio_%283%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Myozen-ji_temple_%2C_%E6%98%8E%E5%96%84%E5%AF%BA_-_panoramio_%283%29.jpg",
+"z tanuki",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "deai",
@@ -187,7 +501,33 @@
 "lng": 136.9038,
 "nen": "Long suspension footbridge over the Sho River; lovely at dusk.",
 "nko": "쇼강 위 긴 현수교. 해질녘 풍경이 좋음.",
-"pid": "ChIJnf-NBwBx-F8R9DtoQUZlvbc"
+"pid": "ChIJnf-NBwBx-F8R9DtoQUZlvbc",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Fukuhaku_Deai_Bridge_2011.jpg/960px-Fukuhaku_Deai_Bridge_2011.jpg",
+"https://commons.wikimedia.org/wiki/File:Fukuhaku_Deai_Bridge_2011.jpg",
+"ぱちょぴ（pacyopi）",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Fukuhaku_Deai_Bridge.jpg/960px-Fukuhaku_Deai_Bridge.jpg",
+"https://commons.wikimedia.org/wiki/File:Fukuhaku_Deai_Bridge.jpg",
+"STA3816",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/%E9%82%82%E9%80%85%E6%A9%8B_Deai_Bridge_-_panoramio.jpg/960px-%E9%82%82%E9%80%85%E6%A9%8B_Deai_Bridge_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%82%82%E9%80%85%E6%A9%8B_Deai_Bridge_-_panoramio.jpg",
+"lienyuan lee",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Deai-bashi_Bridge_in_Winter%2C_Shirakawa-go_2015.jpg/960px-Deai-bashi_Bridge_in_Winter%2C_Shirakawa-go_2015.jpg",
+"https://commons.wikimedia.org/wiki/File:Deai-bashi_Bridge_in_Winter%2C_Shirakawa-go_2015.jpg",
+"Tomio344456",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "minkaen",
@@ -198,7 +538,33 @@
 "lng": 136.9023,
 "nen": "Open-air museum of farmhouses across Deai Bridge. 8:40–17:00, ~45 min.",
 "nko": "데아이바시 건너편 야외 민가 박물관. 8:40–17:00, 약 45분.",
-"pid": "ChIJZS8K5LBx-F8R3iMSHZ_7Tis"
+"pid": "ChIJZS8K5LBx-F8R3iMSHZ_7Tis",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Former_Main_Hall_of_Shinshoji_Temple_in_Gassho-zukuri_Minkaen_Garden_20150121.JPG/960px-Former_Main_Hall_of_Shinshoji_Temple_in_Gassho-zukuri_Minkaen_Garden_20150121.JPG",
+"https://commons.wikimedia.org/wiki/File:Former_Main_Hall_of_Shinshoji_Temple_in_Gassho-zukuri_Minkaen_Garden_20150121.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Entrance_of_Gassho-zukuri_Minkaen_Garden_20150121.jpg/960px-Entrance_of_Gassho-zukuri_Minkaen_Garden_20150121.jpg",
+"https://commons.wikimedia.org/wiki/File:Entrance_of_Gassho-zukuri_Minkaen_Garden_20150121.jpg",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Icicle_under_eaves_of_entrance_of_Gassho-zukuri_Minkaen_Garden_20150121.jpg/960px-Icicle_under_eaves_of_entrance_of_Gassho-zukuri_Minkaen_Garden_20150121.jpg",
+"https://commons.wikimedia.org/wiki/File:Icicle_under_eaves_of_entrance_of_Gassho-zukuri_Minkaen_Garden_20150121.jpg",
+"そらみみ",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Warehouses_in_Gassho-zukuri_Minkaen_Garden_20150121.JPG/960px-Warehouses_in_Gassho-zukuri_Minkaen_Garden_20150121.JPG",
+"https://commons.wikimedia.org/wiki/File:Warehouses_in_Gassho-zukuri_Minkaen_Garden_20150121.JPG",
+"そらみみ",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "omicho",
@@ -209,7 +575,33 @@
 "lng": 136.6559,
 "nen": "Kaisendon, crab croquettes, grilled oysters. Late Nov = kobako crab season. Your Wed lunch picks are open, but many produce and fish stalls close on Wednesdays. Come back Thu or Fri morning for the full market.",
 "nko": "해산물 덮밥, 게 크로켓, 굴구이. 11월 말은 고바코 게 제철. 수요일 점심 식당들은 영업하지만 상점은 수요일에 많이 쉼 → 시장 구경은 목·금 오전 추천.",
-"pid": "ChIJ0xPT93Az-F8RpTSlbHwo9L8"
+"pid": "ChIJ0xPT93Az-F8RpTSlbHwo9L8",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Omicho_Fish_Market_%2850154368656%29.jpg/960px-Omicho_Fish_Market_%2850154368656%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Omicho_Fish_Market_%2850154368656%29.jpg",
+"Raita Futo",
+"CC BY 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Omicho_Fish_Market_%2850153816783%29.jpg/960px-Omicho_Fish_Market_%2850153816783%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Omicho_Fish_Market_%2850153816783%29.jpg",
+"Raita Futo",
+"CC BY 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Omicho_Ichibakan_260123.jpg/960px-Omicho_Ichibakan_260123.jpg",
+"https://commons.wikimedia.org/wiki/File:Omicho_Ichibakan_260123.jpg",
+"Aspere",
+"CC0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Raw_oysters_at_Omicho_Market%2C_Kanazawa%2C_March_2026.jpg/960px-Raw_oysters_at_Omicho_Market%2C_Kanazawa%2C_March_2026.jpg",
+"https://commons.wikimedia.org/wiki/File:Raw_oysters_at_Omicho_Market%2C_Kanazawa%2C_March_2026.jpg",
+"NevinThompson",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "miyuki",
@@ -294,7 +686,27 @@
 "lng": 136.6665,
 "nen": "Soft serve under a whole sheet of gold leaf; gold-leaf gifts. 9:00–18:00.",
 "nko": "금박 한 장을 통째로 올린 소프트아이스크림, 금박 기념품. 9:00–18:00.",
-"pid": "ChIJ12QUl3Qz-F8Rf8aIc9cRDwc"
+"pid": "ChIJ12QUl3Qz-F8Rf8aIc9cRDwc",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Gold_leaf_on_soft_ice_cream_-_Kanazawa%2C_Japan_-_DSC00135.jpg/960px-Gold_leaf_on_soft_ice_cream_-_Kanazawa%2C_Japan_-_DSC00135.jpg",
+"https://commons.wikimedia.org/wiki/File:Gold_leaf_on_soft_ice_cream_-_Kanazawa%2C_Japan_-_DSC00135.jpg",
+"Daderot",
+"CC0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/The_famous_Kanazawa_gold_leaf_ice_cream_in_Higashi_Chaya_district.jpg/960px-The_famous_Kanazawa_gold_leaf_ice_cream_in_Higashi_Chaya_district.jpg",
+"https://commons.wikimedia.org/wiki/File:The_famous_Kanazawa_gold_leaf_ice_cream_in_Higashi_Chaya_district.jpg",
+"sergejf",
+"CC BY 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Soft-serve_ice_cream_topped_with_gold_leaf%2C_Kanazawa%2C_September_2024.jpg/960px-Soft-serve_ice_cream_topped_with_gold_leaf%2C_Kanazawa%2C_September_2024.jpg",
+"https://commons.wikimedia.org/wiki/File:Soft-serve_ice_cream_topped_with_gold_leaf%2C_Kanazawa%2C_September_2024.jpg",
+"NevinThompson",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "kyoshu",
@@ -331,7 +743,27 @@
 "lng": 136.6477,
 "nen": "Station mall: local sweets, gold-leaf gifts, sake, restaurants. 8:30–20:00. Next to the hotel.",
 "nko": "역 쇼핑몰: 지역 과자, 금박 기념품, 사케, 식당. 8:30–20:00. 호텔 바로 옆.",
-"pid": "ChIJvS6BAUIz-F8RIZ_CxwoR9VQ"
+"pid": "ChIJvS6BAUIz-F8RIZ_CxwoR9VQ",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Anto_100bangai_West_Enter.jpg/960px-Anto_100bangai_West_Enter.jpg",
+"https://commons.wikimedia.org/wiki/File:Anto_100bangai_West_Enter.jpg",
+"Rebirth10",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Kanazawa_Station_Anto_Hassyahyo.jpg/960px-Kanazawa_Station_Anto_Hassyahyo.jpg",
+"https://commons.wikimedia.org/wiki/File:Kanazawa_Station_Anto_Hassyahyo.jpg",
+"Rebirth10",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/%E9%87%91%E6%B2%A2%E9%A7%85_Kanazawa_Station_2014_%2814979373252%29.jpg/960px-%E9%87%91%E6%B2%A2%E9%A7%85_Kanazawa_Station_2014_%2814979373252%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E9%87%91%E6%B2%A2%E9%A7%85_Kanazawa_Station_2014_%2814979373252%29.jpg",
+"Izu navi",
+"CC BY 2.0"
+]
+]
 },
 {
 "id": "tatemachi",
@@ -342,7 +774,21 @@
 "lng": 136.6537,
 "nen": "Department stores at Korinbo plus Tatemachi street: fashion, homeware, cafés.",
 "nko": "고린보 백화점과 다테마치 거리: 패션, 생활용품, 카페.",
-"pid": ""
+"pid": "",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Rainy_street_in_Korinbo%2C_Kanazawa%2C_June_2017.jpg/960px-Rainy_street_in_Korinbo%2C_Kanazawa%2C_June_2017.jpg",
+"https://commons.wikimedia.org/wiki/File:Rainy_street_in_Korinbo%2C_Kanazawa%2C_June_2017.jpg",
+"NevinThompson",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Street_in_central_Kanazawa_in_the_rain%2C_June_2017.jpg/960px-Street_in_central_Kanazawa_in_the_rain%2C_June_2017.jpg",
+"https://commons.wikimedia.org/wiki/File:Street_in_central_Kanazawa_in_the_rain%2C_June_2017.jpg",
+"NevinThompson",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "ikiiki",
@@ -542,7 +988,33 @@
 "lng": 136.649,
 "pid": "ChIJuYLrXHs0-F8RGY1Ld3voBB4",
 "nen": "Temple full of hidden traps and secret passages. Entry is by guided tour only (in Japanese, with an English booklet), ~40 min. Phone ahead to book: +81 76-241-0888. 9:00–16:00.",
-"nko": "숨은 함정과 비밀 통로가 가득한 사원. 가이드 투어로만 입장(일본어, 영어 안내책자 제공), 약 40분. 전화 예약 필요: +81 76-241-0888. 9:00–16:00."
+"nko": "숨은 함정과 비밀 통로가 가득한 사원. 가이드 투어로만 입장(일본어, 영어 안내책자 제공), 약 40분. 전화 예약 필요: +81 76-241-0888. 9:00–16:00.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Ninjadera.jpg/960px-Ninjadera.jpg",
+"https://commons.wikimedia.org/wiki/File:Ninjadera.jpg",
+"Haruyuki Mase",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/%EF%BC%AD%EF%BD%99%EF%BD%8F%EF%BD%95%EF%BD%92%EF%BD%99%EF%BD%95%EF%BD%8A%EF%BD%89_Temple%28Ninjadera%EF%BC%89_-_panoramio.jpg/960px-%EF%BC%AD%EF%BD%99%EF%BD%8F%EF%BD%95%EF%BD%92%EF%BD%99%EF%BD%95%EF%BD%8A%EF%BD%89_Temple%28Ninjadera%EF%BC%89_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:%EF%BC%AD%EF%BD%99%EF%BD%8F%EF%BD%95%EF%BD%92%EF%BD%99%EF%BD%95%EF%BD%8A%EF%BD%89_Temple%28Ninjadera%EF%BC%89_-_panoramio.jpg",
+"hajime",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Ninja-dera_-_2016-04-16T13-10-01JST_0566.jpg/960px-Ninja-dera_-_2016-04-16T13-10-01JST_0566.jpg",
+"https://commons.wikimedia.org/wiki/File:Ninja-dera_-_2016-04-16T13-10-01JST_0566.jpg",
+"MathieuMD",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/%E6%AD%A3%E4%B9%85%E5%B1%B1_%E5%A6%99%E7%AB%8B%E5%AF%BA_%28%E5%BF%8D%E8%80%85%E5%AF%BA%29_-_Myoryuji_Temple_%28Ninjadera-Ninja_Temple%29_%288523559775%29.jpg/960px-%E6%AD%A3%E4%B9%85%E5%B1%B1_%E5%A6%99%E7%AB%8B%E5%AF%BA_%28%E5%BF%8D%E8%80%85%E5%AF%BA%29_-_Myoryuji_Temple_%28Ninjadera-Ninja_Temple%29_%288523559775%29.jpg",
+"https://commons.wikimedia.org/wiki/File:%E6%AD%A3%E4%B9%85%E5%B1%B1_%E5%A6%99%E7%AB%8B%E5%AF%BA_%28%E5%BF%8D%E8%80%85%E5%AF%BA%29_-_Myoryuji_Temple_%28Ninjadera-Ninja_Temple%29_%288523559775%29.jpg",
+"Kentaro Ohno",
+"CC BY 2.0"
+]
+]
 },
 {
 "id": "nomura",
@@ -553,7 +1025,33 @@
 "lng": 136.65003,
 "pid": "ChIJF_AqPH4z-F8Rmtm1IKiShVQ",
 "nen": "The one samurai residence in Nagamachi fully open inside, with a beautiful small garden and koi pond. ~¥550. 8:30–16:00.",
-"nko": "나가마치에서 내부를 볼 수 있는 무사 저택. 잉어 연못이 있는 아름다운 정원. 약 550엔. 8:30–16:00."
+"nko": "나가마치에서 내부를 볼 수 있는 무사 저택. 잉어 연못이 있는 아름다운 정원. 약 550엔. 8:30–16:00.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Nomura_house_in_Kanazawa_-_Flickr_-_odako1.jpg/960px-Nomura_house_in_Kanazawa_-_Flickr_-_odako1.jpg",
+"https://commons.wikimedia.org/wiki/File:Nomura_house_in_Kanazawa_-_Flickr_-_odako1.jpg",
+"Koichi Oda",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%281%29.jpg/960px-Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%281%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%281%29.jpg",
+"Koichi Oda",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%282%29.jpg/960px-Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%282%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%282%29.jpg",
+"Koichi Oda",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%283%29.jpg/960px-Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%283%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Nomura_house_in_Kanazawa_-_Flickr_-_odako1_%283%29.jpg",
+"Koichi Oda",
+"CC BY-SA 2.0"
+]
+]
 },
 {
 "id": "ashigaru",
@@ -578,6 +1076,32 @@
 "nko": "고요한 미니멀 건축과 물 거울 정원. 9:30–17:00, 월요일 휴관.",
 "closed": [
 1
+],
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/D.T.Suzuki_Museum_01.jpg/960px-D.T.Suzuki_Museum_01.jpg",
+"https://commons.wikimedia.org/wiki/File:D.T.Suzuki_Museum_01.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/D.T.Suzuki_Museum_02.jpg/960px-D.T.Suzuki_Museum_02.jpg",
+"https://commons.wikimedia.org/wiki/File:D.T.Suzuki_Museum_02.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/D.T.Suzuki_Museum_03.jpg/960px-D.T.Suzuki_Museum_03.jpg",
+"https://commons.wikimedia.org/wiki/File:D.T.Suzuki_Museum_03.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/D.T.Suzuki_Museum_04.jpg/960px-D.T.Suzuki_Museum_04.jpg",
+"https://commons.wikimedia.org/wiki/File:D.T.Suzuki_Museum_04.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+]
 ]
 },
 {
@@ -589,7 +1113,33 @@
 "lng": 136.6573,
 "pid": "ChIJPQy5s3gz-F8RjGATOrCygR0",
 "nen": "Terraced garden below the castle walls, at its best in autumn. Free. 8:00–17:00.",
-"nko": "성벽 아래 입체 정원, 가을에 특히 아름다움. 무료. 8:00–17:00."
+"nko": "성벽 아래 입체 정원, 가을에 특히 아름다움. 무료. 8:00–17:00.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Gyokusen-in_maru_Garden.JPG/960px-Gyokusen-in_maru_Garden.JPG",
+"https://commons.wikimedia.org/wiki/File:Gyokusen-in_maru_Garden.JPG",
+"Yaseminkurr",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Gyokusen%27inmaru_Garden_%2845063381045%29.jpg/960px-Gyokusen%27inmaru_Garden_%2845063381045%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Gyokusen%27inmaru_Garden_%2845063381045%29.jpg",
+"Benh LIEU SONG",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Gyokusen%27inmaru_Garden_%2845926083362%29.jpg/960px-Gyokusen%27inmaru_Garden_%2845926083362%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Gyokusen%27inmaru_Garden_%2845926083362%29.jpg",
+"Benh LIEU SONG",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Gyokuseninmaru_Garden_%28118911057%29.jpeg/960px-Gyokuseninmaru_Garden_%28118911057%29.jpeg",
+"https://commons.wikimedia.org/wiki/File:Gyokuseninmaru_Garden_%28118911057%29.jpeg",
+"Okochuke",
+"CC BY-SA 3.0"
+]
+]
 },
 {
 "id": "seisonkaku",
@@ -603,6 +1153,32 @@
 "nko": "겐로쿠엔 옆 마에다 영주가 어머니를 위해 지은 별저. 약 700엔. 9:00–17:00, 수요일 휴관.",
 "closed": [
 3
+],
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan00s3.jpg/960px-131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan00s3.jpg",
+"https://commons.wikimedia.org/wiki/File:131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan00s3.jpg",
+"663highland",
+"CC BY 2.5"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan01s3.jpg/960px-131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan01s3.jpg",
+"https://commons.wikimedia.org/wiki/File:131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan01s3.jpg",
+"663highland",
+"CC BY 2.5"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan02s3.jpg/960px-131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan02s3.jpg",
+"https://commons.wikimedia.org/wiki/File:131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan02s3.jpg",
+"663highland",
+"CC BY 2.5"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan03s3.jpg/960px-131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan03s3.jpg",
+"https://commons.wikimedia.org/wiki/File:131109_Seisonkaku_Kanazawa_Ishikawa_pref_Japan03s3.jpg",
+"663highland",
+"CC BY 2.5"
+]
 ]
 },
 {
@@ -614,7 +1190,33 @@
 "lng": 136.66692,
 "pid": "ChIJw51tpHQz-F8R5n-nNQg9TPs",
 "nen": "Original 1820 geisha teahouse you can walk through, with matcha and sweets in the tearoom. ~¥500. 9:30–17:30.",
-"nko": "1820년 게이샤 찻집 내부 관람, 다실에서 말차와 화과자. 약 500엔. 9:30–17:30."
+"nko": "1820년 게이샤 찻집 내부 관람, 다실에서 말차와 화과자. 약 500엔. 9:30–17:30.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090519.jpg/960px-Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090519.jpg",
+"https://commons.wikimedia.org/wiki/File:Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090519.jpg",
+"G41rn8",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Ochaya_Shima_%28Kanazawa%29_IMG_20161015_085937.jpg/960px-Ochaya_Shima_%28Kanazawa%29_IMG_20161015_085937.jpg",
+"https://commons.wikimedia.org/wiki/File:Ochaya_Shima_%28Kanazawa%29_IMG_20161015_085937.jpg",
+"G41rn8",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090544.jpg/960px-Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090544.jpg",
+"https://commons.wikimedia.org/wiki/File:Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090544.jpg",
+"G41rn8",
+"CC BY-SA 4.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090719.jpg/960px-Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090719.jpg",
+"https://commons.wikimedia.org/wiki/File:Ochaya_Shima_%28Kanazawa%29_IMG_20161015_090719.jpg",
+"G41rn8",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "goldleaf",
@@ -628,6 +1230,32 @@
 "nko": "가나자와 금박 제작 과정을 보는 체험형 박물관. 히가시차야 옆. 9:30–17:00, 화요일 휴관.",
 "closed": [
 2
+],
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Yasuekinpakukogeikan004.jpg/960px-Yasuekinpakukogeikan004.jpg",
+"https://commons.wikimedia.org/wiki/File:Yasuekinpakukogeikan004.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Yasuekinpakukogeikan001.jpg/960px-Yasuekinpakukogeikan001.jpg",
+"https://commons.wikimedia.org/wiki/File:Yasuekinpakukogeikan001.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Yasuekinpakukogeikan002.jpg/960px-Yasuekinpakukogeikan002.jpg",
+"https://commons.wikimedia.org/wiki/File:Yasuekinpakukogeikan002.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Yasuekinpakukogeikan003.jpg/960px-Yasuekinpakukogeikan003.jpg",
+"https://commons.wikimedia.org/wiki/File:Yasuekinpakukogeikan003.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+]
 ]
 },
 {
@@ -639,7 +1267,33 @@
 "lng": 136.64744,
 "pid": "ChIJD5ZW73w0-F8RZelpmCV1f3A",
 "nen": "Small, quiet teahouse street; a 5-min walk from the Ninja Temple.",
-"nko": "작고 조용한 찻집 거리. 닌자 사원에서 도보 5분."
+"nko": "작고 조용한 찻집 거리. 닌자 사원에서 도보 5분.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%91.jpg/960px-%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%91.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%91.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%92.jpg/960px-%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%92.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%92.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%93.jpg/960px-%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%93.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%93.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%95.jpg/960px-%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%95.jpg",
+"https://commons.wikimedia.org/wiki/File:%E3%81%AB%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97%EF%BC%95.jpg",
+"金沢市",
+"CC BY 2.1 jp"
+]
+]
 },
 {
 "id": "teramachi",
@@ -650,7 +1304,33 @@
 "lng": 136.65452,
 "pid": "ChIJmYLBKnA0-F8RThDTBSZ28uU",
 "nen": "Quiet lanes lined with dozens of old temples; pairs with the Ninja Temple and Nishi Chaya.",
-"nko": "오래된 절이 늘어선 조용한 골목. 닌자 사원·니시차야와 함께."
+"nko": "오래된 절이 늘어선 조용한 골목. 닌자 사원·니시차야와 함께.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Kanazawa-shi_Teramachi-Dai%2CIshikawa%2Ctemple_district.JPG/960px-Kanazawa-shi_Teramachi-Dai%2CIshikawa%2Ctemple_district.JPG",
+"https://commons.wikimedia.org/wiki/File:Kanazawa-shi_Teramachi-Dai%2CIshikawa%2Ctemple_district.JPG",
+"Isoyan",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/20131007_28_Kanazawa_-_Teramachi_Temple_Area_%2810477189346%29.jpg/960px-20131007_28_Kanazawa_-_Teramachi_Temple_Area_%2810477189346%29.jpg",
+"https://commons.wikimedia.org/wiki/File:20131007_28_Kanazawa_-_Teramachi_Temple_Area_%2810477189346%29.jpg",
+"Sjaak Kempe",
+"CC BY 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/An%27y%C5%8Dzan_K%C5%8Dtoku-ji_Temple_20210905_01.jpg/960px-An%27y%C5%8Dzan_K%C5%8Dtoku-ji_Temple_20210905_01.jpg",
+"https://commons.wikimedia.org/wiki/File:An%27y%C5%8Dzan_K%C5%8Dtoku-ji_Temple_20210905_01.jpg",
+"先従隗始",
+"CC0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/An%27y%C5%8Dzan_K%C5%8Dtoku-ji_Temple_20210905_06.jpg/960px-An%27y%C5%8Dzan_K%C5%8Dtoku-ji_Temple_20210905_06.jpg",
+"https://commons.wikimedia.org/wiki/File:An%27y%C5%8Dzan_K%C5%8Dtoku-ji_Temple_20210905_06.jpg",
+"先従隗始",
+"CC0"
+]
+]
 },
 {
 "id": "crafts",
@@ -664,6 +1344,14 @@
 "nko": "메이지 시대 건물에 전시된 일본 공예품. 겐로쿠엔 옆. 9:30–17:30, 월요일 휴관.",
 "closed": [
 1
+],
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/National_Crafts_Museum.jpg/960px-National_Crafts_Museum.jpg",
+"https://commons.wikimedia.org/wiki/File:National_Crafts_Museum.jpg",
+"Drivephotographer",
+"CC0"
+]
 ]
 },
 {
@@ -675,7 +1363,33 @@
 "lng": 136.66117,
 "pid": "ChIJDeyz4IYz-F8R8VbGywT27Js",
 "nen": "Kutani ware, Kaga-yuzen and fine art; nice café. 9:30–18:00.",
-"nko": "구타니 도자기, 가가유젠, 미술품. 카페도 좋음. 9:30–18:00."
+"nko": "구타니 도자기, 가가유젠, 미술품. 카페도 좋음. 9:30–18:00.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Ishikawa_Prefectural_Museum_of_Art.JPG/960px-Ishikawa_Prefectural_Museum_of_Art.JPG",
+"https://commons.wikimedia.org/wiki/File:Ishikawa_Prefectural_Museum_of_Art.JPG",
+"ほぶ",
+"Public domain"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Ishikawa_Prefectural_Museum_of_Art_02.jpg/960px-Ishikawa_Prefectural_Museum_of_Art_02.jpg",
+"https://commons.wikimedia.org/wiki/File:Ishikawa_Prefectural_Museum_of_Art_02.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Ishikawa_Prefectural_Museum_of_Art_03.jpg/960px-Ishikawa_Prefectural_Museum_of_Art_03.jpg",
+"https://commons.wikimedia.org/wiki/File:Ishikawa_Prefectural_Museum_of_Art_03.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Ishikawa_Prefectural_Museum_of_Art_04.jpg/960px-Ishikawa_Prefectural_Museum_of_Art_04.jpg",
+"https://commons.wikimedia.org/wiki/File:Ishikawa_Prefectural_Museum_of_Art_04.jpg",
+"Saigawasakurabashi",
+"CC BY-SA 3.0"
+]
+]
 },
 {
 "id": "kanda",
@@ -700,7 +1414,33 @@
 "lng": 136.90766,
 "pid": "ChIJVfFL-wxx-F8RhXRq1bEVAJU",
 "nen": "The village's tallest farmhouse: five floors, quieter than Wada House. ~¥400. 9:00–16:00.",
-"nko": "마을에서 가장 높은 5층 가옥, 와다 가옥보다 한적. 약 400엔. 9:00–16:00."
+"nko": "마을에서 가장 높은 5층 가옥, 와다 가옥보다 한적. 약 400엔. 9:00–16:00.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio.jpg/960px-Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio.jpg",
+"z tanuki",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%281%29.jpg/960px-Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%281%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%281%29.jpg",
+"z tanuki",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%282%29.jpg/960px-Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%282%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%282%29.jpg",
+"z tanuki",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%283%29.jpg/960px-Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%283%29.jpg",
+"https://commons.wikimedia.org/wiki/File:Nagase_house_%2C_%E9%95%B7%E7%80%AC%E5%AE%B6_-_panoramio_%283%29.jpg",
+"z tanuki",
+"CC BY 3.0"
+]
+]
 },
 {
 "id": "hachiman",
@@ -711,7 +1451,33 @@
 "lng": 136.9058,
 "pid": "ChIJg9GHFbBx-F8RktT5UpJ-oOs",
 "nen": "Old shrine in the cedar trees at the south end of the village.",
-"nko": "마을 남쪽 끝 삼나무 숲의 오래된 신사."
+"nko": "마을 남쪽 끝 삼나무 숲의 오래된 신사.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Shirakawa-hachiman-jinja_torii_and_haiden.jpg/960px-Shirakawa-hachiman-jinja_torii_and_haiden.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-hachiman-jinja_torii_and_haiden.jpg",
+"hohoho",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Shirakawa-hachiman-jinja_winter.JPG/960px-Shirakawa-hachiman-jinja_winter.JPG",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-hachiman-jinja_winter.JPG",
+"Hohoho",
+"CC BY-SA 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Shirakawa_hachiman_shrine_%2C_%E7%99%BD%E5%B7%9D%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_-_panoramio.jpg/960px-Shirakawa_hachiman_shrine_%2C_%E7%99%BD%E5%B7%9D%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_-_panoramio.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa_hachiman_shrine_%2C_%E7%99%BD%E5%B7%9D%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_-_panoramio.jpg",
+"z tanuki",
+"CC BY 3.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Shirakawa-hachiman-jinja_ema.jpg/960px-Shirakawa-hachiman-jinja_ema.jpg",
+"https://commons.wikimedia.org/wiki/File:Shirakawa-hachiman-jinja_ema.jpg",
+"Ocdp",
+"CC0"
+]
+]
 },
 {
 "id": "forus",
@@ -766,7 +1532,21 @@
 "lng": 136.65409,
 "pid": "ChIJW4LunH8z-F8RRLfP2t0L3c8",
 "nen": "Department store with a big food floor in the basement; try the shoe floor for Haruta. 10:00–19:00.",
-"nko": "지하 식품관이 큰 백화점. 하루타는 신발 매장에 문의. 10:00–19:00."
+"nko": "지하 식품관이 큰 백화점. 하루타는 신발 매장에 문의. 10:00–19:00.",
+"img": [
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Daiwa_department_store_Korinbo_in_Kanazawa_-_Feb_11%2C_2017.jpg/960px-Daiwa_department_store_Korinbo_in_Kanazawa_-_Feb_11%2C_2017.jpg",
+"https://commons.wikimedia.org/wiki/File:Daiwa_department_store_Korinbo_in_Kanazawa_-_Feb_11%2C_2017.jpg",
+"keyaki",
+"CC BY-SA 2.0"
+],
+[
+"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Korimbo_Atrio_at_dusk_20150120.jpg/960px-Korimbo_Atrio_at_dusk_20150120.jpg",
+"https://commons.wikimedia.org/wiki/File:Korimbo_Atrio_at_dusk_20150120.jpg",
+"そらみみ",
+"CC BY-SA 4.0"
+]
+]
 },
 {
 "id": "mza",

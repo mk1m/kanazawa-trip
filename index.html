@@ -124,6 +124,22 @@ details.add[open] summary::before{content:"− "}
 .af .note{font-size:13px;color:var(--soft);margin:0}
 .foot{font-size:12px;color:var(--soft);margin-top:30px}
 .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:99px;font-size:14px;z-index:1000;display:none;max-width:90vw}
+
+/* photo slider */
+.sl{position:relative;margin:2px 0 12px;max-width:520px}
+.slt{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:12px;background:var(--wash);-webkit-overflow-scrolling:touch}
+.slt::-webkit-scrollbar{display:none}
+.slt img{flex:0 0 100%;width:100%;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:center;display:block}
+.sl.sm .slt img{aspect-ratio:16/10}
+.sln{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.88);color:#1f2a44;font-size:15px;display:none;place-items:center;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.sln.p{left:8px}.sln.n{right:8px}
+@media(hover:hover){.sl:hover .sln{display:grid}}
+.slm{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px;font-size:11px;color:var(--soft)}
+.sld{display:flex;gap:5px;flex:none}.sld i{width:6px;height:6px;border-radius:50%;background:var(--hair)}.sld i.on{background:var(--gold)}
+.slc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--soft);text-decoration:none}
+.leaflet-popup-content .sl{margin:0 0 8px;width:236px}
+.leaflet-popup-content .slm{font-size:10px}
+.nophoto{font-size:13px;margin:0 0 10px}
 #itwrap.folded{display:none}
 @media(prefers-reduced-motion:no-preference){.st .more,.pl .more{animation:op .18s ease-out}@keyframes op{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}}
 @media(min-width:900px){
@@ -169,14 +185,14 @@ const T={
   hide:'Hide ▴',show:'Plan ▾',add:'Add a place',name:'Name',loc:'Google Maps link or “lat, lng”',note:'Note (optional)',pick:'Pick on map',here:'Use my location',save:'Add place',
   help:'Changes you make here are saved on this phone only.',pickmsg:'Tap the map to set the location',gotloc:'Location set',noloc:'Location unavailable. Allow location access for this browser.',
   needloc:'Add a location: paste a Google Maps link, pick on the map, or use your location.',added:'Place added',swapped:'Plan updated',
-  rf:'Refresh',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
+  rf:'Refresh',photo:'Photo:',photos:'See photos on Google Maps',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
   wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],wdl:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],kz:'Kanazawa',sk:'Shirakawa-go',rain:'rain'},
  ko:{title:'가나자와 & 시라카와고',sub:'2026년 11월 25–28일',places:'전체 장소',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가',
   maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',inlist:'자세히',been:'다녀옴 표시',undo:'다녀옴',del:'삭제',booked:'예약됨',alts:'다른 선택지',closed:'오늘 휴무',
   hide:'접기 ▴',show:'일정 ▾',add:'장소 추가',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 선택',here:'현재 위치',save:'추가하기',
   help:'여기서 바꾼 내용은 이 휴대폰에만 저장됩니다.',pickmsg:'지도를 탭해 위치를 정하세요',gotloc:'위치 설정됨',noloc:'위치를 사용할 수 없어요. 브라우저 위치 권한을 허용하세요.',
   needloc:'위치를 추가하세요: 구글 지도 링크, 지도에서 선택, 또는 현재 위치.',added:'장소 추가됨',swapped:'일정 변경됨',
-  rf:'새로고침',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
+  rf:'새로고침',photo:'사진:',photos:'구글 지도에서 사진 보기',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
   wd:['일','월','화','수','목','금','토'],wdl:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],kz:'가나자와',sk:'시라카와고',rain:'비'}};
 const COL={book:'#2f4a7a',see:'#9e3341',eat:'#b7712a',cafe:'#7a5a3c',shop:'#6b4f7d',mine:'#4f7a4a'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
@@ -256,27 +272,37 @@ function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
   if(!watching){watching=true;navigator.geolocation.watchPosition(p=>showMe([p.coords.latitude,p.coords.longitude],p.coords.accuracy),()=>{},{enableHighAccuracy:true,maximumAge:15000})}},
   ()=>toast(t('noloc')),{enableHighAccuracy:true,timeout:12000})}
 function showMe(ll,a){if(!me){me=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[16,16]}),zIndexOffset:2000}).addTo(map);acc=L.circle(ll,{radius:a,weight:0,fillColor:'#1a73e8',fillOpacity:.1}).addTo(map)}else{me.setLatLng(ll);acc.setLatLng(ll).setRadius(a)}}
-const popup=p=>`<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a></div>`;
+const popup=p=>`${slider(p,1)}<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>${p.img?'':`<a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${L_==='ko'?'사진':'Photos'}</a>`}<a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a></div>`;
 const pinI=(c,txt,sz,on)=>L.divIcon({className:'',html:`<div class="pin${on?' sel':''}" style="width:${sz}px;height:${sz}px;background:${c}">${txt}</div>`,iconSize:[sz,sz]});
 const dotI=c=>L.divIcon({className:'',html:`<div class="tiny" style="background:${c}"></div>`,iconSize:[9,9]});
 function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete mk[k];
  const d=D(),pts=[];d.slots.forEach((s,i)=>{const p=byId(pick(d,i));if(p)pts.push({p,i})});
  const used=new Set(pts.map(x=>x.p.id));
- all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:p.id===sel?pinI(COL[p.mine?'mine':p.cat],'',18,1):dotI(COL[p.mine?'mine':p.cat])}).addTo(bg);m.bindPopup(popup(p));mk[p.id]=m});
+ all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:p.id===sel?pinI(COL[p.mine?'mine':p.cat],'',18,1):dotI(COL[p.mine?'mine':p.cat])}).addTo(bg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236});mk[p.id]=m});
  const local=pts.filter(x=>x.p.id!=='kmq'),seg=[];let cur=[];
  local.forEach(x=>{if(cur.length&&Math.abs(cur[cur.length-1][0]-x.p.lat)>.1){seg.push(cur);cur=[]}cur.push([x.p.lat,x.p.lng])});seg.push(cur);
  seg.forEach(s=>s.length>1&&L.polyline(s,{color:'#b8913a',weight:2.5,opacity:.85,dashArray:'1 7',lineCap:'round'}).addTo(fg));
  const nums={};pts.forEach(x=>{(nums[x.p.id]=nums[x.p.id]||[]).push(x.i+1)});const drawn=new Set();
  pts.forEach(x=>{const p=x.p;if(drawn.has(p.id))return;drawn.add(p.id);const on=p.id===sel,n=nums[p.id];
-  const m=L.marker([p.lat,p.lng],{icon:pinI(COL[p.cat]||'#555',n.length>2?n[0]+'+':n.join(','),n.length>1?28:22,on),zIndexOffset:on?1500:1000}).addTo(fg);m.bindPopup(popup(p));mk[p.id]=m});
+  const m=L.marker([p.lat,p.lng],{icon:pinI(COL[p.cat]||'#555',n.length>2?n[0]+'+':n.join(','),n.length>1?28:22,on),zIndexOffset:on?1500:1000}).addTo(fg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236});mk[p.id]=m});
  if(fit){const kz=local.filter(x=>x.p.lat>36.4),sk=local.filter(x=>x.p.lat<36.4);const g=(sk.length>kz.length?sk:kz).map(x=>[x.p.lat,x.p.lng]);if(g.length)map.fitBounds(g,{padding:[34,34],maxZoom:16})}}
 function focus(id){const p=byId(id);if(!p)return;sel=id;drawMap();map.setView([p.lat,p.lng],Math.max(map.getZoom(),16));setTimeout(()=>mk[id]?.openPopup(),150);
  if(innerWidth<900)$('#map').scrollIntoView({behavior:'smooth',block:'center'})}
-map.on('popupopen',e=>{const a=e.popup.getElement()?.querySelector('.golist');if(a)a.addEventListener('click',ev=>{ev.preventDefault();goList(a.dataset.id)})});
+map.on('popupopen',e=>{const el=e.popup.getElement();initSl(el);el.querySelectorAll('[data-sl]').forEach(b=>b.addEventListener('click',ev=>{ev.preventDefault();slStep(b)}));el.querySelectorAll('img').forEach(im=>im.addEventListener('load',()=>e.popup.update(),{once:true}));L.DomEvent.disableScrollPropagation(el);const a=el.querySelector('.golist');if(a)a.addEventListener('click',ev=>{ev.preventDefault();goList(a.dataset.id)})});
 function goList(id){const d=D(),i=d.slots.findIndex((s,k)=>pick(d,k)===id);map.closePopup();
- if(i>=0){if(folded){folded=false;store.set('folded',false);renderDays()}open=d.k+i;renderIt();document.querySelector(`.st[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
- cat='all';openPl=id;renderCats();renderList();document.getElementById('pl-'+id)?.scrollIntoView({behavior:'smooth',block:'center'})}
+ if(i>=0){if(folded){folded=false;store.set('folded',false);renderDays()}open=d.k+i;renderIt();initSl();document.querySelector(`.st[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
+ cat='all';openPl=id;renderCats();renderList();initSl();document.getElementById('pl-'+id)?.scrollIntoView({behavior:'smooth',block:'center'})}
 
+
+function slider(p,sm){if(!p||!p.img||!p.img.length)return '';const n=p.img.length;
+ return `<div class="sl${sm?' sm':''}"><div class="slt">${p.img.map((x,i)=>`<img src="${esc(x[0])}" alt="${esc(nm(p))} ${i+1}" loading="lazy" decoding="async" data-c="${esc((x[2]||'')+' · '+(x[3]||''))}" data-h="${esc(x[1])}">`).join('')}</div>
+ ${n>1?`<button class="sln p" data-sl="-1" aria-label="Previous photo">‹</button><button class="sln n" data-sl="1" aria-label="Next photo">›</button>`:''}
+ <div class="slm">${n>1?`<span class="sld">${p.img.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</span>`:'<span></span>'}<a class="slc" href="${esc(p.img[0][1])}" target="_blank" rel="noopener">${t('photo')} ${esc(p.img[0][2])}, ${esc(p.img[0][3])}</a></div></div>`}
+function noPhoto(p){return p&&!p.img?`<p class="nophoto"><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('photos')}</a></p>`:''}
+function initSl(root){(root||document).querySelectorAll('.slt:not([data-i])').forEach(tr=>{tr.dataset.i=1;const sl=tr.closest('.sl'),imgs=[...tr.children];
+ tr.addEventListener('scroll',()=>{const i=Math.round(tr.scrollLeft/tr.clientWidth),im=imgs[i];if(!im)return;sl.querySelectorAll('.sld i').forEach((d,k)=>d.classList.toggle('on',k===i));
+  const c=sl.querySelector('.slc');if(c){c.href=im.dataset.h;c.textContent=t('photo')+' '+im.dataset.c.replace(' · ',', ')}},{passive:true})})}
+function slStep(b){const tr=b.closest('.sl').querySelector('.slt');tr.scrollBy({left:tr.clientWidth*+b.dataset.sl,behavior:'smooth'})}
 /* render */
 function renderDays(){$('#days').innerHTML=ITIN.map(x=>`<button role="tab" data-k="${x.k}" aria-selected="${x.k===day}"><span>${t('wd')[x.w]}</span><b>${x.date.slice(8)}</b></button>`).join('');
  const f=$('#fold');f.textContent=folded?t('show'):t('hide');f.setAttribute('aria-expanded',!folded);
@@ -296,21 +322,21 @@ function renderIt(){const d=D();
     return `<li><button data-sw="${o}" aria-pressed="${o===id}"><span class="rd"></span><span>${esc(nm(q))}${isClosed(q,d.w)?`<small>${t('closed')}</small>`:''}</span></button></li>`}).join('')}</ul>`:'';
   return `<li class="st${on?' on':''}" data-s="${i}" style="color:${c}"><button class="rw" data-tg aria-expanded="${on}"><span class="tm">${s.t}</span><span class="dt"><i>${i+1}</i></span>
    <span style="color:var(--ink)"><span class="nm">${esc(nm(p)||'')}</span><span class="lb">${esc(s[L_])}${s.bk?`<span class="bk">${t('booked')}</span>`:''}${cl?`<span class="cl">${t('closed')}</span>`:''}</span></span></button>
-   <div class="more" style="color:var(--ink)">${note?`<p>${esc(note)}</p>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
+   <div class="more" style="color:var(--ink)">${slider(p)||noPhoto(p)}${note?`<p>${esc(note)}</p>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
    <div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${id}">${t('onmap')}</button></div>${alts}</div></li>`}).join('')}
 function renderCats(){$('#cats').innerHTML=['all','see','eat','cafe','shop','book'].concat(mine.length?['mine']:[]).map(k=>`<button data-c="${k}" aria-pressed="${k===cat}">${t(k)}</button>`).join('')}
 const ORD={see:0,eat:1,cafe:2,shop:3,book:4};
 function renderList(){const list=all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine)).sort((a,b)=>(a.mine?-1:ORD[a.cat])-(b.mine?-1:ORD[b.cat]));
  $('#list').innerHTML=list.map(p=>{const on=openPl===p.id;return `<li class="pl${on?' on':''}${done[p.id]?' done':''}" id="pl-${esc(p.id)}" data-id="${esc(p.id)}">
  <button class="plr" data-pt aria-expanded="${on}"><span class="pd" style="background:${COL[p.mine?'mine':p.cat]}"></span><span class="pn">${esc(nm(p))}${!p.mine&&L_==='ko'?`<small>${esc(p.en)}</small>`:''}</span><span class="chk">${done[p.id]?'✓':''}</span></button>
- <div class="more">${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${esc(p.id)}">${t('onmap')}</button>
+ <div class="more">${slider(p)||noPhoto(p)}${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${esc(p.id)}">${t('onmap')}</button>
  <button class="tx" data-done>${done[p.id]?t('undo')+' ✓':t('been')}</button>${p.mine?`<button class="tx" data-del>${t('del')}</button>`:''}</div></div></li>`}).join('')}
 function renderText(){document.documentElement.lang=L_;$('#title').textContent=t('title');$('#sub').textContent=t('sub');
  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L_));
  $('#h-places').textContent=t('places');$('#h-add').textContent=t('add');$('#f-name').placeholder=t('name');$('#f-loc').placeholder=t('loc');$('#f-note').placeholder=t('note');
  $('#f-cat').innerHTML=['eat','cafe','see','shop'].map(k=>`<option value="${k}">${t(k)}</option>`).join('');
  $('#pickmap').textContent=t('pick');$('#usehere').textContent=t('here');$('#f-save').textContent=t('save');$('#f-help').textContent=t('help');$('#foot').textContent=t('foot')}
-function render(fit){applyMapLang();renderText();renderDays();renderHead();renderIt();renderCats();renderList();drawMap(fit)}
+function render(fit){applyMapLang();renderText();renderDays();renderHead();renderIt();renderCats();renderList();drawMap(fit);initSl()}
 
 async function loadWx(){const b=$('#wxbtn');if(b)b.textContent='…';
  try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=36.578,36.262&longitude=136.648,136.907&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=7');
@@ -318,16 +344,17 @@ async function loadWx(){const b=$('#wxbtn');if(b)b.textContent='…';
 
 /* events */
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.sl){slStep(b);return}
  if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
  if(b.id==='wxbtn'){loadWx();return}
  if(b.id==='fold'){folded=!folded;store.set('folded',folded);renderDays();return}
  if(b.dataset.k){day=b.dataset.k;open=null;sel=null;if(folded){folded=false;store.set('folded',false)}render(true);return}
- if(b.hasAttribute('data-tg')){const i=+b.closest('.st').dataset.s,sid=day+i;open=open===sid?null:sid;renderIt();if(open){sel=pick(D(),i);drawMap()}return}
- if(b.dataset.sw){const i=+b.closest('.st').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();toast(t('swapped'));return}
+ if(b.hasAttribute('data-tg')){const i=+b.closest('.st').dataset.s,sid=day+i;open=open===sid?null:sid;renderIt();initSl();if(open){sel=pick(D(),i);drawMap()}return}
+ if(b.dataset.sw){const i=+b.closest('.st').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();initSl();toast(t('swapped'));return}
  if(b.dataset.show){focus(b.dataset.show);return}
  if(b.dataset.c){cat=b.dataset.c;openPl=null;renderCats();renderList();return}
  const id=b.closest('.pl')?.dataset.id;
- if(b.hasAttribute('data-pt')){openPl=openPl===id?null:id;renderList();return}
+ if(b.hasAttribute('data-pt')){openPl=openPl===id?null:id;renderList();initSl();return}
  if(b.hasAttribute('data-done')){done[id]?delete done[id]:done[id]=1;store.set('done',done);renderList();return}
  if(b.hasAttribute('data-del')){mine=mine.filter(x=>x.id!==id);store.set('mine',mine);renderCats();renderList();drawMap();return}
  if(b.id==='pickmap'){picking=true;toast(t('pickmsg'));$('#map').scrollIntoView({behavior:'smooth',block:'center'});return}
