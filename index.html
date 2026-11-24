@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kanazawa Trip · 가나자와 여행</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kanazawa">
+<meta name="theme-color" content="#a3263a">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#a3263a;--ink:#1b1c1e;--mute:#62666b;--line:#e6e3de;--bg:#fff;--soft:#f5f3ef;--gold:#c99a1c}
+@media(prefers-color-scheme:dark){:root{--ink:#eceae6;--mute:#a4a8ac;--line:#2d3135;--bg:#121416;--soft:#1c1f22}}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Zen Kaku Gothic New",system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+header{background:var(--red);color:#fff;padding:calc(env(safe-area-inset-top) + 14px) 16px 14px;display:flex;align-items:center;gap:12px}
+header h1{margin:0;font-size:22px;line-height:1.1;font-weight:900;flex:1}
+header small{display:block;font-size:13px;font-weight:400;opacity:.9;margin-top:3px}
+.lang{display:flex;background:rgba(255,255,255,.18);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;color:#fff;padding:7px 12px;border-radius:99px;font-weight:700;font-size:14px;cursor:pointer;min-height:36px}
+.lang button[aria-pressed=true]{background:#fff;color:var(--red)}
+.wx{display:flex;gap:8px;overflow-x:auto;padding:10px 16px;background:var(--soft);scrollbar-width:none;align-items:stretch}
+.wx::-webkit-scrollbar{display:none}
+.wxd{flex:none;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 10px;font-size:13px;line-height:1.3;min-width:92px}
+.wxd b{display:block;font-size:12px;color:var(--mute);font-weight:700}
+.wxd .t{font-size:15px;font-weight:900}
+.wxd.trip{border-color:var(--red)}
+.wxbtn{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr)}
+#map{height:52vh;min-height:300px;background:var(--soft);z-index:0}
+.mapbar{display:flex;gap:6px;padding:8px 12px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.mapbar::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:7px 13px;font-size:14px;font-weight:700;cursor:pointer;min-height:38px;display:flex;align-items:center;gap:6px}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+main{padding:4px 16px 40px}
+h2{font-size:18px;margin:18px 0 6px;font-weight:900}
+.tix{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tix li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:10px;padding:10px 12px;border-top:1px solid var(--line);cursor:pointer}
+.tix li:first-child{border-top:0}
+.tix .when{font-weight:900;line-height:1.25;font-size:14px}.tix .when small{display:block;font-weight:400;color:var(--mute);font-size:12px}
+.tix .what{font-size:14px}.tix .what b{font-size:15px}
+.places{list-style:none;margin:0;padding:0}
+.pl{padding:12px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px}
+.pl.sel{background:linear-gradient(90deg,#fbf3dc55,transparent);border-radius:10px}
+.pl .ic{width:24px;height:24px;border-radius:50%;margin-top:2px;border:2px solid #fff;box-shadow:0 1px 3px #0004;cursor:pointer}
+.pl h3{margin:0;font-size:16px;line-height:1.3;cursor:pointer}
+.pl .sub{font-size:13px;color:var(--mute)}
+.pl p{margin:4px 0 0;font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:6px;padding:1px 7px;background:var(--gold);color:#1b1c1e;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.tag.mine{background:#2f5aa8;color:#fff}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.acts a,.acts button{display:inline-flex;align-items:center;min-height:34px;padding:0 11px;border-radius:9px;border:1px solid var(--line);background:var(--bg);text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer}
+.acts .pri{background:var(--red);color:#fff;border-color:var(--red)}
+.pl.done h3{text-decoration:line-through;opacity:.55}
+.add{margin-top:16px;border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px;background:var(--soft)}
+.add input,.add select,.add textarea{width:100%;font-size:16px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg)}
+.add .row{display:flex;gap:8px;flex-wrap:wrap}
+.add .row>*{flex:1 1 140px}
+.note{font-size:12px;color:var(--mute);margin:6px 0 0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:1000;display:none;max-width:90vw}
+.pin{width:22px;height:22px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
+.pin.big{width:30px;height:30px;border-color:#ffd54a}
+.leaflet-popup-content{margin:10px 12px;font:14px/1.4 "Zen Kaku Gothic New",system-ui,sans-serif}
+.leaflet-popup-content b{font-size:15px}
+.leaflet-popup-content a{font-weight:700}
+.locbtn{background:#fff;border:0;width:40px;height:40px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.35);cursor:pointer;display:grid;place-items:center}
+.me{width:16px;height:16px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(26,115,232,.25)}
+@media(min-width:900px){.wrap{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}#map{height:calc(100vh - 140px);position:sticky;top:0}.left{position:sticky;top:0;align-self:start}main{max-height:calc(100vh - 140px);overflow:auto}}
+</style>
+</head>
+<body>
+<header><h1 id="title"></h1><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
+<div class="wx" id="wx"></div>
+<div class="wrap">
+ <div class="left"><div class="mapbar" id="areas"></div><div id="map"></div></div>
+ <main>
+  <h2 id="h-tix"></h2><ul class="tix" id="tix"></ul>
+  <h2 id="h-places"></h2>
+  <div class="mapbar" id="cats" style="padding-left:0;padding-right:0;border:0"></div>
+  <ul class="places" id="list"></ul>
+  <form class="add" id="addf">
+   <b id="h-add"></b>
+   <input name="name" required id="f-name">
+   <div class="row"><select name="cat" id="f-cat"></select><input name="loc" id="f-loc"></div>
+   <textarea name="note" rows="2" id="f-note"></textarea>
+   <div class="row"><button type="button" class="chip" id="pickmap"></button><button type="button" class="chip" id="usehere"></button><button class="chip" style="background:var(--red);color:#fff;border-color:var(--red)" id="f-save"></button></div>
+   <p class="note" id="f-help"></p>
+  </form>
+  <p class="note" id="foot"></p>
+ </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(async()=>{
+const T={
+ en:{title:'Kanazawa & Shirakawa-go',sub:'25–28 Nov · 4 travellers',tix:'Flights & buses',places:'Places to go & eat',all:'All',book:'Transport',see:'Sights',eat:'Food',cafe:'Cafés',shop:'Shopping',mine:'Our adds',
+  kz:'Kanazawa',sk:'Shirakawa-go',ap:'Airport',fit:'Everything',maps:'Google Maps',dir:'Directions',been:'Been here',undo:'Undo',del:'Remove',
+  add:'Add a place (saved on this phone)',name:'Name',loc:'Google Maps link, or “lat, lng”',note:'Note (optional)',pick:'Tap the map to place',here:'Use my location',save:'Add',
+  help:'Places you add and “Been here” ticks are saved on this phone only. To add something for everyone, send it to Minoo.',
+  pickmsg:'Tap the map where the place is',gotloc:'Location set',noloc:'Couldn’t get your location. Check location permission for your browser.',needloc:'Add a location: paste a Google Maps link, tap the map, or use your location.',added:'Added',
+  wxr:'Refresh',wxu:'Updated',wxerr:'Weather unavailable — try again',today:'Today',foot:'Map © OpenStreetMap contributors, © CARTO. Weather: Open-Meteo. Tap “Directions” to navigate in the Google Maps app.',
+  locate:'Show my location',
+  tags:{'Wed lunch':'Wed lunch','Wed dinner':'Wed dinner','Thu brunch':'Thu brunch','Thu dinner':'Thu dinner','Fri brunch':'Fri brunch'},
+  wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat']},
+ ko:{title:'가나자와 & 시라카와고',sub:'11월 25–28일 · 4명',tix:'항공·버스',places:'가볼 곳 & 맛집',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가한 곳',
+  kz:'가나자와',sk:'시라카와고',ap:'공항',fit:'전체 보기',maps:'구글 지도',dir:'길찾기',been:'다녀옴',undo:'취소',del:'삭제',
+  add:'장소 추가 (이 휴대폰에만 저장)',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 위치 선택',here:'현재 위치 사용',save:'추가',
+  help:'추가한 장소와 “다녀옴” 표시는 이 휴대폰에만 저장됩니다. 모두에게 추가하려면 Minoo에게 보내주세요.',
+  pickmsg:'지도에서 장소 위치를 탭하세요',gotloc:'위치 설정됨',noloc:'위치를 가져올 수 없어요. 브라우저 위치 권한을 확인하세요.',needloc:'위치를 추가하세요: 구글 지도 링크 붙여넣기, 지도 탭, 또는 현재 위치.',added:'추가됨',
+  wxr:'새로고침',wxu:'업데이트',wxerr:'날씨 정보를 불러올 수 없어요 — 다시 시도',today:'오늘',foot:'지도 © OpenStreetMap, © CARTO. 날씨: Open-Meteo. “길찾기”를 누르면 구글 지도 앱으로 안내됩니다.',
+  locate:'내 위치 보기',
+  tags:{'Wed lunch':'수 점심','Wed dinner':'수 저녁','Thu brunch':'목 브런치','Thu dinner':'목 저녁','Fri brunch':'금 브런치'},
+  wd:['일','월','화','수','목','금','토']}};
+const COL={book:'#2f5aa8',see:'#a3263a',eat:'#d0671a',cafe:'#8a5a2b',shop:'#7b4b9a',mine:'#0f8a6b'};
+const TIX=[
+ {d:'11/25',w:3,t:'09:15',lat:36.3928,lng:136.4060,en:['Land at Komatsu (KE2189)','Limousine bus from Stop 1 outside arrivals → Kanazawa Station West Exit, ~40 min, ¥1,300 each. Hotel ~10:50.'],
+  ko:['고마쓰 도착 (KE2189)','도착장 앞 1번 승강장 리무진 버스 → 가나자와역 서쪽 출구, 약 40분, 1인 1,300엔. 호텔 약 10:50.']},
+ {d:'11/26',w:4,t:'11:10',lat:36.57827,lng:136.64649,en:['Bus to Shirakawa-go','West Exit Stop 4 → Shirakawa-go 12:25. Nohi Bus car 01, seats 8C 8D 9C 9D. Be there by 10:55 with the e-ticket.'],
+  ko:['시라카와고행 버스','서쪽 출구 4번 승강장 → 시라카와고 12:25. 노히버스 1호차, 좌석 8C 8D 9C 9D. e티켓 지참, 10:55까지 도착.']},
+ {d:'11/26',w:4,t:'17:30',lat:36.26195,lng:136.90689,en:['Bus back to Kanazawa','Shirakawa-go terminal → Kanazawa West Exit Stop 4, 18:45. Hokuriku Railroad car 01, seats 9C 9D 10C 10D.'],
+  ko:['가나자와행 귀가 버스','시라카와고 터미널 → 가나자와역 서쪽 출구 4번, 18:45 도착. 호쿠리쿠철도 1호차, 좌석 9C 9D 10C 10D.']},
+ {d:'11/28',w:6,t:'~07:40',lat:36.5780,lng:136.6462,en:['Airport bus to Komatsu','West Exit Stop 3, ~40 min, ¥1,300 each. Check exact times at the stop the day before.'],
+  ko:['고마쓰 공항 리무진','서쪽 출구 3번 승강장, 약 40분, 1인 1,300엔. 전날 정확한 시간 확인.']},
+ {d:'11/28',w:6,t:'10:50',lat:36.3928,lng:136.4060,en:['Flight KE2190 → Incheon','Lands ICN 12:50. One international security line, so arrive ~2 h early.'],
+  ko:['KE2190 → 인천','인천 12:50 도착. 국제선 보안검색대 1개 → 2시간 전 도착.']}];
+const AREAS={kz:[[36.556,136.640],[36.582,136.670]],sk:[[36.253,136.899],[36.268,136.911]],ap:[[36.37,136.38],[36.41,136.43]]};
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let L_=store.get('lang',(navigator.language||'').startsWith('ko')?'ko':'en'),cat='all',sel=null,picking=false,pickLL=null;
+let done=store.get('done',{}),mine=store.get('mine',[]);
+let base=[];try{base=await (await fetch('places.json',{cache:'no-cache'})).json()}catch(e){}
+const $=s=>document.querySelector(s),t=k=>T[L_][k];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const all=()=>base.concat(mine);
+const nm=p=>p.mine?p.name:(L_==='ko'?p.ko:p.en), nt=p=>p.mine?p.note:(L_==='ko'?p.nko:p.nen);
+const gq=p=>encodeURIComponent(p.mine?p.name:p.en);
+const mapsUrl=p=>p.url?p.url:p.pid?`https://www.google.com/maps/search/?api=1&query=${gq(p)}&query_place_id=${p.pid}`:`https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
+const dirUrl=p=>`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}${p.pid?'&destination_place_id='+p.pid:''}&travelmode=transit`;
+function toast(m){const e=$('#toast');e.textContent=m;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2600)}
+
+const map=L.map('map',{zoomControl:true,tap:true}).fitBounds(AREAS.kz);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:20,subdomains:'abcd',attribution:'© OpenStreetMap contributors © CARTO'}).addTo(map);
+const layer=L.layerGroup().addTo(map),markers={};
+let me=null,acc=null,watching=false;
+const Loc=L.Control.extend({options:{position:'topright'},onAdd(){const b=L.DomUtil.create('button','locbtn');b.title=t('locate');b.setAttribute('aria-label',t('locate'));
+ b.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2.2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>';
+ L.DomEvent.on(b,'click',e=>{L.DomEvent.stop(e);locate(true)});return b}});
+map.addControl(new Loc());
+function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
+ navigator.geolocation.getCurrentPosition(pos=>{const ll=[pos.coords.latitude,pos.coords.longitude];showMe(ll,pos.coords.accuracy);if(fly)map.setView(ll,16);cb&&cb(ll);
+  if(!watching){watching=true;navigator.geolocation.watchPosition(p=>showMe([p.coords.latitude,p.coords.longitude],p.coords.accuracy),()=>{}, {enableHighAccuracy:true,maximumAge:15000})}},
+  ()=>toast(t('noloc')),{enableHighAccuracy:true,timeout:12000})}
+function showMe(ll,a){if(!me){me=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[16,16]}),zIndexOffset:1000}).addTo(map);acc=L.circle(ll,{radius:a,weight:0,fillColor:'#1a73e8',fillOpacity:.1}).addTo(map)}else{me.setLatLng(ll);acc.setLatLng(ll).setRadius(a)}}
+
+function popup(p){return `<b>${esc(nm(p))}</b><br>${esc(nt(p)||'')}<br><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a> · <a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>`}
+function drawPins(){layer.clearLayers();for(const k in markers)delete markers[k];
+ all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine)).forEach(p=>{const c=COL[p.mine?'mine':p.cat]||'#555',big=p.id===sel;
+  const m=L.marker([p.lat,p.lng],{icon:L.divIcon({className:'',html:`<div class="pin${big?' big':''}" style="background:${c};opacity:${done[p.id]?.5:1}"></div>`,iconSize:big?[30,30]:[22,22]}),zIndexOffset:big?900:0}).addTo(layer);
+  m.bindPopup(popup(p));m.on('click',()=>{sel=p.id;renderList(true)});markers[p.id]=m})}
+function renderTix(){$('#tix').innerHTML=TIX.map((x,i)=>`<li data-i="${i}"><div class="when">${t('wd')[x.w]} ${x.d}<small>${x.t}</small></div><div class="what"><b>${esc(x[L_][0])}</b><br>${esc(x[L_][1])}</div></li>`).join('')}
+function renderCats(){$('#cats').innerHTML=['all','book','see','eat','cafe','shop'].concat(mine.length?['mine']:[]).map(k=>`<button class="chip" data-c="${k}" aria-pressed="${k===cat}">${k==='all'?'':`<span class="dot" style="background:${COL[k]}"></span>`}${t(k)}</button>`).join('');
+ $('#areas').innerHTML=['kz','sk','ap'].map(k=>`<button class="chip" data-a="${k}">${t(k)}</button>`).join('')+`<button class="chip" data-a="fit">${t('fit')}</button>`}
+function renderList(scroll){const list=all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine));
+ $('#list').innerHTML=list.map(p=>`<li class="pl${p.id===sel?' sel':''}${done[p.id]?' done':''}" id="pl-${esc(p.id)}" data-id="${esc(p.id)}">
+ <div class="ic" data-go style="background:${COL[p.mine?'mine':p.cat]}"></div><div>
+ <h3 data-go>${esc(nm(p))}${p.tag?`<span class="tag">${esc(t('tags')[p.tag]||p.tag)}</span>`:''}${p.mine?`<span class="tag mine">${t('mine')}</span>`:''}</h3>
+ ${!p.mine&&L_==='ko'?`<div class="sub">${esc(p.en)}</div>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
+ <div class="acts"><a class="pri" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a>
+ <button data-done>${done[p.id]?t('undo'):t('been')}</button>${p.mine?`<button data-del>${t('del')}</button>`:''}</div></div></li>`).join('');
+ drawPins();if(scroll&&sel)document.getElementById('pl-'+sel)?.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function renderText(){document.documentElement.lang=L_;$('#title').innerHTML=`${esc(t('title'))}<small>${esc(t('sub'))}</small>`;
+ document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L_));
+ $('#h-tix').textContent=t('tix');$('#h-places').textContent=t('places');$('#h-add').textContent=t('add');
+ $('#f-name').placeholder=t('name');$('#f-loc').placeholder=t('loc');$('#f-note').placeholder=t('note');
+ $('#f-cat').innerHTML=['eat','cafe','see','shop'].map(k=>`<option value="${k}">${t(k)}</option>`).join('');
+ $('#pickmap').textContent=t('pick');$('#usehere').textContent=t('here');$('#f-save').textContent=t('save');$('#f-help').textContent=t('help');$('#foot').textContent=t('foot')}
+function render(){renderText();renderTix();renderCats();renderList();renderWx()}
+
+// weather
+let wx=store.get('wx',null);
+async function loadWx(){$('#wxbtn')&&($('#wxbtn').textContent='…');
+ try{const u='https://api.open-meteo.com/v1/forecast?latitude=36.578,36.262&longitude=136.648,136.907&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&current=temperature_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=7';
+  const r=await fetch(u);if(!r.ok)throw 0;const j=await r.json();wx={at:Date.now(),d:j};store.set('wx',wx);renderWx()}catch(e){toast(t('wxerr'));renderWx()}}
+const WMO=c=>{const m=[[0,'☀︎','Clear','맑음'],[2,'⛅︎','Partly cloudy','구름 조금'],[3,'☁︎','Cloudy','흐림'],[48,'🌫︎','Fog','안개'],[57,'☂︎','Drizzle','이슬비'],[67,'☂︎','Rain','비'],[77,'❄︎','Snow','눈'],[82,'☂︎','Showers','소나기'],[86,'❄︎','Snow showers','눈 소나기'],[99,'⚡︎','Thunder','뇌우']];
+ const f=m.find(x=>c<=x[0])||m[m.length-1];return{i:f[1],s:L_==='ko'?f[3]:f[2]}};
+function renderWx(){let h='';
+ if(wx&&wx.d){const A=Array.isArray(wx.d)?wx.d:[wx.d];const names=[t('kz'),t('sk')];
+  A.forEach((loc,li)=>{if(!loc.daily)return;const cur=loc.current;
+   h+=`<div class="wxd"><b>${names[li]}</b><span class="t">${cur?Math.round(cur.temperature_2m)+'°':''}</span> ${cur?WMO(cur.weather_code).i:''}<br>${esc(t('today'))}</div>`;
+   loc.daily.time.forEach((d,i)=>{const dt=new Date(d+'T00:00:00Z'),trip=d>='2026-11-25'&&d<='2026-11-28',w=WMO(loc.daily.weather_code[i]);
+    const today=new Date(Date.now()+9*36e5).toISOString().slice(0,10);if(d<today||d>'2026-11-28'||(li===1&&d!=='2026-11-26'))return;
+    h+=`<div class="wxd${trip?' trip':''}"><b>${names[li]} · ${t('wd')[dt.getUTCDay()]} ${d.slice(5).replace('-','/')}</b><span class="t">${Math.round(loc.daily.temperature_2m_max[i])}° / ${Math.round(loc.daily.temperature_2m_min[i])}°</span><br>${w.i} ${esc(w.s)} · ☂︎${loc.daily.precipitation_probability_max[i]??'–'}%</div>`})});
+  const at=new Date(wx.at);h+=`<button class="wxbtn" id="wxbtn">${t('wxr')}<br><small style="font-weight:400">${t('wxu')} ${at.getHours()}:${String(at.getMinutes()).padStart(2,'0')}</small></button>`}
+ else h=`<button class="wxbtn" id="wxbtn">${t('wxr')}</button>`;
+ $('#wx').innerHTML=h}
+
+// events
+document.addEventListener('click',e=>{const b=e.target.closest('button,[data-go],.tix li');if(!b)return;
+ if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
+ if(b.id==='wxbtn'){loadWx();return}
+ if(b.dataset.c){cat=b.dataset.c;renderCats();renderList();return}
+ if(b.dataset.a){const a=b.dataset.a;if(a==='fit'){const pts=all().map(p=>[p.lat,p.lng]);map.fitBounds(pts,{padding:[20,20]})}else map.fitBounds(AREAS[a]);return}
+ if(b.matches('.tix li')){const x=TIX[+b.dataset.i];map.setView([x.lat,x.lng],15);window.scrollTo({top:0,behavior:'smooth'});return}
+ const li=b.closest('.pl');const id=li&&li.dataset.id;
+ if(b.hasAttribute&&b.hasAttribute('data-go')){const p=all().find(x=>x.id===id);sel=id;renderList();map.setView([p.lat,p.lng],Math.max(map.getZoom(),16));markers[id]?.openPopup();window.scrollTo({top:0,behavior:'smooth'});return}
+ if(b.hasAttribute('data-done')){done[id]?delete done[id]:done[id]=1;store.set('done',done);renderList();return}
+ if(b.hasAttribute('data-del')){mine=mine.filter(x=>x.id!==id);store.set('mine',mine);renderCats();renderList();return}
+ if(b.id==='pickmap'){picking=true;toast(t('pickmsg'));window.scrollTo({top:0,behavior:'smooth'});return}
+ if(b.id==='usehere'){locate(false,ll=>{pickLL=ll;$('#f-loc').value=ll[0].toFixed(5)+', '+ll[1].toFixed(5);toast(t('gotloc'))});return}});
+map.on('click',e=>{if(!picking)return;picking=false;pickLL=[e.latlng.lat,e.latlng.lng];$('#f-loc').value=pickLL[0].toFixed(5)+', '+pickLL[1].toFixed(5);toast(t('gotloc'));$('#addf').scrollIntoView({behavior:'smooth'})});
+$('#addf').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),v=(f.get('loc')||'').trim();
+ let m=v.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||v.match(/[?&](?:q|query|ll|destination)=(-?\d+\.\d+)(?:,|%2C)(-?\d+\.\d+)/)||v.match(/^(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$/)||v.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
+ let lat,lng;if(m){lat=+m[1];lng=+m[2]}else if(pickLL){[lat,lng]=pickLL}
+ if(lat==null){toast(t('needloc'));return}
+ const p={id:'m'+Date.now().toString(36),mine:true,cat:f.get('cat'),name:(f.get('name')||'').trim().slice(0,100),note:(f.get('note')||'').trim().slice(0,400),lat,lng,url:/^https:\/\//.test(v)?v:''};
+ mine.push(p);store.set('mine',mine);pickLL=null;e.target.reset();sel=p.id;cat='all';renderCats();renderList(true);map.setView([lat,lng],16);toast(t('added'))});
+
+render();
+if(!wx||Date.now()-wx.at>3*36e5)loadWx();
+})();
+</script>
+</body>
+</html>
