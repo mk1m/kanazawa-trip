@@ -278,13 +278,13 @@ const dotI=c=>L.divIcon({className:'',html:`<div class="tiny" style="background:
 function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete mk[k];
  const d=D(),pts=[];d.slots.forEach((s,i)=>{const p=byId(pick(d,i));if(p)pts.push({p,i})});
  const used=new Set(pts.map(x=>x.p.id));
- all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:p.id===sel?pinI(COL[p.mine?'mine':p.cat],'',18,1):dotI(COL[p.mine?'mine':p.cat])}).addTo(bg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236});mk[p.id]=m});
+ all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:p.id===sel?pinI(COL[p.mine?'mine':p.cat],'',18,1):dotI(COL[p.mine?'mine':p.cat])}).addTo(bg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236,autoPanPaddingTopLeft:[12,76],autoPanPaddingBottomRight:[12,12]});mk[p.id]=m});
  const local=pts.filter(x=>x.p.id!=='kmq'),seg=[];let cur=[];
  local.forEach(x=>{if(cur.length&&Math.abs(cur[cur.length-1][0]-x.p.lat)>.1){seg.push(cur);cur=[]}cur.push([x.p.lat,x.p.lng])});seg.push(cur);
  seg.forEach(s=>s.length>1&&L.polyline(s,{color:'#b8913a',weight:2.5,opacity:.85,dashArray:'1 7',lineCap:'round'}).addTo(fg));
  const nums={};pts.forEach(x=>{(nums[x.p.id]=nums[x.p.id]||[]).push(x.i+1)});const drawn=new Set();
  pts.forEach(x=>{const p=x.p;if(drawn.has(p.id))return;drawn.add(p.id);const on=p.id===sel,n=nums[p.id];
-  const m=L.marker([p.lat,p.lng],{icon:pinI(COL[p.cat]||'#555',n.length>2?n[0]+'+':n.join(','),n.length>1?28:22,on),zIndexOffset:on?1500:1000}).addTo(fg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236});mk[p.id]=m});
+  const m=L.marker([p.lat,p.lng],{icon:pinI(COL[p.cat]||'#555',n.length>2?n[0]+'+':n.join(','),n.length>1?28:22,on),zIndexOffset:on?1500:1000}).addTo(fg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236,autoPanPaddingTopLeft:[12,76],autoPanPaddingBottomRight:[12,12]});mk[p.id]=m});
  if(fit){const kz=local.filter(x=>x.p.lat>36.4),sk=local.filter(x=>x.p.lat<36.4);const g=(sk.length>kz.length?sk:kz).map(x=>[x.p.lat,x.p.lng]);if(g.length)map.fitBounds(g,{padding:[34,34],maxZoom:16})}}
 function focus(id){const p=byId(id);if(!p)return;sel=id;drawMap();map.setView([p.lat,p.lng],Math.max(map.getZoom(),16));setTimeout(()=>mk[id]?.openPopup(),150);
  if(innerWidth<900)$('#map').scrollIntoView({behavior:'smooth',block:'start'})}
