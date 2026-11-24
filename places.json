@@ -778,5 +778,16 @@
 "pid": "ChIJq6qqKXAz-F8RU4E7PZUZtMQ",
 "nen": "Next to Omicho Market; local sweets and a huge food hall in the basement. 10:00–19:30.",
 "nko": "오미초 시장 옆. 지하에 지역 과자와 큰 식품관. 10:00–19:30."
+},
+{
+"id": "donki",
+"cat": "shop",
+"en": "MEGA Don Quijote Kanazawa",
+"ko": "메가 돈키호테 가나자와",
+"lat": 36.55064,
+"lng": 136.63182,
+"pid": "ChIJFXlKpl80-F8R5F22PLN18U4",
+"nen": "Huge discount store for snacks, cosmetics, medicine and souvenirs, with tax-free until midnight. About 10 min by taxi from Katamachi. Open 8:00–24:00, so it works after dinner.",
+"nko": "과자, 화장품, 의약품, 기념품 대형 할인점. 자정까지 면세 가능. 가타마치에서 택시 약 10분. 8:00–24:00 영업이라 저녁 후 방문 가능."
 }
 ]
