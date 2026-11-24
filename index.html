@@ -106,7 +106,7 @@ const T={
   add:'Add a place (saved on this phone)',name:'Name',loc:'Google Maps link, or “lat, lng”',note:'Note (optional)',pick:'Tap the map to place',here:'Use my location',save:'Add',
   help:'Places you add and “Been here” ticks are saved on this phone only. To add something for everyone, send it to Minoo.',
   pickmsg:'Tap the map where the place is',gotloc:'Location set',noloc:'Couldn’t get your location. Check location permission for your browser.',needloc:'Add a location: paste a Google Maps link, tap the map, or use your location.',added:'Added',
-  wxr:'Refresh',wxu:'Updated',wxerr:'Weather unavailable — try again',today:'Today',foot:'Map © OpenStreetMap contributors, © CARTO. Weather: Open-Meteo. Tap “Directions” to navigate in the Google Maps app.',
+  wxr:'Refresh',wxu:'Updated',wxerr:'Weather unavailable — try again',today:'Today',foot:'Map © OpenStreetMap contributors. Weather: Open-Meteo. Tap “Directions” to navigate in the Google Maps app.',
   locate:'Show my location',
   tags:{'Wed lunch':'Wed lunch','Wed dinner':'Wed dinner','Thu brunch':'Thu brunch','Thu dinner':'Thu dinner','Fri brunch':'Fri brunch'},
   wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat']},
@@ -115,7 +115,7 @@ const T={
   add:'장소 추가 (이 휴대폰에만 저장)',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 위치 선택',here:'현재 위치 사용',save:'추가',
   help:'추가한 장소와 “다녀옴” 표시는 이 휴대폰에만 저장됩니다. 모두에게 추가하려면 Minoo에게 보내주세요.',
   pickmsg:'지도에서 장소 위치를 탭하세요',gotloc:'위치 설정됨',noloc:'위치를 가져올 수 없어요. 브라우저 위치 권한을 확인하세요.',needloc:'위치를 추가하세요: 구글 지도 링크 붙여넣기, 지도 탭, 또는 현재 위치.',added:'추가됨',
-  wxr:'새로고침',wxu:'업데이트',wxerr:'날씨 정보를 불러올 수 없어요 — 다시 시도',today:'오늘',foot:'지도 © OpenStreetMap, © CARTO. 날씨: Open-Meteo. “길찾기”를 누르면 구글 지도 앱으로 안내됩니다.',
+  wxr:'새로고침',wxu:'업데이트',wxerr:'날씨 정보를 불러올 수 없어요 — 다시 시도',today:'오늘',foot:'지도 © OpenStreetMap. 날씨: Open-Meteo. “길찾기”를 누르면 구글 지도 앱으로 안내됩니다.',
   locate:'내 위치 보기',
   tags:{'Wed lunch':'수 점심','Wed dinner':'수 저녁','Thu brunch':'목 브런치','Thu dinner':'목 저녁','Fri brunch':'금 브런치'},
   wd:['일','월','화','수','목','금','토']}};
@@ -146,7 +146,7 @@ const dirUrl=p=>`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p
 function toast(m){const e=$('#toast');e.textContent=m;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2600)}
 
 const map=L.map('map',{zoomControl:true,tap:true}).fitBounds(AREAS.kz);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:20,subdomains:'abcd',attribution:'© OpenStreetMap contributors © CARTO'}).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 const layer=L.layerGroup().addTo(map),markers={};
 let me=null,acc=null,watching=false;
 const Loc=L.Control.extend({options:{position:'topright'},onAdd(){const b=L.DomUtil.create('button','locbtn');b.title=t('locate');b.setAttribute('aria-label',t('locate'));
