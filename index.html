@@ -27,15 +27,19 @@ header small{display:block;font-size:12px;font-weight:400;opacity:.9;margin-top:
 .lang button{border:0;background:none;color:#fff;padding:6px 11px;border-radius:99px;font-weight:700;font-size:13px;cursor:pointer;min-height:34px}
 .lang button[aria-pressed=true]{background:#fff;color:var(--red)}
 .wx{display:flex;gap:6px;overflow-x:auto;padding:8px 14px;background:var(--soft);scrollbar-width:none}
-.wx::-webkit-scrollbar,.days::-webkit-scrollbar,.chips::-webkit-scrollbar,.opts::-webkit-scrollbar{display:none}
+.wx::-webkit-scrollbar,.chips::-webkit-scrollbar,.opts::-webkit-scrollbar{display:none}
 .wxd{flex:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 9px;font-size:12px;line-height:1.3}
 .wxd b{font-size:11px;color:var(--mute);font-weight:700;margin-right:4px}.wxd .t{font-size:14px;font-weight:900}
 .wxd.trip{border-color:var(--red)}
 .wxbtn{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.2}
-.days{display:flex;gap:4px;padding:8px 14px 0;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;background:var(--bg);z-index:500;border-bottom:1px solid var(--line)}
-.days button{flex:1 0 auto;border:0;background:none;padding:8px 10px 9px;font-weight:700;font-size:14px;cursor:pointer;color:var(--mute);border-bottom:3px solid transparent;min-height:42px;line-height:1.1}
-.days button small{display:block;font-size:11px;font-weight:400}
-.days button[aria-selected=true]{color:var(--red);border-color:var(--red)}
+.dayhd{display:flex;align-items:center;gap:8px;padding:10px 14px 4px}
+.daysel{position:relative;flex:1;display:block}
+.daysel select{appearance:none;-webkit-appearance:none;width:100%;font-size:16px;font-weight:900;padding:11px 36px 11px 12px;border:1.5px solid var(--red);border-radius:12px;background:var(--bg);color:var(--ink);cursor:pointer;min-height:46px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.daysel .car{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--red);pointer-events:none;font-size:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.daywx{flex:none;font-size:13px;font-weight:700;background:var(--soft);border-radius:10px;padding:6px 9px;white-space:nowrap}
+.rain{margin:6px 14px 2px;padding:8px 11px;border-radius:10px;background:#e8f1fb;color:#1d4f8a;font-size:13px;line-height:1.35}
+@media(prefers-color-scheme:dark){.rain{background:#18283a;color:#a9c8ee}}
 .wrap{display:grid;grid-template-columns:minmax(0,1fr)}
 .it{list-style:none;margin:0;padding:4px 14px 8px}
 .slot{border-bottom:1px solid var(--line)}
@@ -86,13 +90,13 @@ h2{font-size:18px;margin:18px 0 6px;font-weight:900}
 .locbtn{background:#fff;border:0;width:40px;height:40px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.35);cursor:pointer;display:grid;place-items:center}
 .me{width:16px;height:16px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(26,115,232,.25)}
 @media(prefers-reduced-motion:reduce){.row .cv{transition:none}}
-@media(min-width:900px){.wrap{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.mapcol{position:sticky;top:52px;align-self:start}#map{height:calc(100vh - 60px)}.det{padding-left:82px}}
+@media(min-width:900px){.wrap{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.mapcol{position:sticky;top:8px;align-self:start}#map{height:calc(100vh - 60px)}.det{padding-left:82px}}
 </style>
 </head>
 <body>
 <header><h1 id="title"></h1><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
 <div class="wx" id="wx"></div>
-<nav class="days" id="days" role="tablist"></nav>
+<div class="dayhd"><label class="daysel"><span class="sr" id="daylbl"></span><select id="daysel"></select><span class="car">▾</span></label><div id="daywx" class="daywx"></div></div><div id="rain" class="rain" hidden></div>
 <div class="wrap">
  <div><ol class="it" id="it"></ol></div>
  <div class="mapcol"><div id="map"></div></div>
@@ -135,15 +139,15 @@ const T={
 const COL={book:'#2f5aa8',see:'#a3263a',eat:'#d0671a',cafe:'#8a5a2b',shop:'#7b4b9a',mine:'#0f8a6b'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
 const ITIN=[
- {k:'wed',w:3,date:'2026-11-25',en:'Arrival · teahouses & art',ko:'도착 · 찻집 거리 & 미술관',slots:[
+ {k:'wed',w:3,date:'2026-11-25',en:'Arrival · teahouses & art',ko:'도착 · 찻집 거리 & 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
   S('09:15','Land at Komatsu · KE2189','고마쓰 도착 · KE2189',['kmq'],{fx:1,nen:'Immigration and bags take ~30–45 min.',nko:'입국심사·수하물 약 30–45분.'}),
   S('10:00','Airport bus → Kanazawa','공항 리무진 → 가나자와',['kmq'],{fx:1,nen:'Stop 1 outside arrivals, leaves 10–15 min after landing. ~40 min, ¥1,300 each. Get off at the West Exit.',nko:'도착장 앞 1번 승강장, 착륙 10–15분 후 출발. 약 40분, 1인 1,300엔. 서쪽 출구 하차.'}),
   S('10:50','Drop bags','짐 맡기기',['hotel'],{fx:1}),
   S('11:30','Lunch · Omicho Market','점심 · 오미초 시장',['ikiiki','yamasan','morimori','tonariya']),
-  S('13:00','Teahouse district','찻집 거리',['higashi','shima','kazue','goldleaf']),
+  S('13:00','Teahouse district (indoors)','찻집 거리 (실내)',['shima','goldleaf','higashi','kazue']),
   S('14:30','Sweet break','디저트·커피',['hakuichi','kissa','townsfolk']),
   S('15:30','Museum','미술관',['museum21','suzuki','crafts','prefart']),
-  S('17:00','Shopping','쇼핑',['tatemachi','daiwa','forus','uniqlo','mza']),
+  S('17:00','Shopping (indoors)','쇼핑 (실내)',['forus','uniqlo','daiwa','mza','tatemachi']),
   S('18:30','Dinner','저녁',['itaru','danshaku','miyuki','odenjun'])]},
  {k:'thu',w:4,date:'2026-11-26',en:'Omicho morning · Shirakawa-go',ko:'오미초 아침 · 시라카와고',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
@@ -231,7 +235,10 @@ function goList(id){const d=D(),i=d.slots.findIndex((s,k)=>pick(d,k)===id);map.c
  if(i>=0){open=d.k+i;renderIt();document.querySelector(`.slot[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
  cat='all';renderCats();renderList();const el=document.getElementById('pl-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='var(--sel)';setTimeout(()=>el.style.background='',2500)}}
 // render
-function renderDays(){$('#days').innerHTML=ITIN.map(d=>`<button role="tab" data-k="${d.k}" aria-selected="${d.k===day}">${t('wd')[d.w]} ${d.date.slice(8)}<small>${esc(d[L_].split(' · ')[0])}</small></button>`).join('')}
+function renderDays(){const d=D();$('#daysel').innerHTML=ITIN.map(x=>`<option value="${x.k}"${x.k===day?' selected':''}>${t('wd')[x.w]} ${x.date.slice(5).replace('-','/')} · ${esc(x[L_])}</option>`).join('');$('#daylbl').textContent=L_==='ko'?'날짜 선택':'Choose day';
+ const r=$('#rain');if(d.rain){r.hidden=false;r.textContent='☂︎ '+d.rain[L_]}else r.hidden=true;
+ let w='';if(wx&&wx.d){const A=Array.isArray(wx.d)?wx.d:[wx.d],loc=A[0],i=loc&&loc.daily?loc.daily.time.indexOf(d.date):-1;if(i>=0)w=`${WMO(loc.daily.weather_code[i]).i} ${Math.round(loc.daily.temperature_2m_max[i])}°/${Math.round(loc.daily.temperature_2m_min[i])}° ☂︎${loc.daily.precipitation_probability_max[i]??'–'}%`}
+ const dw=$('#daywx');dw.textContent=w;dw.hidden=!w}
 function renderIt(){const d=D();
  $('#it').innerHTML=d.slots.map((s,i)=>{const id=pick(d,i),p=byId(id)||{},sid=d.k+i,c=COL[p.cat]||'#555',cl=isClosed(p,d.w);
   const optsH=s.opts.length>1?`<div class="swap">${t('swap')}</div><div class="opts">${s.opts.map(o=>{const q=byId(o);if(!q)return'';const qc=isClosed(q,d.w);
@@ -258,7 +265,7 @@ function render(fit){applyMapLang();renderText();renderDays();renderIt();renderC
 let wx=store.get('wx',null);
 async function loadWx(){const b=$('#wxbtn');if(b)b.textContent='…';
  try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=36.578,36.262&longitude=136.648,136.907&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&current=temperature_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=7');
-  if(!r.ok)throw 0;wx={at:Date.now(),d:await r.json()};store.set('wx',wx)}catch(e){toast(t('wxerr'))}renderWx()}
+  if(!r.ok)throw 0;wx={at:Date.now(),d:await r.json()};store.set('wx',wx)}catch(e){toast(t('wxerr'))}renderWx();renderDays()}
 const WMO=c=>{const m=[[0,'☀︎','Clear','맑음'],[2,'⛅︎','Partly cloudy','구름 조금'],[3,'☁︎','Cloudy','흐림'],[48,'≋','Fog','안개'],[57,'☂︎','Drizzle','이슬비'],[67,'☂︎','Rain','비'],[77,'❄︎','Snow','눈'],[82,'☂︎','Showers','소나기'],[86,'❄︎','Snow showers','눈 소나기'],[99,'⚡︎','Thunder','뇌우']];
  const f=m.find(x=>c<=x[0])||m[m.length-1];return{i:f[1],s:L_==='ko'?f[3]:f[2]}};
 function renderWx(){let h='';const today=jstDate();
@@ -274,7 +281,7 @@ function renderWx(){let h='';const today=jstDate();
 document.addEventListener('click',e=>{const b=e.target.closest('button,[data-show]');if(!b)return;
  if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
  if(b.id==='wxbtn'){loadWx();return}
- if(b.dataset.k){day=b.dataset.k;open=null;sel=null;render(true);return}
+ 
  if(b.hasAttribute('data-tg')){const sid=day+b.closest('.slot').dataset.s;open=open===sid?null:sid;renderIt();if(open){sel=pick(D(),+b.closest('.slot').dataset.s);drawMap()}return}
  if(b.dataset.sw){const i=+b.closest('.slot').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();toast(t('swapped'));return}
  if(b.dataset.show){focus(b.dataset.show);return}
@@ -284,6 +291,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button,[data-sho
  if(b.hasAttribute('data-del')){mine=mine.filter(x=>x.id!==id);store.set('mine',mine);renderCats();renderList();drawMap();return}
  if(b.id==='pickmap'){picking=true;toast(t('pickmsg'));$('#map').scrollIntoView({behavior:'smooth',block:'center'});return}
  if(b.id==='usehere'){locate(false,ll=>{pickLL=ll;$('#f-loc').value=ll[0].toFixed(5)+', '+ll[1].toFixed(5);toast(t('gotloc'))});return}});
+$('#daysel').addEventListener('change',e=>{day=e.target.value;open=null;sel=null;render(true)});
 map.on('click',e=>{if(!picking)return;picking=false;pickLL=[e.latlng.lat,e.latlng.lng];$('#f-loc').value=pickLL[0].toFixed(5)+', '+pickLL[1].toFixed(5);toast(t('gotloc'));$('#addf').scrollIntoView({behavior:'smooth'})});
 $('#addf').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),v=(f.get('loc')||'').trim();
  let m=v.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||v.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||v.match(/[?&](?:q|query|ll|destination)=(-?\d+\.\d+)(?:,|%2C)(-?\d+\.\d+)/)||v.match(/^(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$/);
