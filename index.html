@@ -87,7 +87,7 @@ a{color:inherit}
 .leaflet-popup-content{margin:12px 14px;font-size:14px;line-height:1.45;min-width:180px}
 .leaflet-popup-content b{display:block;font-size:15px;font-weight:600;margin-bottom:2px}
 .leaflet-popup-content p{margin:0 0 8px;color:#6c7385;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.leaflet-popup-content .pa{display:flex;gap:14px}
+.leaflet-popup-content .pa{display:flex;flex-wrap:wrap;gap:4px 14px}
 .leaflet-popup-content a{color:#1f2a44;font-weight:500}
 .pin{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35);color:#fff;font:600 11px/1 var(--f);display:grid;place-items:center}
 .pin.sel{box-shadow:0 0 0 3px var(--gold),0 1px 3px rgba(0,0,0,.35)}
@@ -140,6 +140,22 @@ details.add[open] summary::before{content:"− "}
 .leaflet-popup-content .sl{margin:0 0 8px;width:236px}
 .leaflet-popup-content .slm{font-size:10px}
 .nophoto{font-size:13px;margin:0 0 10px}
+
+.dh{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.edbtn{flex:none;font-size:13px;color:var(--soft);min-height:32px}
+.erow{display:grid;grid-template-columns:58px 24px minmax(0,1fr) auto;gap:0 8px;align-items:center;padding:8px 0}
+.et{font:inherit;font-size:16px;width:58px;padding:6px 4px;text-align:center;border:1px solid var(--hair);border-radius:8px;background:var(--paper);color:var(--ink);font-variant-numeric:tabular-nums}
+.eb{display:flex;gap:4px}
+.eb button{width:34px;height:34px;border-radius:50%;border:1px solid var(--hair);background:var(--paper);color:var(--ink);font-size:15px;display:grid;place-items:center}
+.eb button:disabled{opacity:.3;cursor:default}
+.eb .rm{color:var(--c-see)}
+.tl.editing::before{left:98px}
+#edtools{padding:0 20px 18px}
+.addst{display:grid;grid-template-columns:minmax(0,1fr) 86px;gap:8px;margin-top:6px}
+.addst select,.addst input{font:inherit;font-size:16px;padding:10px;border:1px solid var(--hair);border-radius:10px;background:var(--paper);color:var(--ink);min-width:0}
+.addst .go{grid-column:1/-1;justify-content:center;border:0}
+.edbar{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:12px}
+.edh{font-size:13px;color:var(--soft);margin:14px 0 4px}
 #itwrap.folded{display:none}
 @media(prefers-reduced-motion:no-preference){.st .more,.pl .more{animation:op .18s ease-out}@keyframes op{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}}
 @media(min-width:900px){
@@ -155,7 +171,7 @@ details.add[open] summary::before{content:"− "}
 <header class="top"><div><h1 id="title"></h1><p id="sub"></p></div><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
 <nav class="days"><div class="dtabs" id="days" role="tablist"></div><button class="fold" id="fold" aria-expanded="true"></button></nav>
 <div class="wrap">
- <section id="itwrap"><div class="dayhead"><h2 id="dtitle"></h2><div class="wx" id="wx"></div><p class="hint" id="hint" hidden></p></div><ol class="tl" id="it"></ol></section>
+ <section id="itwrap"><div class="dayhead"><div class="dh"><h2 id="dtitle"></h2><button class="tx edbtn" id="edit"></button></div><div class="wx" id="wx"></div><p class="hint" id="hint" hidden></p></div><ol class="tl" id="it"></ol><div id="edtools"></div></section>
  <div class="mapcol"><div id="map"></div></div>
 </div>
 <main>
@@ -185,14 +201,14 @@ const T={
   hide:'Hide ▴',show:'Plan ▾',add:'Add a place',name:'Name',loc:'Google Maps link or “lat, lng”',note:'Note (optional)',pick:'Pick on map',here:'Use my location',save:'Add place',
   help:'Changes you make here are saved on this phone only.',pickmsg:'Tap the map to set the location',gotloc:'Location set',noloc:'Location unavailable. Allow location access for this browser.',
   needloc:'Add a location: paste a Google Maps link, pick on the map, or use your location.',added:'Place added',swapped:'Plan updated',
-  rf:'Refresh',photo:'Photo:',photos:'See photos on Google Maps',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
+  rf:'Refresh',edit:'Edit plan',done2:'Done',reset:'Reset to suggested plan',reset2:'Tap again to reset',addstop:'Add stop',addhd:'Add a stop',choose:'Choose a place',addplan:'Add to plan',addedto:'Added to',removed:'Stop removed',yours:'Your stop',up:'Move up',down:'Move down',rmv:'Remove stop',time:'Time',photo:'Photo:',photos:'See photos on Google Maps',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
   wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],wdl:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],kz:'Kanazawa',sk:'Shirakawa-go',rain:'rain'},
  ko:{title:'가나자와 & 시라카와고',sub:'2026년 11월 25–28일',places:'전체 장소',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가',
   maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',inlist:'자세히',been:'다녀옴 표시',undo:'다녀옴',del:'삭제',booked:'예약됨',alts:'다른 선택지',closed:'오늘 휴무',
   hide:'접기 ▴',show:'일정 ▾',add:'장소 추가',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 선택',here:'현재 위치',save:'추가하기',
   help:'여기서 바꾼 내용은 이 휴대폰에만 저장됩니다.',pickmsg:'지도를 탭해 위치를 정하세요',gotloc:'위치 설정됨',noloc:'위치를 사용할 수 없어요. 브라우저 위치 권한을 허용하세요.',
   needloc:'위치를 추가하세요: 구글 지도 링크, 지도에서 선택, 또는 현재 위치.',added:'장소 추가됨',swapped:'일정 변경됨',
-  rf:'새로고침',photo:'사진:',photos:'구글 지도에서 사진 보기',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
+  rf:'새로고침',edit:'일정 편집',done2:'완료',reset:'추천 일정으로 되돌리기',reset2:'한 번 더 누르면 초기화',addstop:'추가',addhd:'일정 추가',choose:'장소 선택',addplan:'일정에 추가',addedto:'추가됨:',removed:'삭제됨',yours:'추가한 일정',up:'위로',down:'아래로',rmv:'삭제',time:'시간',photo:'사진:',photos:'구글 지도에서 사진 보기',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
   wd:['일','월','화','수','목','금','토'],wdl:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],kz:'가나자와',sk:'시라카와고',rain:'비'}};
 const COL={book:'#2f4a7a',see:'#9e3341',eat:'#b7712a',cafe:'#7a5a3c',shop:'#6b4f7d',mine:'#4f7a4a'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
@@ -247,6 +263,15 @@ const mapsUrl=p=>p.url?p.url:p.pid?`https://www.google.com/maps/search/?api=1&qu
 const dirUrl=p=>`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}${p.pid?'&destination_place_id='+p.pid:''}&travelmode=transit`;
 const D=()=>ITIN.find(d=>d.k===day);
 const pick=(d,i)=>{const s=d.slots[i],c=choice[d.k+i];return s.opts.includes(c)?c:s.opts[0]};
+let plans=store.get('plans',{}),editing=false,resetArm=false;
+const defPlan=d=>d.slots.map((s,i)=>({u:'o'+i,s:i,t:s.t}));
+const getPlan=d=>{const p=plans[d.k];return Array.isArray(p)?p.filter(x=>x.s>=0?d.slots[x.s]:byId(x.id)):defPlan(d)};
+const savePlan=(d,p)=>{plans[d.k]=p;store.set('plans',plans)};
+const itemId=(d,it)=>it.s>=0?pick(d,it.s):it.id;
+const normT=v=>{v=(v||'').trim().replace(/[^0-9:]/g,'');let m=v.match(/^(\d{1,2}):?(\d{2})$/);if(!m)return '';const h=+m[1],mi=+m[2];return h<24&&mi<60?String(h).padStart(2,'0')+':'+m[2]:''};
+const tmin=x=>/^\d{1,2}:\d{2}$/.test(x||'')?(+x.split(':')[0])*60+ +x.split(':')[1]:null;
+function addToPlan(d,id,tm){const p=getPlan(d).slice(),it={u:'c'+Date.now().toString(36),s:-1,id,t:tm||''};const m=tmin(tm);let at=p.length;
+ if(m!=null){const k=p.findIndex(x=>tmin(x.t)!=null&&tmin(x.t)>m);if(k>=0)at=k}p.splice(at,0,it);savePlan(d,p);return it}
 const isClosed=(p,w)=>!!(p&&p.closed&&p.closed.includes(w));
 function toast(m){const e=$('#toast');e.textContent=m;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2200)}
 
@@ -272,11 +297,11 @@ function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
   if(!watching){watching=true;navigator.geolocation.watchPosition(p=>showMe([p.coords.latitude,p.coords.longitude],p.coords.accuracy),()=>{},{enableHighAccuracy:true,maximumAge:15000})}},
   ()=>toast(t('noloc')),{enableHighAccuracy:true,timeout:12000})}
 function showMe(ll,a){if(!me){me=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[16,16]}),zIndexOffset:2000}).addTo(map);acc=L.circle(ll,{radius:a,weight:0,fillColor:'#1a73e8',fillOpacity:.1}).addTo(map)}else{me.setLatLng(ll);acc.setLatLng(ll).setRadius(a)}}
-const popup=p=>`${slider(p,1)}<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>${p.img||['book','shop'].includes(p.cat)?'':`<a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${L_==='ko'?'사진':'Photos'}</a>`}<a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a></div>`;
+const popup=p=>`${slider(p,1)}<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>${p.img||['book','shop'].includes(p.cat)?'':`<a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${L_==='ko'?'사진':'Photos'}</a>`}<a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a>${getPlan(D()).some(x=>itemId(D(),x)===p.id)?'':`<a href="#" class="addplan" data-id="${esc(p.id)}">${t('addplan')}</a>`}</div>`;
 const pinI=(c,txt,sz,on)=>L.divIcon({className:'',html:`<div class="pin${on?' sel':''}" style="width:${sz}px;height:${sz}px;background:${c}">${txt}</div>`,iconSize:[sz,sz]});
 const dotI=c=>L.divIcon({className:'',html:`<div class="tiny" style="background:${c}"></div>`,iconSize:[9,9]});
 function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete mk[k];
- const d=D(),pts=[];d.slots.forEach((s,i)=>{const p=byId(pick(d,i));if(p)pts.push({p,i})});
+ const d=D(),pts=[];getPlan(d).forEach((it,i)=>{const p=byId(itemId(d,it));if(p)pts.push({p,i})});
  const used=new Set(pts.map(x=>x.p.id));
  all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:p.id===sel?pinI(COL[p.mine?'mine':p.cat],'',18,1):dotI(COL[p.mine?'mine':p.cat])}).addTo(bg);m.bindPopup(popup(p),{maxWidth:264,minWidth:236,autoPanPaddingTopLeft:[12,76],autoPanPaddingBottomRight:[12,12]});mk[p.id]=m});
  const local=pts.filter(x=>x.p.id!=='kmq'),seg=[];let cur=[];
@@ -288,9 +313,10 @@ function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete
  if(fit){const kz=local.filter(x=>x.p.lat>36.4),sk=local.filter(x=>x.p.lat<36.4);const g=(sk.length>kz.length?sk:kz).map(x=>[x.p.lat,x.p.lng]);if(g.length)map.fitBounds(g,{padding:[34,34],maxZoom:16})}}
 function focus(id){const p=byId(id);if(!p)return;sel=id;drawMap();map.setView([p.lat,p.lng],Math.max(map.getZoom(),16));setTimeout(()=>mk[id]?.openPopup(),150);
  if(innerWidth<900)$('#map').scrollIntoView({behavior:'smooth',block:'start'})}
-map.on('popupopen',e=>{const el=e.popup.getElement();initSl(el);el.querySelectorAll('[data-sl]').forEach(b=>b.addEventListener('click',ev=>{ev.preventDefault();slStep(b)}));el.querySelectorAll('img').forEach(im=>im.addEventListener('load',()=>e.popup.update(),{once:true}));L.DomEvent.disableScrollPropagation(el);const a=el.querySelector('.golist');if(a)a.addEventListener('click',ev=>{ev.preventDefault();goList(a.dataset.id)})});
-function goList(id){const d=D(),i=d.slots.findIndex((s,k)=>pick(d,k)===id);map.closePopup();
- if(i>=0){if(folded){folded=false;store.set('folded',false);renderDays()}open=d.k+i;renderIt();initSl();document.querySelector(`.st[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
+map.on('popupopen',e=>{const el=e.popup.getElement();initSl(el);el.querySelectorAll('[data-sl]').forEach(b=>b.addEventListener('click',ev=>{ev.preventDefault();slStep(b)}));el.querySelectorAll('img').forEach(im=>im.addEventListener('load',()=>e.popup.update(),{once:true}));L.DomEvent.disableScrollPropagation(el);const a=el.querySelector('.golist');if(a)a.addEventListener('click',ev=>{ev.preventDefault();goList(a.dataset.id)});const ap=el.querySelector('.addplan');if(ap)ap.addEventListener('click',ev=>{ev.preventDefault();quickAdd(ap.dataset.id)})});
+function quickAdd(id){const d=D();addToPlan(d,id,'');map.closePopup();sel=id;renderIt();drawMap();initSl();toast(`${t('addedto')} ${t('wd')[d.w]} ${d.date.slice(8)}`)}
+function goList(id){const d=D(),it=getPlan(d).find(x=>itemId(d,x)===id);map.closePopup();
+ if(it&&!editing){if(folded){folded=false;store.set('folded',false);renderDays()}open=d.k+it.u;renderIt();initSl();document.querySelector(`.st[data-u="${it.u}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
  cat='all';openPl=id;renderCats();renderList();initSl();document.getElementById('pl-'+id)?.scrollIntoView({behavior:'smooth',block:'center'})}
 
 
@@ -316,21 +342,30 @@ function renderHead(){const d=D();$('#dtitle').textContent=d[L_];
  if(a)h+=`<span>${b?t('kz')+' ':''}${a}</span>`;if(b)h+=`<span>${t('sk')} ${b}</span>`;if(!a&&!b)h+=`<span>${t('wxnone')}</span>`;
  const at=wx?new Date(wx.at):null;h+=(at?`<span>${t('upd')} ${at.getHours()}:${String(at.getMinutes()).padStart(2,'0')}</span>`:'')+`<button class="rf" id="wxbtn">${t('rf')}</button>`;
  $('#wx').innerHTML=h;const hn=$('#hint');if(d.rain){hn.hidden=false;hn.textContent=d.rain[L_]}else hn.hidden=true}
-function renderIt(){const d=D();
- $('#it').innerHTML=d.slots.map((s,i)=>{const id=pick(d,i),p=byId(id)||{},sid=d.k+i,c=COL[p.cat]||'#555',cl=isClosed(p,d.w),on=open===sid,note=L_==='ko'?s.nko:s.nen;
-  const alts=s.opts.length>1?`<div class="alh">${t('alts')}</div><ul class="alt">${s.opts.map(o=>{const q=byId(o);if(!q)return'';
+function renderIt(){const d=D(),plan=getPlan(d);$('#it').classList.toggle('editing',editing);$('#edit').textContent=editing?t('done2'):t('edit');
+ if(editing){$('#it').innerHTML=plan.map((it,i)=>{const s=it.s>=0?d.slots[it.s]:null,p=byId(itemId(d,it))||{},c=COL[p.cat]||'#555',lock=s&&s.bk;
+  return `<li class="st" data-u="${esc(it.u)}" style="color:${c}"><div class="erow"><input class="et" type="text" inputmode="numeric" maxlength="5" placeholder="--:--" value="${esc(it.t)}" aria-label="${t('time')}" data-tm><span class="dt"><i>${i+1}</i></span>
+  <span style="color:var(--ink)"><span class="nm">${esc(nm(p)||'')}</span><span class="lb">${esc(s?s[L_]:t('yours'))}${lock?`<span class="bk">${t('booked')}</span>`:''}</span></span>
+  <span class="eb"><button data-mv="-1" aria-label="${t('up')}"${i?'':' disabled'}>↑</button><button data-mv="1" aria-label="${t('down')}"${i<plan.length-1?'':' disabled'}>↓</button><button class="rm" data-rm aria-label="${t('rmv')}"${lock?' disabled':''}>✕</button></span></div></li>`}).join('');
+  const opts=['see','eat','cafe','shop','book'].concat(mine.length?['mine']:[]).map(k=>{const ps=all().filter(p=>k==='mine'?p.mine:(!p.mine&&p.cat===k)).sort((a,b)=>nm(a).localeCompare(nm(b)));
+   return ps.length?`<optgroup label="${esc(t(k))}">${ps.map(p=>`<option value="${esc(p.id)}">${esc(nm(p))}${isClosed(p,d.w)?' ('+t('closed')+')':''}</option>`).join('')}</optgroup>`:''}).join('');
+  $('#edtools').innerHTML=`<div class="edh">${t('addhd')}</div><div class="addst"><select id="addsel" aria-label="${t('choose')}"><option value="">${t('choose')}</option>${opts}</select><input type="text" inputmode="numeric" maxlength="5" placeholder="HH:MM" id="addt" aria-label="${t('time')}"><button class="go" id="addgo">${t('addstop')}</button></div>
+  <div class="edbar"><button class="tx" id="reset">${resetArm?t('reset2'):t('reset')}</button><button class="go" style="border:0" id="eddone">${t('done2')}</button></div>`;return}
+ $('#edtools').innerHTML='';
+ $('#it').innerHTML=plan.map((it,i)=>{const s=it.s>=0?d.slots[it.s]:null,id=itemId(d,it),p=byId(id)||{},key=d.k+it.u,c=COL[p.cat]||'#555',cl=isClosed(p,d.w),on=open===key,note=s?(L_==='ko'?s.nko:s.nen):'';
+  const alts=s&&s.opts.length>1?`<div class="alh">${t('alts')}</div><ul class="alt">${s.opts.map(o=>{const q=byId(o);if(!q)return'';
     return `<li><button data-sw="${o}" aria-pressed="${o===id}"><span class="rd"></span><span>${esc(nm(q))}${isClosed(q,d.w)?`<small>${t('closed')}</small>`:''}</span></button></li>`}).join('')}</ul>`:'';
-  return `<li class="st${on?' on':''}" data-s="${i}" style="color:${c}"><button class="rw" data-tg aria-expanded="${on}"><span class="tm">${s.t}</span><span class="dt"><i>${i+1}</i></span>
-   <span style="color:var(--ink)"><span class="nm">${esc(nm(p)||'')}</span><span class="lb">${esc(s[L_])}${s.bk?`<span class="bk">${t('booked')}</span>`:''}${cl?`<span class="cl">${t('closed')}</span>`:''}</span></span></button>
+  return `<li class="st${on?' on':''}" data-u="${esc(it.u)}" style="color:${c}"><button class="rw" data-tg aria-expanded="${on}"><span class="tm">${esc(it.t||'')}</span><span class="dt"><i>${i+1}</i></span>
+   <span style="color:var(--ink)"><span class="nm">${esc(nm(p)||'')}</span><span class="lb">${esc(s?s[L_]:t('yours'))}${s&&s.bk?`<span class="bk">${t('booked')}</span>`:''}${cl?`<span class="cl">${t('closed')}</span>`:''}</span></span></button>
    <div class="more" style="color:var(--ink)">${slider(p)||noPhoto(p)}${note?`<p>${esc(note)}</p>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
-   <div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${id}">${t('onmap')}</button></div>${alts}</div></li>`}).join('')}
+   <div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${esc(id)}">${t('onmap')}</button></div>${alts}</div></li>`}).join('')}
 function renderCats(){$('#cats').innerHTML=['all','see','eat','cafe','shop','book'].concat(mine.length?['mine']:[]).map(k=>`<button data-c="${k}" aria-pressed="${k===cat}">${t(k)}</button>`).join('')}
 const ORD={see:0,eat:1,cafe:2,shop:3,book:4};
 function renderList(){const list=all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine)).sort((a,b)=>(a.mine?-1:ORD[a.cat])-(b.mine?-1:ORD[b.cat]));
  $('#list').innerHTML=list.map(p=>{const on=openPl===p.id;return `<li class="pl${on?' on':''}${done[p.id]?' done':''}" id="pl-${esc(p.id)}" data-id="${esc(p.id)}">
  <button class="plr" data-pt aria-expanded="${on}"><span class="pd" style="background:${COL[p.mine?'mine':p.cat]}"></span><span class="pn">${esc(nm(p))}${!p.mine&&L_==='ko'?`<small>${esc(p.en)}</small>`:''}</span><span class="chk">${done[p.id]?'✓':''}</span></button>
  <div class="more">${slider(p)||noPhoto(p)}${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${esc(p.id)}">${t('onmap')}</button>
- <button class="tx" data-done>${done[p.id]?t('undo')+' ✓':t('been')}</button>${p.mine?`<button class="tx" data-del>${t('del')}</button>`:''}</div></div></li>`}).join('')}
+ <button class="tx" data-ap="${esc(p.id)}">${t('addplan')}</button><button class="tx" data-done>${done[p.id]?t('undo')+' ✓':t('been')}</button>${p.mine?`<button class="tx" data-del>${t('del')}</button>`:''}</div></div></li>`}).join('')}
 function renderText(){document.documentElement.lang=L_;$('#title').textContent=t('title');$('#sub').textContent=t('sub');
  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L_));
  $('#h-places').textContent=t('places');$('#h-add').textContent=t('add');$('#f-name').placeholder=t('name');$('#f-loc').placeholder=t('loc');$('#f-note').placeholder=t('note');
@@ -348,9 +383,15 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
  if(b.id==='wxbtn'){loadWx();return}
  if(b.id==='fold'){folded=!folded;store.set('folded',folded);renderDays();return}
- if(b.dataset.k){day=b.dataset.k;open=null;sel=null;if(folded){folded=false;store.set('folded',false)}render(true);return}
- if(b.hasAttribute('data-tg')){const i=+b.closest('.st').dataset.s,sid=day+i;open=open===sid?null:sid;renderIt();initSl();if(open){sel=pick(D(),i);drawMap()}return}
- if(b.dataset.sw){const i=+b.closest('.st').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();initSl();toast(t('swapped'));return}
+ if(b.dataset.k){day=b.dataset.k;open=null;sel=null;editing=false;resetArm=false;if(folded){folded=false;store.set('folded',false)}render(true);return}
+ if(b.hasAttribute('data-tg')){const u=b.closest('.st').dataset.u,key=day+u,d=D(),it=getPlan(d).find(x=>x.u===u);open=open===key?null:key;renderIt();initSl();if(open&&it){sel=itemId(d,it);drawMap()}return}
+ if(b.id==='edit'||b.id==='eddone'){editing=!editing;resetArm=false;open=null;renderIt();initSl();if(!editing)drawMap();return}
+ if(b.dataset.mv){const d=D(),p=getPlan(d).slice(),u=b.closest('.st').dataset.u,i=p.findIndex(x=>x.u===u),j=i+ +b.dataset.mv;if(j<0||j>=p.length)return;const ti=p[i].t,tj=p[j].t;[p[i],p[j]]=[{...p[j],t:ti},{...p[i],t:tj}];savePlan(d,p);renderIt();drawMap();setTimeout(()=>document.querySelector(`.st[data-u="${u}"] [data-mv="${b.dataset.mv}"]`)?.focus(),0);return}
+ if(b.hasAttribute('data-rm')){const d=D(),u=b.closest('.st').dataset.u;savePlan(d,getPlan(d).filter(x=>x.u!==u));renderIt();drawMap();toast(t('removed'));return}
+ if(b.id==='addgo'){const id=$('#addsel').value;if(!id){$('#addsel').focus();return}const d=D();addToPlan(d,id,normT($('#addt').value));sel=id;renderIt();drawMap();toast(`${t('addedto')} ${t('wd')[d.w]} ${d.date.slice(8)}`);return}
+ if(b.id==='reset'){if(!resetArm){resetArm=true;renderIt();return}resetArm=false;const d=D();delete plans[d.k];store.set('plans',plans);d.slots.forEach((_,i)=>delete choice[d.k+i]);store.set('choice',choice);renderIt();drawMap(true);return}
+ if(b.dataset.ap){quickAdd(b.dataset.ap);return}
+ if(b.dataset.sw){const d=D(),it=getPlan(d).find(x=>x.u===b.closest('.st').dataset.u);if(!it||it.s<0)return;const i=it.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();initSl();toast(t('swapped'));return}
  if(b.dataset.show){focus(b.dataset.show);return}
  if(b.dataset.c){cat=b.dataset.c;openPl=null;renderCats();renderList();return}
  const id=b.closest('.pl')?.dataset.id;
@@ -359,6 +400,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.hasAttribute('data-del')){mine=mine.filter(x=>x.id!==id);store.set('mine',mine);renderCats();renderList();drawMap();return}
  if(b.id==='pickmap'){picking=true;toast(t('pickmsg'));$('#map').scrollIntoView({behavior:'smooth',block:'center'});return}
  if(b.id==='usehere'){locate(false,ll=>{pickLL=ll;$('#f-loc').value=ll[0].toFixed(5)+', '+ll[1].toFixed(5);toast(t('gotloc'))});return}});
+document.addEventListener('change',e=>{if(!e.target.matches('[data-tm]'))return;const d=D(),p=getPlan(d).slice(),u=e.target.closest('.st').dataset.u,it=p.find(x=>x.u===u);if(!it)return;const v=normT(e.target.value);e.target.value=v;p[p.indexOf(it)]={...it,t:v};savePlan(d,p)});
 map.on('click',e=>{if(!picking)return;picking=false;pickLL=[e.latlng.lat,e.latlng.lng];$('#f-loc').value=pickLL[0].toFixed(5)+', '+pickLL[1].toFixed(5);toast(t('gotloc'));$('details.add').scrollIntoView({behavior:'smooth'})});
 $('#addf').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),v=(f.get('loc')||'').trim();
  let m=v.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||v.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||v.match(/[?&](?:q|query|ll|destination)=(-?\d+\.\d+)(?:,|%2C)(-?\d+\.\d+)/)||v.match(/^(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$/);
