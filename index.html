@@ -119,14 +119,14 @@ h2{font-size:18px;margin:18px 0 6px;font-weight:900}
 (async()=>{
 const T={
  en:{title:'Kanazawa & Shirakawa-go',sub:'25–28 Nov · 4 travellers',places:'All places to go & eat',all:'All',book:'Transport',see:'Sights',eat:'Food',cafe:'Cafés',shop:'Shopping',mine:'Our adds',
-  maps:'Google Maps',dir:'Directions',onmap:'Show on map',been:'Been here',undo:'Undo',del:'Remove',booked:'Booked',swap:'Swap for',closed:'Closed',
+  maps:'Google Maps',dir:'Directions',onmap:'Show on map',inlist:'See in list ↓',been:'Been here',undo:'Undo',del:'Remove',booked:'Booked',swap:'Swap for',closed:'Closed',
   add:'Add a place (saved on this phone)',name:'Name',loc:'Google Maps link, or “lat, lng”',note:'Note (optional)',pick:'Tap the map to place',here:'Use my location',save:'Add',
   help:'Swaps, places you add and “Been here” ticks are saved on this phone only.',
   pickmsg:'Tap the map where the place is',gotloc:'Location set',noloc:'Couldn’t get your location. Check location permission for your browser.',needloc:'Add a location: paste a Google Maps link, tap the map, or use your location.',added:'Added',swapped:'Swapped',
   wxr:'Refresh',wxu:'Updated',wxerr:'Weather unavailable — try again',now:'Now',foot:'Map: OpenFreeMap / OpenStreetMap. Weather: Open-Meteo.',locate:'Show my location',
   wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],kz:'Kanazawa',sk:'Shirakawa-go'},
  ko:{title:'가나자와 & 시라카와고',sub:'11월 25–28일 · 4명',places:'가볼 곳 & 맛집 전체',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가한 곳',
-  maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',been:'다녀옴',undo:'취소',del:'삭제',booked:'예약됨',swap:'다른 선택지',closed:'휴무',
+  maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',inlist:'목록에서 보기 ↓',been:'다녀옴',undo:'취소',del:'삭제',booked:'예약됨',swap:'다른 선택지',closed:'휴무',
   add:'장소 추가 (이 휴대폰에만 저장)',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 위치 선택',here:'현재 위치 사용',save:'추가',
   help:'바꾼 일정, 추가한 장소, “다녀옴” 표시는 이 휴대폰에만 저장됩니다.',
   pickmsg:'지도에서 장소 위치를 탭하세요',gotloc:'위치 설정됨',noloc:'위치를 가져올 수 없어요. 브라우저 위치 권한을 확인하세요.',needloc:'위치를 추가하세요: 구글 지도 링크 붙여넣기, 지도 탭, 또는 현재 위치.',added:'추가됨',swapped:'변경됨',
@@ -209,7 +209,7 @@ function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
   if(!watching){watching=true;navigator.geolocation.watchPosition(p=>showMe([p.coords.latitude,p.coords.longitude],p.coords.accuracy),()=>{},{enableHighAccuracy:true,maximumAge:15000})}},
   ()=>toast(t('noloc')),{enableHighAccuracy:true,timeout:12000})}
 function showMe(ll,a){if(!me){me=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[16,16]}),zIndexOffset:2000}).addTo(map);acc=L.circle(ll,{radius:a,weight:0,fillColor:'#1a73e8',fillOpacity:.1}).addTo(map)}else{me.setLatLng(ll);acc.setLatLng(ll).setRadius(a)}}
-const popup=p=>`<b>${esc(nm(p))}</b><br>${esc(nt(p)||'')}<br><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a> · <a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>`;
+const popup=p=>`<b>${esc(nm(p))}</b><br>${esc(nt(p)||'')}<br><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a> · <a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a> · <a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a>`;
 const icon=(c,txt,sz,big)=>L.divIcon({className:'',html:`<div class="pin${big?' big':''}" style="width:${sz}px;height:${sz}px;background:${c}">${txt}</div>`,iconSize:[sz,sz]});
 function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete mk[k];
  const d=D(),used=new Set(),pts=[];
@@ -226,6 +226,10 @@ function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete
 function focus(id){const p=byId(id);if(!p)return;sel=id;drawMap();map.setView([p.lat,p.lng],Math.max(map.getZoom(),16));setTimeout(()=>mk[id]?.openPopup(),150);
  if(innerWidth<900)$('#map').scrollIntoView({behavior:'smooth',block:'center'})}
 
+map.on('popupopen',e=>{const a=e.popup.getElement()?.querySelector('.golist');if(a)a.addEventListener('click',ev=>{ev.preventDefault();goList(a.dataset.id)})});
+function goList(id){const d=D(),i=d.slots.findIndex((s,k)=>pick(d,k)===id);map.closePopup();
+ if(i>=0){open=d.k+i;renderIt();document.querySelector(`.slot[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
+ cat='all';renderCats();renderList();const el=document.getElementById('pl-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='var(--sel)';setTimeout(()=>el.style.background='',2500)}}
 // render
 function renderDays(){$('#days').innerHTML=ITIN.map(d=>`<button role="tab" data-k="${d.k}" aria-selected="${d.k===day}">${t('wd')[d.w]} ${d.date.slice(8)}<small>${esc(d[L_].split(' · ')[0])}</small></button>`).join('')}
 function renderIt(){const d=D();
@@ -239,7 +243,7 @@ function renderIt(){const d=D();
   <div class="acts"><button class="pri" data-show="${id}">${t('onmap')}</button><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a></div>${optsH}</div></li>`}).join('')}
 function renderCats(){$('#cats').innerHTML=['all','see','eat','cafe','shop','book'].concat(mine.length?['mine']:[]).map(k=>`<button class="chip" data-c="${k}" aria-pressed="${k===cat}">${k==='all'?'':`<span class="dot" style="background:${COL[k]}"></span>`}${t(k)}</button>`).join('')}
 function renderList(){const list=all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine));
- $('#list').innerHTML=list.map(p=>`<li class="pl${done[p.id]?' done':''}" data-id="${esc(p.id)}"><div class="ic" style="background:${COL[p.mine?'mine':p.cat]}"></div><div>
+ $('#list').innerHTML=list.map(p=>`<li class="pl${done[p.id]?' done':''}" id="pl-${esc(p.id)}" data-id="${esc(p.id)}"><div class="ic" style="background:${COL[p.mine?'mine':p.cat]}"></div><div>
  <h3 data-show="${esc(p.id)}">${esc(nm(p))}</h3>${!p.mine&&L_==='ko'?`<div class="sub">${esc(p.en)}</div>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
  <div class="acts" style="margin-top:6px"><button class="pri" data-show="${esc(p.id)}">${t('onmap')}</button><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>
  <button data-done>${done[p.id]?t('undo'):t('been')}</button>${p.mine?`<button data-del>${t('del')}</button>`:''}</div></div></li>`).join('')}
