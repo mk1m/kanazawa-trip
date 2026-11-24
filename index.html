@@ -272,7 +272,7 @@ function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
   if(!watching){watching=true;navigator.geolocation.watchPosition(p=>showMe([p.coords.latitude,p.coords.longitude],p.coords.accuracy),()=>{},{enableHighAccuracy:true,maximumAge:15000})}},
   ()=>toast(t('noloc')),{enableHighAccuracy:true,timeout:12000})}
 function showMe(ll,a){if(!me){me=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[16,16]}),zIndexOffset:2000}).addTo(map);acc=L.circle(ll,{radius:a,weight:0,fillColor:'#1a73e8',fillOpacity:.1}).addTo(map)}else{me.setLatLng(ll);acc.setLatLng(ll).setRadius(a)}}
-const popup=p=>`${slider(p,1)}<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>${p.img?'':`<a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${L_==='ko'?'사진':'Photos'}</a>`}<a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a></div>`;
+const popup=p=>`${slider(p,1)}<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>${p.img||['book','shop'].includes(p.cat)?'':`<a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${L_==='ko'?'사진':'Photos'}</a>`}<a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a></div>`;
 const pinI=(c,txt,sz,on)=>L.divIcon({className:'',html:`<div class="pin${on?' sel':''}" style="width:${sz}px;height:${sz}px;background:${c}">${txt}</div>`,iconSize:[sz,sz]});
 const dotI=c=>L.divIcon({className:'',html:`<div class="tiny" style="background:${c}"></div>`,iconSize:[9,9]});
 function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete mk[k];
@@ -298,7 +298,7 @@ function slider(p,sm){if(!p||!p.img||!p.img.length)return '';const n=p.img.lengt
  return `<div class="sl${sm?' sm':''}"><div class="slt">${p.img.map((x,i)=>`<img src="${esc(x[0])}" alt="${esc(nm(p))} ${i+1}" loading="lazy" decoding="async" data-c="${esc((x[2]||'')+' · '+(x[3]||''))}" data-h="${esc(x[1])}">`).join('')}</div>
  ${n>1?`<button class="sln p" data-sl="-1" aria-label="Previous photo">‹</button><button class="sln n" data-sl="1" aria-label="Next photo">›</button>`:''}
  <div class="slm">${n>1?`<span class="sld">${p.img.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</span>`:'<span></span>'}<a class="slc" href="${esc(p.img[0][1])}" target="_blank" rel="noopener">${t('photo')} ${esc(p.img[0][2])}, ${esc(p.img[0][3])}</a></div></div>`}
-function noPhoto(p){return p&&!p.img?`<p class="nophoto"><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('photos')}</a></p>`:''}
+function noPhoto(p){return p&&!p.img&&!['book','shop'].includes(p.cat)&&!p.mine?`<p class="nophoto"><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('photos')}</a></p>`:''}
 function initSl(root){(root||document).querySelectorAll('.slt:not([data-i])').forEach(tr=>{tr.dataset.i=1;const sl=tr.closest('.sl'),imgs=[...tr.children];
  tr.addEventListener('scroll',()=>{const i=Math.round(tr.scrollLeft/tr.clientWidth),im=imgs[i];if(!im)return;sl.querySelectorAll('.sld i').forEach((d,k)=>d.classList.toggle('on',k===i));
   const c=sl.querySelector('.slc');if(c){c.href=im.dataset.h;c.textContent=t('photo')+' '+im.dataset.c.replace(' · ',', ')}},{passive:true})})}
