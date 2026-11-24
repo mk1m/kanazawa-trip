@@ -3,169 +3,207 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Kanazawa Trip · 가나자와 여행</title>
+<title>Kanazawa · 가나자와</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kanazawa">
-<meta name="theme-color" content="#a3263a">
+<meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--red:#a3263a;--ink:#1b1c1e;--mute:#62666b;--line:#e6e3de;--bg:#fff;--soft:#f5f3ef;--gold:#c99a1c;--sel:#fff7e0}
-@media(prefers-color-scheme:dark){:root{--ink:#eceae6;--mute:#a4a8ac;--line:#2d3135;--bg:#121416;--soft:#1c1f22;--sel:#2a2516}}
+:root{
+ --paper:#ffffff;--ink:#1f2a44;--soft:#6c7385;--hair:#e8e7e3;--wash:#f6f5f2;--gold:#b8913a;--goldwash:#fbf6ea;
+ --c-see:#9e3341;--c-eat:#b7712a;--c-cafe:#7a5a3c;--c-shop:#6b4f7d;--c-book:#2f4a7a;--c-mine:#4f7a4a;
+ --r:14px;--f:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo",system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root{--paper:#14171f;--ink:#e7e5df;--soft:#9aa0ad;--hair:#2a2f3a;--wash:#1b1f29;--goldwash:#262214}}
 *{box-sizing:border-box;min-width:0}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Zen Kaku Gothic New",system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-text-size-adjust:100%}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--f);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit;color:inherit}
-header{background:var(--red);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;display:flex;align-items:center;gap:10px}
-header h1{margin:0;font-size:18px;line-height:1.1;font-weight:900;flex:1}
-header small{display:block;font-size:12px;font-weight:400;opacity:.9;margin-top:2px}
-.lang{display:flex;background:rgba(255,255,255,.18);border-radius:99px;padding:3px}
-.lang button{border:0;background:none;color:#fff;padding:6px 11px;border-radius:99px;font-weight:700;font-size:13px;cursor:pointer;min-height:34px}
-.lang button[aria-pressed=true]{background:#fff;color:var(--red)}
-.wx{display:flex;gap:6px;overflow-x:auto;padding:8px 14px;background:var(--soft);scrollbar-width:none}
-.wx::-webkit-scrollbar,.chips::-webkit-scrollbar,.opts::-webkit-scrollbar{display:none}
-.wxd{flex:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 9px;font-size:12px;line-height:1.3}
-.wxd b{font-size:11px;color:var(--mute);font-weight:700;margin-right:4px}.wxd .t{font-size:14px;font-weight:900}
-.wxd.trip{border-color:var(--red)}
-.wxbtn{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.2}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.days{display:flex;align-items:stretch;position:sticky;top:0;background:var(--bg);z-index:500;border-bottom:1px solid var(--line)}
-.dtabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none;padding:6px 6px 0 10px}
-.dtabs::-webkit-scrollbar{display:none}
-.dtabs button{flex:1 0 auto;border:0;background:none;padding:8px 8px 9px;font-weight:700;font-size:14px;cursor:pointer;color:var(--mute);border-bottom:3px solid transparent;min-height:44px;line-height:1.1}
-.dtabs button small{display:block;font-size:11px;font-weight:400}
-.dtabs button[aria-selected=true]{color:var(--red);border-color:var(--red)}
-.fold{flex:none;border:0;border-left:1px solid var(--line);background:var(--bg);color:var(--red);font-weight:700;font-size:12px;padding:0 12px;cursor:pointer;min-width:64px;line-height:1.15}
-#itwrap.folded{display:none}
-.wrap.nolist{grid-template-columns:minmax(0,1fr)!important}
-.rain{margin:6px 14px 2px;padding:8px 11px;border-radius:10px;background:#e8f1fb;color:#1d4f8a;font-size:13px;line-height:1.35}
-@media(prefers-color-scheme:dark){.rain{background:#18283a;color:#a9c8ee}}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+/* header */
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:calc(env(safe-area-inset-top) + 18px) 20px 10px}
+.top h1{margin:0;font-size:clamp(19px,5.4vw,22px);line-height:1.15;font-weight:600;letter-spacing:-.01em}
+.top p{margin:2px 0 0;color:var(--soft);font-size:14px}
+.lang{display:flex;gap:2px;font-size:14px}
+.lang button{border:0;background:none;padding:8px 6px;white-space:nowrap;color:var(--soft);min-height:40px}
+.lang button[aria-pressed=true]{color:var(--ink);font-weight:600}
+
+/* day bar */
+.days{position:sticky;top:0;z-index:600;background:var(--paper);display:flex;align-items:stretch;border-bottom:1px solid var(--hair);padding:0 8px 0 12px}
+.dtabs{display:flex;flex:1}
+.dtabs button{flex:1;border:0;background:none;padding:10px 4px 9px;text-align:center;color:var(--soft);position:relative;min-height:56px;line-height:1.15}
+.dtabs b{display:block;font-size:19px;font-weight:500;color:var(--ink);opacity:.55}
+.dtabs span{font-size:12px}
+.dtabs button[aria-selected=true] b{opacity:1;font-weight:600}
+.dtabs button[aria-selected=true]::after{content:"";position:absolute;left:28%;right:28%;bottom:-1px;height:2px;background:var(--gold);border-radius:2px}
+.fold{border:0;background:none;color:var(--soft);font-size:13px;padding:0 8px;min-width:52px}
+
+/* day head */
+.dayhead{padding:18px 20px 6px}
+.dayhead h2{margin:0;font-size:20px;line-height:1.25;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+.wx{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin-top:6px;color:var(--soft);font-size:14px}
+.wx strong{color:var(--ink);font-weight:500}
+.wx .rf{border:0;background:none;color:var(--soft);font-size:13px;padding:6px 0;min-height:32px;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--hair)}
+.hint{margin:8px 0 0;font-size:14px;color:var(--soft);max-width:60ch}
+
+/* timeline */
+.tl{list-style:none;margin:8px 0 0;padding:0 20px 14px;position:relative}
+.tl::before{content:"";position:absolute;left:83px;top:22px;bottom:34px;width:1.5px;background:linear-gradient(var(--gold),color-mix(in srgb,var(--gold) 45%,transparent))}
+.st{position:relative}
+.rw{display:grid;grid-template-columns:44px 28px minmax(0,1fr);gap:0 12px;align-items:start;width:100%;border:0;background:none;text-align:left;padding:11px 0}
+.tm{font-size:13px;color:var(--soft);font-variant-numeric:tabular-nums;padding-top:3px;white-space:nowrap}
+.dt{width:24px;height:24px;margin:0 2px;border-radius:50%;background:var(--paper);border:1.5px solid currentColor;display:grid;place-items:center;font-size:11px;font-weight:600;position:relative;z-index:1}
+.st.on .dt{background:currentColor}.st.on .dt i{color:#fff}
+.dt i{font-style:normal}
+.nm{display:block;font-size:16px;font-weight:500;line-height:1.3}
+.lb{display:block;font-size:13px;color:var(--soft);margin-top:1px}
+.bk,.cl{color:var(--c-see);font-weight:500;margin-left:8px}
+.more{display:none;padding:0 0 14px 84px}
+.st.on .more{display:block}
+.more p{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--soft);max-width:60ch}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}
+.go{display:inline-flex;align-items:center;min-height:38px;padding:0 16px;border-radius:99px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:14px;font-weight:500}
+.tx{border:0;background:none;padding:8px 0;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--hair);min-height:38px}
+.alt{margin:14px 0 0;padding:0;list-style:none;border-top:1px solid var(--hair)}
+.alt button{display:flex;align-items:center;gap:10px;width:100%;border:0;border-bottom:1px solid var(--hair);background:none;text-align:left;padding:10px 0;font-size:15px;min-height:44px}
+.alt .rd{flex:none;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--hair)}
+.alt button[aria-pressed=true] .rd{border:5px solid var(--gold)}
+.alt small{display:block;font-size:12px;color:var(--c-see)}
+.alh{font-size:13px;color:var(--soft);margin:16px 0 2px}
+
+/* map */
 .wrap{display:grid;grid-template-columns:minmax(0,1fr)}
-.it{list-style:none;margin:0;padding:4px 14px 8px}
-.slot{border-bottom:1px solid var(--line)}
-.row{display:grid;grid-template-columns:50px 24px minmax(0,1fr) 18px;gap:8px;align-items:center;padding:8px 0;min-height:48px;cursor:pointer;width:100%;border:0;background:none;text-align:left}
-.row .tm{font-weight:900;font-size:14px;white-space:nowrap}
-.n{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:900;display:grid;place-items:center}
-.row .lb{display:block;font-size:11px;color:var(--mute);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .nm{display:block;font-size:15px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .cv{color:var(--mute);transition:transform .2s;font-size:13px}
-.slot.open .row .cv{transform:rotate(180deg)}
-.slot.open{background:var(--sel);margin:0 -14px;padding:0 14px}
-.bk{display:inline-block;font-size:10px;font-weight:700;background:var(--red);color:#fff;border-radius:5px;padding:0 5px;margin-left:5px;vertical-align:2px}
-.warn{color:#c0392b;font-weight:700}
-.det{padding:0 0 12px 82px;display:none}
-.slot.open .det{display:block}
-.det p{margin:0 0 8px;font-size:14px}
-.acts{display:flex;flex-wrap:wrap;gap:6px}
-.acts a,.acts button{display:inline-flex;align-items:center;min-height:34px;padding:0 11px;border-radius:9px;border:1px solid var(--line);background:var(--bg);text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer}
-.acts .pri{background:var(--red);color:#fff;border-color:var(--red)}
-.swap{margin:10px 0 0;font-size:12px;color:var(--mute);font-weight:700}
-.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.opt{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 10px;font-size:13px;cursor:pointer;text-align:left;line-height:1.25}
-.opt small{display:block;color:var(--mute);font-size:11px}
-.opt[aria-pressed=true]{border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
-#map{height:46vh;min-height:280px;background:var(--soft);z-index:0}
-main{padding:0 14px 40px}
-h2{font-size:18px;margin:18px 0 6px;font-weight:900}
-.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 6px}
-.chip{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer;min-height:36px;display:flex;align-items:center;gap:6px}
-.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
-.places{list-style:none;margin:0;padding:0}
-.pl{padding:10px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px}
-.pl .ic{width:18px;height:18px;border-radius:50%;margin-top:3px;border:2px solid #fff;box-shadow:0 1px 3px #0004}
-.pl h3{margin:0;font-size:15px;line-height:1.3;cursor:pointer}
-.pl .sub{font-size:12px;color:var(--mute)}
-.pl p{margin:3px 0 0;font-size:14px}
-.pl.done h3{text-decoration:line-through;opacity:.55}
-.add{margin-top:16px;border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px;background:var(--soft)}
-.add input,.add select,.add textarea{width:100%;font-size:16px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg)}
-.add .r{display:flex;gap:8px;flex-wrap:wrap}.add .r>*{flex:1 1 140px}
-.note{font-size:12px;color:var(--mute);margin:6px 0 0}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:1000;display:none;max-width:90vw}
-.pin{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45);color:#fff;font:900 12px/1 system-ui,sans-serif;display:grid;place-items:center}
-.pin.big{outline:3px solid #ffd54a}
-.leaflet-popup-content{margin:10px 12px;font:14px/1.4 "Zen Kaku Gothic New",system-ui,sans-serif}
-.leaflet-popup-content b{font-size:15px}.leaflet-popup-content a{font-weight:700}
-.locbtn{background:#fff;border:0;width:40px;height:40px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.35);cursor:pointer;display:grid;place-items:center}
-.me{width:16px;height:16px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(26,115,232,.25)}
-@media(prefers-reduced-motion:reduce){.row .cv{transition:none}}
-@media(min-width:900px){.wrap{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.mapcol{position:sticky;top:8px;align-self:start}#map{height:calc(100vh - 60px)}.det{padding-left:82px}}
+#map{height:46vh;min-height:300px;background:var(--wash);z-index:0}
+.leaflet-container{font-family:var(--f)}
+.leaflet-popup-content-wrapper{border-radius:12px;box-shadow:0 6px 24px rgba(20,24,40,.16)}
+.leaflet-popup-content{margin:12px 14px;font-size:14px;line-height:1.45;min-width:180px}
+.leaflet-popup-content b{display:block;font-size:15px;font-weight:600;margin-bottom:2px}
+.leaflet-popup-content p{margin:0 0 8px;color:#6c7385}
+.leaflet-popup-content .pa{display:flex;gap:14px}
+.leaflet-popup-content a{color:#1f2a44;font-weight:500}
+.pin{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35);color:#fff;font:600 11px/1 var(--f);display:grid;place-items:center}
+.pin.sel{box-shadow:0 0 0 3px var(--gold),0 1px 3px rgba(0,0,0,.35)}
+.tiny{width:9px;height:9px;border-radius:50%;border:1.5px solid #fff;opacity:.75}
+.locbtn{background:#fff;border:0;width:40px;height:40px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.25);display:grid;place-items:center}
+.me{width:16px;height:16px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(26,115,232,.22)}
+
+/* places */
+main{padding:26px 20px 40px;max-width:720px}
+main h2{margin:0 0 10px;font-size:20px;font-weight:600}
+.flt{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--hair);margin-bottom:4px}
+.flt::-webkit-scrollbar{display:none}
+.flt button{flex:none;border:0;background:none;padding:8px 0 10px;font-size:14px;color:var(--soft);position:relative;min-height:40px}
+.flt button[aria-pressed=true]{color:var(--ink);font-weight:500}
+.flt button[aria-pressed=true]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold)}
+.pls{list-style:none;margin:0;padding:0}
+.pl{border-bottom:1px solid var(--hair)}
+.plr{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;border:0;background:none;text-align:left;padding:12px 0;min-height:48px}
+.pd{width:9px;height:9px;border-radius:50%}
+.pn{font-size:15px;line-height:1.35}
+.pn small{display:block;color:var(--soft);font-size:12px}
+.chk{font-size:13px;color:var(--soft)}
+.pl.done .pn{color:var(--soft);text-decoration:line-through}
+.pl .more{padding:0 0 14px 22px}
+.pl.on .more{display:block}
+details.add{margin-top:22px}
+details.add summary{cursor:pointer;font-size:15px;font-weight:500;padding:8px 0;list-style:none}
+details.add summary::-webkit-details-marker{display:none}
+details.add summary::before{content:"+ "}
+details.add[open] summary::before{content:"− "}
+.af{display:grid;gap:10px;padding-top:6px}
+.af input,.af select,.af textarea{width:100%;font-size:16px;padding:10px 12px;border:1px solid var(--hair);border-radius:10px;background:var(--paper)}
+.af .r{display:flex;gap:10px;flex-wrap:wrap}.af .r>*{flex:1 1 140px}
+.af .note{font-size:13px;color:var(--soft);margin:0}
+.foot{font-size:12px;color:var(--soft);margin-top:30px}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:99px;font-size:14px;z-index:1000;display:none;max-width:90vw}
+#itwrap.folded{display:none}
+@media(prefers-reduced-motion:no-preference){.st .more,.pl .more{animation:op .18s ease-out}@keyframes op{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}}
+@media(min-width:900px){
+ .wrap{grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:0}
+ .mapcol{position:sticky;top:57px;align-self:start;padding:16px 20px 0 0}
+ #map{height:calc(100vh - 90px);border-radius:var(--r)}
+ .wrap.nolist{grid-template-columns:minmax(0,1fr)}.wrap.nolist .mapcol{padding-left:20px}
+ .top,.days{padding-left:24px}main{padding-left:24px}
+}
 </style>
 </head>
 <body>
-<header><h1 id="title"></h1><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
-<div class="wx" id="wx"></div>
+<header class="top"><div><h1 id="title"></h1><p id="sub"></p></div><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
 <nav class="days"><div class="dtabs" id="days" role="tablist"></div><button class="fold" id="fold" aria-expanded="true"></button></nav>
 <div class="wrap">
- <div id="itwrap"><div id="rain" class="rain" hidden></div><ol class="it" id="it"></ol></div>
+ <section id="itwrap"><div class="dayhead"><h2 id="dtitle"></h2><div class="wx" id="wx"></div><p class="hint" id="hint" hidden></p></div><ol class="tl" id="it"></ol></section>
  <div class="mapcol"><div id="map"></div></div>
 </div>
 <main>
  <h2 id="h-places"></h2>
- <div class="chips" id="cats"></div>
- <ul class="places" id="list"></ul>
- <form class="add" id="addf">
-  <b id="h-add"></b>
-  <input name="name" required id="f-name">
-  <div class="r"><select name="cat" id="f-cat"></select><input name="loc" id="f-loc"></div>
-  <textarea name="note" rows="2" id="f-note"></textarea>
-  <div class="r"><button type="button" class="chip" id="pickmap"></button><button type="button" class="chip" id="usehere"></button><button class="chip" style="background:var(--red);color:#fff;border-color:var(--red)" id="f-save"></button></div>
-  <p class="note" id="f-help"></p>
- </form>
- <p class="note" id="foot"></p>
+ <div class="flt" id="cats"></div>
+ <ul class="pls" id="list"></ul>
+ <details class="add"><summary id="h-add"></summary>
+  <form class="af" id="addf">
+   <input name="name" required id="f-name">
+   <div class="r"><select name="cat" id="f-cat"></select><input name="loc" id="f-loc"></div>
+   <textarea name="note" rows="2" id="f-note"></textarea>
+   <div class="r"><button type="button" class="tx" id="pickmap"></button><button type="button" class="tx" id="usehere"></button><button class="go" style="border:0" id="f-save"></button></div>
+   <p class="note" id="f-help"></p>
+  </form>
+ </details>
+ <p class="foot" id="foot"></p>
 </main>
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin=""></script>
 <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js" crossorigin=""></script>
 <script>
 (async()=>{
 const T={
- en:{title:'Kanazawa & Shirakawa-go',sub:'25–28 Nov · 4 travellers',places:'All places to go & eat',all:'All',book:'Transport',see:'Sights',eat:'Food',cafe:'Cafés',shop:'Shopping',mine:'Our adds',
-  maps:'Google Maps',dir:'Directions',onmap:'Show on map',inlist:'See in list ↓',been:'Been here',undo:'Undo',del:'Remove',booked:'Booked',swap:'Swap for',closed:'Closed',
-  add:'Add a place (saved on this phone)',name:'Name',loc:'Google Maps link, or “lat, lng”',note:'Note (optional)',pick:'Tap the map to place',here:'Use my location',save:'Add',
-  help:'Swaps, places you add and “Been here” ticks are saved on this phone only.',
-  pickmsg:'Tap the map where the place is',gotloc:'Location set',noloc:'Couldn’t get your location. Check location permission for your browser.',needloc:'Add a location: paste a Google Maps link, tap the map, or use your location.',added:'Added',swapped:'Swapped',
-  wxr:'Refresh',wxu:'Updated',wxerr:'Weather unavailable — try again',now:'Now',foot:'Map: OpenFreeMap / OpenStreetMap. Weather: Open-Meteo.',locate:'Show my location',
-  wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],kz:'Kanazawa',sk:'Shirakawa-go'},
- ko:{title:'가나자와 & 시라카와고',sub:'11월 25–28일 · 4명',places:'가볼 곳 & 맛집 전체',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가한 곳',
-  maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',inlist:'목록에서 보기 ↓',been:'다녀옴',undo:'취소',del:'삭제',booked:'예약됨',swap:'다른 선택지',closed:'휴무',
-  add:'장소 추가 (이 휴대폰에만 저장)',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 위치 선택',here:'현재 위치 사용',save:'추가',
-  help:'바꾼 일정, 추가한 장소, “다녀옴” 표시는 이 휴대폰에만 저장됩니다.',
-  pickmsg:'지도에서 장소 위치를 탭하세요',gotloc:'위치 설정됨',noloc:'위치를 가져올 수 없어요. 브라우저 위치 권한을 확인하세요.',needloc:'위치를 추가하세요: 구글 지도 링크 붙여넣기, 지도 탭, 또는 현재 위치.',added:'추가됨',swapped:'변경됨',
-  wxr:'새로고침',wxu:'업데이트',wxerr:'날씨 정보를 불러올 수 없어요 — 다시 시도',now:'현재',foot:'지도: OpenFreeMap / OpenStreetMap. 날씨: Open-Meteo.',locate:'내 위치 보기',
-  wd:['일','월','화','수','목','금','토'],kz:'가나자와',sk:'시라카와고'}};
-const COL={book:'#2f5aa8',see:'#a3263a',eat:'#d0671a',cafe:'#8a5a2b',shop:'#7b4b9a',mine:'#0f8a6b'};
+ en:{title:'Kanazawa & Shirakawa‑go',sub:'25–28 November 2026',places:'All places',all:'All',book:'Transport',see:'Sights',eat:'Food',cafe:'Cafés',shop:'Shopping',mine:'Added',
+  maps:'Google Maps',dir:'Directions',onmap:'Show on map',inlist:'Details',been:'Mark as visited',undo:'Visited',del:'Remove',booked:'Booked',alts:'Other options',closed:'Closed today',
+  hide:'Hide ▴',show:'Plan ▾',add:'Add a place',name:'Name',loc:'Google Maps link or “lat, lng”',note:'Note (optional)',pick:'Pick on map',here:'Use my location',save:'Add place',
+  help:'Changes you make here are saved on this phone only.',pickmsg:'Tap the map to set the location',gotloc:'Location set',noloc:'Location unavailable. Allow location access for this browser.',
+  needloc:'Add a location: paste a Google Maps link, pick on the map, or use your location.',added:'Place added',swapped:'Plan updated',
+  rf:'Refresh',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
+  wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],wdl:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],kz:'Kanazawa',sk:'Shirakawa-go',rain:'rain'},
+ ko:{title:'가나자와 & 시라카와고',sub:'2026년 11월 25–28일',places:'전체 장소',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가',
+  maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',inlist:'자세히',been:'다녀옴 표시',undo:'다녀옴',del:'삭제',booked:'예약됨',alts:'다른 선택지',closed:'오늘 휴무',
+  hide:'접기 ▴',show:'일정 ▾',add:'장소 추가',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 선택',here:'현재 위치',save:'추가하기',
+  help:'여기서 바꾼 내용은 이 휴대폰에만 저장됩니다.',pickmsg:'지도를 탭해 위치를 정하세요',gotloc:'위치 설정됨',noloc:'위치를 사용할 수 없어요. 브라우저 위치 권한을 허용하세요.',
+  needloc:'위치를 추가하세요: 구글 지도 링크, 지도에서 선택, 또는 현재 위치.',added:'장소 추가됨',swapped:'일정 변경됨',
+  rf:'새로고침',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
+  wd:['일','월','화','수','목','금','토'],wdl:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],kz:'가나자와',sk:'시라카와고',rain:'비'}};
+const COL={book:'#2f4a7a',see:'#9e3341',eat:'#b7712a',cafe:'#7a5a3c',shop:'#6b4f7d',mine:'#4f7a4a'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
 const ITIN=[
- {k:'wed',tab:{en:'Arrival',ko:'도착'},w:3,date:'2026-11-25',en:'Arrival · teahouses & art',ko:'도착 · 찻집 거리 & 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
-  S('09:15','Land at Komatsu · KE2189','고마쓰 도착 · KE2189',['kmq'],{fx:1,nen:'Immigration and bags take ~30–45 min.',nko:'입국심사·수하물 약 30–45분.'}),
+ {k:'wed',tab:{en:'Arrival',ko:'도착'},w:3,date:'2026-11-25',en:'Arrival, teahouses and art',ko:'도착, 찻집 거리와 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
+  S('09:15','Land at Komatsu, KE2189','고마쓰 도착 (KE2189)',['kmq'],{fx:1,nen:'Immigration and bags take ~30–45 min.',nko:'입국심사·수하물 약 30–45분.'}),
   S('10:00','Airport bus → Kanazawa','공항 리무진 → 가나자와',['kmq'],{fx:1,nen:'Stop 1 outside arrivals, leaves 10–15 min after landing. ~40 min, ¥1,300 each. Get off at the West Exit.',nko:'도착장 앞 1번 승강장, 착륙 10–15분 후 출발. 약 40분, 1인 1,300엔. 서쪽 출구 하차.'}),
   S('10:50','Drop bags','짐 맡기기',['hotel'],{fx:1}),
-  S('11:30','Lunch · Omicho Market','점심 · 오미초 시장',['ikiiki','yamasan','morimori','tonariya']),
-  S('13:00','Teahouse district (indoors)','찻집 거리 (실내)',['shima','goldleaf','higashi','kazue']),
+  S('11:30','Lunch at Omicho Market','오미초 시장 점심',['ikiiki','yamasan','morimori','tonariya']),
+  S('13:00','Teahouse district, indoors','찻집 거리 (실내)',['shima','goldleaf','higashi','kazue']),
   S('14:30','Sweet break','디저트·커피',['hakuichi','kissa','townsfolk']),
   S('15:30','Museum','미술관',['museum21','suzuki','crafts','prefart']),
-  S('17:00','Shopping (indoors)','쇼핑 (실내)',['forus','uniqlo','daiwa','mza','tatemachi']),
+  S('17:00','Shopping, indoors','쇼핑 (실내)',['forus','uniqlo','daiwa','mza','tatemachi']),
   S('18:30','Dinner','저녁',['itaru','danshaku','miyuki','odenjun'])]},
- {k:'thu',tab:{en:'Shirakawa-go',ko:'시라카와고'},w:4,date:'2026-11-26',en:'Omicho morning · Shirakawa-go',ko:'오미초 아침 · 시라카와고',slots:[
+ {k:'thu',tab:{en:'Shirakawa-go',ko:'시라카와고'},w:4,date:'2026-11-26',en:'Omicho morning, then Shirakawa-go',ko:'오미초 아침, 그리고 시라카와고',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
   S('09:15','Coffee & bakery','커피 & 빵',['higashide','hippo','townsfolk']),
   S('09:45','Morning stroll','아침 산책',['omicho','mza','forus']),
   S('11:10','Bus to Shirakawa-go','시라카와고행 버스',['stop4'],{fx:1,bk:1,nen:'West Exit Stop 4 → 12:25. Nohi Bus car 01, seats 8C 8D 9C 9D. Be there by 10:55 with the e-ticket. Wear grippy shoes — snow likely.',nko:'서쪽 출구 4번 → 12:25 도착. 노히버스 1호차, 좌석 8C 8D 9C 9D. 10:55까지 e티켓 지참. 눈 예상, 미끄럼 방지 신발.'}),
-  S('12:35','Lunch · Hida beef','점심 · 히다규',['irori','shiraogi','hiiragi']),
+  S('12:35','Hida beef lunch','히다규 점심',['irori','shiraogi','hiiragi']),
   S('13:30','Farmhouse visit','갓쇼 가옥 관람',['wada','kanda','nagase','myozenji']),
   S('14:30','Viewpoint','전망대',['deck'],{nen:'Last shuttle up 15:40; deck closes 15:30.',nko:'상행 셔틀 막차 15:40, 전망대 15:30 마감.'}),
   S('15:20','Café','카페',['kyoshu','ochudo']),
   S('16:00','Riverside & dusk','강변 & 해질녘',['deai','minkaen','hachiman']),
   S('17:30','Bus back to Kanazawa','가나자와행 버스',['skterm'],{fx:1,bk:1,nen:'Arrives West Exit Stop 4 at 18:45. Hokuriku Railroad car 01, seats 9C 9D 10C 10D.',nko:'18:45 서쪽 출구 4번 도착. 호쿠리쿠철도 1호차, 좌석 9C 9D 10C 10D.'}),
   S('19:00','Dinner','저녁',['uogashi','aburaya','yabuken','kikuichi'])]},
- {k:'fri',tab:{en:'Gardens & shops',ko:'정원 & 쇼핑'},w:5,date:'2026-11-27',en:'Gardens, samurai & shopping',ko:'정원, 무사 거리 & 쇼핑',slots:[
+ {k:'fri',tab:{en:'Gardens & shops',ko:'정원 & 쇼핑'},w:5,date:'2026-11-27',en:'Gardens, samurai streets and shopping',ko:'정원, 무사 거리와 쇼핑',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
   S('09:30','Garden & castle','정원 & 성',['kenroku','castle','gyokusen','seisonkaku']),
   S('11:15','Coffee break','커피',['kissa','higashide','townsfolk']),
@@ -174,42 +212,43 @@ const ITIN=[
   S('15:00','Temples & old streets','사찰 & 옛 거리',['myoryuji','nishichaya','teramachi','oyama']),
   S('16:30','Shopping','쇼핑',['forus','uniqlo','tatemachi','daiwa','abcmart','gu','anto']),
   S('18:30','Farewell dinner','마지막 저녁',['kikuichi','miyuki','danshaku','itaru','odenjun'])]},
- {k:'sat',tab:{en:'Fly home',ko:'귀국'},w:6,date:'2026-11-28',en:'Fly home',ko:'귀국',slots:[
+ {k:'sat',tab:{en:'Flying home',ko:'귀국'},w:6,date:'2026-11-28',en:'Flying home',ko:'귀국',slots:[
   S('06:45','Quick breakfast','간단한 조식',['hotel'],{fx:1,nen:'Check the breakfast start time at check-in.',nko:'체크인 때 조식 시작 시간 확인.'}),
   S('07:20','Check out','체크아웃',['hotel'],{fx:1}),
   S('07:40','Airport bus → Komatsu','공항 리무진 → 고마쓰',['stop3'],{fx:1,nen:'West Exit Stop 3, ~40 min, ¥1,300 each. Check exact times at the stop the day before.',nko:'서쪽 출구 3번, 약 40분, 1인 1,300엔. 전날 시간표 확인.'}),
   S('10:50','Flight KE2190 → Incheon','KE2190 → 인천',['kmq'],{fx:1,bk:1,nen:'Lands ICN 12:50. One international security line, so arrive ~2 h early.',nko:'인천 12:50 도착. 보안검색대 1개, 2시간 전 도착.'})]}];
 const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const jstDate=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
-let L_=store.get('lang',(navigator.language||'').startsWith('ko')?'ko':'en'),cat='all',sel=null,picking=false,pickLL=null,open=null;
+let L_=store.get('lang',(navigator.language||'').startsWith('ko')?'ko':'en'),cat='all',sel=null,picking=false,pickLL=null,open=null,openPl=null;
 let day=(ITIN.find(d=>d.date===jstDate())||ITIN[0]).k;
-let folded=store.get('folded',false),done=store.get('done',{}),mine=store.get('mine',[]),choice=store.get('choice',{});
+let folded=store.get('folded',false),done=store.get('done',{}),mine=store.get('mine',[]),choice=store.get('choice',{}),wx=store.get('wx',null);
 let base=[];try{base=await (await fetch('places.json',{cache:'no-cache'})).json()}catch(e){}
 const $=s=>document.querySelector(s),t=k=>T[L_][k];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const all=()=>base.concat(mine),byId=id=>all().find(p=>p.id===id);
-const nm=p=>p.mine?p.name:(L_==='ko'?p.ko:p.en), nt=p=>p.mine?p.note:(L_==='ko'?p.nko:p.nen);
+const nm=p=>p.mine?p.name:(L_==='ko'?p.ko:p.en),nt=p=>p.mine?p.note:(L_==='ko'?p.nko:p.nen);
 const mapsUrl=p=>p.url?p.url:p.pid?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mine?p.name:p.en)}&query_place_id=${p.pid}`:`https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
 const dirUrl=p=>`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}${p.pid?'&destination_place_id='+p.pid:''}&travelmode=transit`;
 const D=()=>ITIN.find(d=>d.k===day);
 const pick=(d,i)=>{const s=d.slots[i],c=choice[d.k+i];return s.opts.includes(c)?c:s.opts[0]};
-const isClosed=(p,w)=>p&&p.closed&&p.closed.includes(w);
-function toast(m){const e=$('#toast');e.textContent=m;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2400)}
+const isClosed=(p,w)=>!!(p&&p.closed&&p.closed.includes(w));
+function toast(m){const e=$('#toast');e.textContent=m;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2200)}
 
-// map
-const map=L.map('map',{zoomControl:true}).setView([36.567,136.656],14);
+/* map */
+const map=L.map('map',{zoomControl:false,attributionControl:true}).setView([36.567,136.656],14);
+L.control.zoom({position:'bottomright'}).addTo(map);
 let glMap=null,origTF={};
-function osm(){L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map)}
+function osm(){L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map)}
 try{if(!L.maplibreGL||!window.maplibregl)throw 0;
- const gl=L.maplibreGL({style:'https://tiles.openfreemap.org/styles/liberty',attribution:'<a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+ const gl=L.maplibreGL({style:'https://tiles.openfreemap.org/styles/positron',attribution:'© OpenFreeMap © OpenMapTiles © OpenStreetMap'}).addTo(map);
  glMap=gl.getMaplibreMap();glMap.on('load',()=>{glMap.getStyle().layers.forEach(l=>{if(l.layout&&l.layout['text-field'])origTF[l.id]=l.layout['text-field']});applyMapLang()});
  glMap.on('error',()=>{if(!glMap.isStyleLoaded()&&!osm.done){osm.done=1;map.removeLayer(gl);osm()}});
 }catch(e){osm()}
 function applyMapLang(){if(!glMap||!glMap.isStyleLoaded())return;for(const id in origTF){try{glMap.setLayoutProperty(id,'text-field',L_==='ko'?['coalesce',['get','name:ko'],['get','name:latin'],['get','name']]:origTF[id])}catch(e){}}}
 const bg=L.layerGroup().addTo(map),fg=L.layerGroup().addTo(map),mk={};
 let me=null,acc=null,watching=false;
-const Loc=L.Control.extend({options:{position:'topright'},onAdd(){const b=L.DomUtil.create('button','locbtn');b.setAttribute('aria-label','location');
- b.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2.2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>';
+const Loc=L.Control.extend({options:{position:'topright'},onAdd(){const b=L.DomUtil.create('button','locbtn');b.setAttribute('aria-label','My location');
+ b.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>';
  L.DomEvent.on(b,'click',e=>{L.DomEvent.stop(e);locate(true)});return b}});
 map.addControl(new Loc());
 function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
@@ -217,92 +256,89 @@ function locate(fly,cb){if(!navigator.geolocation){toast(t('noloc'));return}
   if(!watching){watching=true;navigator.geolocation.watchPosition(p=>showMe([p.coords.latitude,p.coords.longitude],p.coords.accuracy),()=>{},{enableHighAccuracy:true,maximumAge:15000})}},
   ()=>toast(t('noloc')),{enableHighAccuracy:true,timeout:12000})}
 function showMe(ll,a){if(!me){me=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[16,16]}),zIndexOffset:2000}).addTo(map);acc=L.circle(ll,{radius:a,weight:0,fillColor:'#1a73e8',fillOpacity:.1}).addTo(map)}else{me.setLatLng(ll);acc.setLatLng(ll).setRadius(a)}}
-const popup=p=>`<b>${esc(nm(p))}</b><br>${esc(nt(p)||'')}<br><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a> · <a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a> · <a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a>`;
-const icon=(c,txt,sz,big)=>L.divIcon({className:'',html:`<div class="pin${big?' big':''}" style="width:${sz}px;height:${sz}px;background:${c}">${txt}</div>`,iconSize:[sz,sz]});
+const popup=p=>`<b>${esc(nm(p))}</b>${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="pa"><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><a href="#" class="golist" data-id="${esc(p.id)}">${t('inlist')}</a></div>`;
+const pinI=(c,txt,sz,on)=>L.divIcon({className:'',html:`<div class="pin${on?' sel':''}" style="width:${sz}px;height:${sz}px;background:${c}">${txt}</div>`,iconSize:[sz,sz]});
+const dotI=c=>L.divIcon({className:'',html:`<div class="tiny" style="background:${c}"></div>`,iconSize:[9,9]});
 function drawMap(fit){bg.clearLayers();fg.clearLayers();for(const k in mk)delete mk[k];
- const d=D(),used=new Set(),pts=[];
- d.slots.forEach((s,i)=>{const p=byId(pick(d,i));if(!p)return;pts.push({p,i})});
- pts.forEach(x=>used.add(x.p.id));
- all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:icon(COL[p.mine?'mine':p.cat],'',12,p.id===sel),opacity:done[p.id]?.45:.85}).addTo(bg);m.bindPopup(popup(p));mk[p.id]=m});
- const local=pts.filter(x=>x.p.id!=='kmq');
- const seg=[];let cur=[];local.forEach(x=>{const far=cur.length&&Math.abs(cur[cur.length-1][0]-x.p.lat)>.1;if(far){seg.push(cur);cur=[]}cur.push([x.p.lat,x.p.lng])});seg.push(cur);
- seg.forEach(s=>s.length>1&&L.polyline(s,{color:'#a3263a',weight:3,opacity:.6,dashArray:'2 8',lineCap:'round'}).addTo(fg));
- const seen={};pts.forEach(x=>{const p=x.p,key=p.id;seen[key]=(seen[key]||[]).concat(x.i+1)});
- const drawn=new Set();pts.forEach(x=>{const p=x.p;if(drawn.has(p.id))return;drawn.add(p.id);const big=p.id===sel;
-  const m=L.marker([p.lat,p.lng],{icon:icon(COL[p.cat]||'#555',seen[p.id].join(','),seen[p.id].length>1?30:24,big),zIndexOffset:big?1500:1000}).addTo(fg);m.bindPopup(popup(p));mk[p.id]=m});
- if(fit){const kz=local.filter(x=>x.p.lat>36.4),sk=local.filter(x=>x.p.lat<36.4);const g=(sk.length>kz.length?sk:kz).map(x=>[x.p.lat,x.p.lng]);if(g.length)map.fitBounds(g,{padding:[30,30],maxZoom:16})}}
+ const d=D(),pts=[];d.slots.forEach((s,i)=>{const p=byId(pick(d,i));if(p)pts.push({p,i})});
+ const used=new Set(pts.map(x=>x.p.id));
+ all().filter(p=>!used.has(p.id)).forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:p.id===sel?pinI(COL[p.mine?'mine':p.cat],'',18,1):dotI(COL[p.mine?'mine':p.cat])}).addTo(bg);m.bindPopup(popup(p));mk[p.id]=m});
+ const local=pts.filter(x=>x.p.id!=='kmq'),seg=[];let cur=[];
+ local.forEach(x=>{if(cur.length&&Math.abs(cur[cur.length-1][0]-x.p.lat)>.1){seg.push(cur);cur=[]}cur.push([x.p.lat,x.p.lng])});seg.push(cur);
+ seg.forEach(s=>s.length>1&&L.polyline(s,{color:'#b8913a',weight:2.5,opacity:.85,dashArray:'1 7',lineCap:'round'}).addTo(fg));
+ const nums={};pts.forEach(x=>{(nums[x.p.id]=nums[x.p.id]||[]).push(x.i+1)});const drawn=new Set();
+ pts.forEach(x=>{const p=x.p;if(drawn.has(p.id))return;drawn.add(p.id);const on=p.id===sel,n=nums[p.id];
+  const m=L.marker([p.lat,p.lng],{icon:pinI(COL[p.cat]||'#555',n.length>2?n[0]+'+':n.join(','),n.length>1?28:22,on),zIndexOffset:on?1500:1000}).addTo(fg);m.bindPopup(popup(p));mk[p.id]=m});
+ if(fit){const kz=local.filter(x=>x.p.lat>36.4),sk=local.filter(x=>x.p.lat<36.4);const g=(sk.length>kz.length?sk:kz).map(x=>[x.p.lat,x.p.lng]);if(g.length)map.fitBounds(g,{padding:[34,34],maxZoom:16})}}
 function focus(id){const p=byId(id);if(!p)return;sel=id;drawMap();map.setView([p.lat,p.lng],Math.max(map.getZoom(),16));setTimeout(()=>mk[id]?.openPopup(),150);
  if(innerWidth<900)$('#map').scrollIntoView({behavior:'smooth',block:'center'})}
-
 map.on('popupopen',e=>{const a=e.popup.getElement()?.querySelector('.golist');if(a)a.addEventListener('click',ev=>{ev.preventDefault();goList(a.dataset.id)})});
 function goList(id){const d=D(),i=d.slots.findIndex((s,k)=>pick(d,k)===id);map.closePopup();
- if(i>=0){open=d.k+i;renderIt();document.querySelector(`.slot[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
- cat='all';renderCats();renderList();const el=document.getElementById('pl-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.background='var(--sel)';setTimeout(()=>el.style.background='',2500)}}
-// render
-function renderDays(){const d=D();$('#days').innerHTML=ITIN.map(x=>`<button role="tab" data-k="${x.k}" aria-selected="${x.k===day}">${t('wd')[x.w]} ${x.date.slice(8)}<small>${esc(x.tab[L_])}</small></button>`).join('');
- const r=$('#rain');if(d.rain){r.hidden=false;r.textContent='☂︎ '+d.rain[L_]}else r.hidden=true;
- const f=$('#fold');f.innerHTML=folded?(L_==='ko'?'일정<br>펼치기 ▾':'Show<br>plan ▾'):(L_==='ko'?'일정<br>접기 ▴':'Hide<br>plan ▴');f.setAttribute('aria-expanded',!folded);$('#itwrap').classList.toggle('folded',folded);document.querySelector('.wrap').classList.toggle('nolist',folded);setTimeout(()=>map.invalidateSize(),50)}
+ if(i>=0){if(folded){folded=false;store.set('folded',false);renderDays()}open=d.k+i;renderIt();document.querySelector(`.st[data-s="${i}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});return}
+ cat='all';openPl=id;renderCats();renderList();document.getElementById('pl-'+id)?.scrollIntoView({behavior:'smooth',block:'center'})}
+
+/* render */
+function renderDays(){$('#days').innerHTML=ITIN.map(x=>`<button role="tab" data-k="${x.k}" aria-selected="${x.k===day}"><span>${t('wd')[x.w]}</span><b>${x.date.slice(8)}</b></button>`).join('');
+ const f=$('#fold');f.textContent=folded?t('show'):t('hide');f.setAttribute('aria-expanded',!folded);
+ $('#itwrap').classList.toggle('folded',folded);document.querySelector('.wrap').classList.toggle('nolist',folded);setTimeout(()=>map.invalidateSize(),60)}
+const WMO=c=>{const m=[[0,'☀︎','Clear','맑음'],[2,'⛅︎','Partly cloudy','구름 조금'],[3,'☁︎','Cloudy','흐림'],[48,'☁︎','Fog','안개'],[57,'☂︎','Drizzle','이슬비'],[67,'☂︎','Rain','비'],[77,'❄︎','Snow','눈'],[82,'☂︎','Showers','소나기'],[86,'❄︎','Snow','눈'],[99,'☂︎','Storms','뇌우']];
+ const f=m.find(x=>c<=x[0])||m[m.length-1];return{i:f[1],s:L_==='ko'?f[3]:f[2]}};
+function dayWx(li,date){if(!wx||!wx.d)return null;const A=Array.isArray(wx.d)?wx.d:[wx.d],l=A[li];if(!l||!l.daily)return null;const i=l.daily.time.indexOf(date);if(i<0)return null;
+ const w=WMO(l.daily.weather_code[i]);return `${w.i} <strong>${Math.round(l.daily.temperature_2m_max[i])}° / ${Math.round(l.daily.temperature_2m_min[i])}°</strong> ${esc(w.s)}, ${t('rain')} ${l.daily.precipitation_probability_max[i]??'–'}%`}
+function renderHead(){const d=D();$('#dtitle').textContent=d[L_];
+ let h='';const a=dayWx(0,d.date),b=d.k==='thu'?dayWx(1,d.date):null;
+ if(a)h+=`<span>${b?t('kz')+' ':''}${a}</span>`;if(b)h+=`<span>${t('sk')} ${b}</span>`;if(!a&&!b)h+=`<span>${t('wxnone')}</span>`;
+ const at=wx?new Date(wx.at):null;h+=(at?`<span>${t('upd')} ${at.getHours()}:${String(at.getMinutes()).padStart(2,'0')}</span>`:'')+`<button class="rf" id="wxbtn">${t('rf')}</button>`;
+ $('#wx').innerHTML=h;const hn=$('#hint');if(d.rain){hn.hidden=false;hn.textContent=d.rain[L_]}else hn.hidden=true}
 function renderIt(){const d=D();
- $('#it').innerHTML=d.slots.map((s,i)=>{const id=pick(d,i),p=byId(id)||{},sid=d.k+i,c=COL[p.cat]||'#555',cl=isClosed(p,d.w);
-  const optsH=s.opts.length>1?`<div class="swap">${t('swap')}</div><div class="opts">${s.opts.map(o=>{const q=byId(o);if(!q)return'';const qc=isClosed(q,d.w);
-   return `<button class="opt" data-sw="${o}" aria-pressed="${o===id}"><span class="dot" style="background:${COL[q.cat]}"></span> ${esc(nm(q))}${qc?`<small class="warn">${t('closed')} ${t('wd')[d.w]}</small>`:''}</button>`}).join('')}</div>`:'';
-  const note=(L_==='ko'?s.nko:s.nen);
-  return `<li class="slot${open===sid?' open':''}" data-s="${i}"><button class="row" data-tg aria-expanded="${open===sid}"><span class="tm">${s.t}</span><span class="n" style="background:${c}">${i+1}</span>
-  <span><span class="lb">${esc(s[L_])}${s.bk?`<span class="bk">${t('booked')}</span>`:''}</span><span class="nm">${esc(nm(p)||'')}${cl?` <span class="warn">· ${t('closed')}</span>`:''}</span></span><span class="cv">▾</span></button>
-  <div class="det">${note?`<p>${esc(note)}</p>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
-  <div class="acts"><button class="pri" data-show="${id}">${t('onmap')}</button><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><a href="${esc(mapsUrl(p))}" target="_blank" rel="noopener">${t('maps')}</a></div>${optsH}</div></li>`}).join('')}
-function renderCats(){$('#cats').innerHTML=['all','see','eat','cafe','shop','book'].concat(mine.length?['mine']:[]).map(k=>`<button class="chip" data-c="${k}" aria-pressed="${k===cat}">${k==='all'?'':`<span class="dot" style="background:${COL[k]}"></span>`}${t(k)}</button>`).join('')}
-function renderList(){const list=all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine));
- $('#list').innerHTML=list.map(p=>`<li class="pl${done[p.id]?' done':''}" id="pl-${esc(p.id)}" data-id="${esc(p.id)}"><div class="ic" style="background:${COL[p.mine?'mine':p.cat]}"></div><div>
- <h3 data-show="${esc(p.id)}">${esc(nm(p))}</h3>${!p.mine&&L_==='ko'?`<div class="sub">${esc(p.en)}</div>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
- <div class="acts" style="margin-top:6px"><button class="pri" data-show="${esc(p.id)}">${t('onmap')}</button><a href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a>
- <button data-done>${done[p.id]?t('undo'):t('been')}</button>${p.mine?`<button data-del>${t('del')}</button>`:''}</div></div></li>`).join('')}
-function renderText(){document.documentElement.lang=L_;$('#title').innerHTML=`${esc(t('title'))}<small>${esc(t('sub'))}</small>`;
+ $('#it').innerHTML=d.slots.map((s,i)=>{const id=pick(d,i),p=byId(id)||{},sid=d.k+i,c=COL[p.cat]||'#555',cl=isClosed(p,d.w),on=open===sid,note=L_==='ko'?s.nko:s.nen;
+  const alts=s.opts.length>1?`<div class="alh">${t('alts')}</div><ul class="alt">${s.opts.map(o=>{const q=byId(o);if(!q)return'';
+    return `<li><button data-sw="${o}" aria-pressed="${o===id}"><span class="rd"></span><span>${esc(nm(q))}${isClosed(q,d.w)?`<small>${t('closed')}</small>`:''}</span></button></li>`}).join('')}</ul>`:'';
+  return `<li class="st${on?' on':''}" data-s="${i}" style="color:${c}"><button class="rw" data-tg aria-expanded="${on}"><span class="tm">${s.t}</span><span class="dt"><i>${i+1}</i></span>
+   <span style="color:var(--ink)"><span class="nm">${esc(nm(p)||'')}</span><span class="lb">${esc(s[L_])}${s.bk?`<span class="bk">${t('booked')}</span>`:''}${cl?`<span class="cl">${t('closed')}</span>`:''}</span></span></button>
+   <div class="more" style="color:var(--ink)">${note?`<p>${esc(note)}</p>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
+   <div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${id}">${t('onmap')}</button></div>${alts}</div></li>`}).join('')}
+function renderCats(){$('#cats').innerHTML=['all','see','eat','cafe','shop','book'].concat(mine.length?['mine']:[]).map(k=>`<button data-c="${k}" aria-pressed="${k===cat}">${t(k)}</button>`).join('')}
+const ORD={see:0,eat:1,cafe:2,shop:3,book:4};
+function renderList(){const list=all().filter(p=>cat==='all'||p.cat===cat||(cat==='mine'&&p.mine)).sort((a,b)=>(a.mine?-1:ORD[a.cat])-(b.mine?-1:ORD[b.cat]));
+ $('#list').innerHTML=list.map(p=>{const on=openPl===p.id;return `<li class="pl${on?' on':''}${done[p.id]?' done':''}" id="pl-${esc(p.id)}" data-id="${esc(p.id)}">
+ <button class="plr" data-pt aria-expanded="${on}"><span class="pd" style="background:${COL[p.mine?'mine':p.cat]}"></span><span class="pn">${esc(nm(p))}${!p.mine&&L_==='ko'?`<small>${esc(p.en)}</small>`:''}</span><span class="chk">${done[p.id]?'✓':''}</span></button>
+ <div class="more">${nt(p)?`<p>${esc(nt(p))}</p>`:''}<div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${esc(p.id)}">${t('onmap')}</button>
+ <button class="tx" data-done>${done[p.id]?t('undo')+' ✓':t('been')}</button>${p.mine?`<button class="tx" data-del>${t('del')}</button>`:''}</div></div></li>`}).join('')}
+function renderText(){document.documentElement.lang=L_;$('#title').textContent=t('title');$('#sub').textContent=t('sub');
  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L_));
  $('#h-places').textContent=t('places');$('#h-add').textContent=t('add');$('#f-name').placeholder=t('name');$('#f-loc').placeholder=t('loc');$('#f-note').placeholder=t('note');
  $('#f-cat').innerHTML=['eat','cafe','see','shop'].map(k=>`<option value="${k}">${t(k)}</option>`).join('');
  $('#pickmap').textContent=t('pick');$('#usehere').textContent=t('here');$('#f-save').textContent=t('save');$('#f-help').textContent=t('help');$('#foot').textContent=t('foot')}
-function render(fit){applyMapLang();renderText();renderDays();renderIt();renderCats();renderList();renderWx();drawMap(fit)}
+function render(fit){applyMapLang();renderText();renderDays();renderHead();renderIt();renderCats();renderList();drawMap(fit)}
 
-// weather
-let wx=store.get('wx',null);
 async function loadWx(){const b=$('#wxbtn');if(b)b.textContent='…';
- try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=36.578,36.262&longitude=136.648,136.907&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&current=temperature_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=7');
-  if(!r.ok)throw 0;wx={at:Date.now(),d:await r.json()};store.set('wx',wx)}catch(e){toast(t('wxerr'))}renderWx();renderDays()}
-const WMO=c=>{const m=[[0,'☀︎','Clear','맑음'],[2,'⛅︎','Partly cloudy','구름 조금'],[3,'☁︎','Cloudy','흐림'],[48,'≋','Fog','안개'],[57,'☂︎','Drizzle','이슬비'],[67,'☂︎','Rain','비'],[77,'❄︎','Snow','눈'],[82,'☂︎','Showers','소나기'],[86,'❄︎','Snow showers','눈 소나기'],[99,'⚡︎','Thunder','뇌우']];
- const f=m.find(x=>c<=x[0])||m[m.length-1];return{i:f[1],s:L_==='ko'?f[3]:f[2]}};
-function renderWx(){let h='';const today=jstDate();
- if(wx&&wx.d){const A=Array.isArray(wx.d)?wx.d:[wx.d],names=[t('kz'),t('sk')];
-  A.forEach((loc,li)=>{if(!loc.daily)return;
-   if(li===0&&loc.current)h+=`<div class="wxd"><b>${t('now')}</b><span class="t">${Math.round(loc.current.temperature_2m)}°</span> ${WMO(loc.current.weather_code).i}</div>`;
-   loc.daily.time.forEach((d,i)=>{if(d<today||d>'2026-11-28'||(li===1&&d!=='2026-11-26'))return;const w=WMO(loc.daily.weather_code[i]),wd=new Date(d+'T00:00:00Z').getUTCDay();
-    h+=`<div class="wxd trip"><b>${li?names[1]+' ':''}${t('wd')[wd]} ${d.slice(8)}</b><span class="t">${Math.round(loc.daily.temperature_2m_max[i])}°/${Math.round(loc.daily.temperature_2m_min[i])}°</span> ${w.i} ☂︎${loc.daily.precipitation_probability_max[i]??'–'}%</div>`})});
-  const at=new Date(wx.at);h+=`<button class="wxbtn" id="wxbtn">↻ ${t('wxr')}<br><small style="font-weight:400">${at.getHours()}:${String(at.getMinutes()).padStart(2,'0')}</small></button>`}
- else h=`<button class="wxbtn" id="wxbtn">↻ ${t('wxr')}</button>`;$('#wx').innerHTML=h}
+ try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=36.578,36.262&longitude=136.648,136.907&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=7');
+  if(!r.ok)throw 0;wx={at:Date.now(),d:await r.json()};store.set('wx',wx)}catch(e){toast(t('wxerr'))}renderHead()}
 
-// events
-document.addEventListener('click',e=>{const b=e.target.closest('button,[data-show]');if(!b)return;
+/* events */
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
  if(b.id==='wxbtn'){loadWx();return}
  if(b.id==='fold'){folded=!folded;store.set('folded',folded);renderDays();return}
  if(b.dataset.k){day=b.dataset.k;open=null;sel=null;if(folded){folded=false;store.set('folded',false)}render(true);return}
- 
- if(b.hasAttribute('data-tg')){const sid=day+b.closest('.slot').dataset.s;open=open===sid?null:sid;renderIt();if(open){sel=pick(D(),+b.closest('.slot').dataset.s);drawMap()}return}
- if(b.dataset.sw){const i=+b.closest('.slot').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();toast(t('swapped'));return}
+ if(b.hasAttribute('data-tg')){const i=+b.closest('.st').dataset.s,sid=day+i;open=open===sid?null:sid;renderIt();if(open){sel=pick(D(),i);drawMap()}return}
+ if(b.dataset.sw){const i=+b.closest('.st').dataset.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();toast(t('swapped'));return}
  if(b.dataset.show){focus(b.dataset.show);return}
- if(b.dataset.c){cat=b.dataset.c;renderCats();renderList();return}
+ if(b.dataset.c){cat=b.dataset.c;openPl=null;renderCats();renderList();return}
  const id=b.closest('.pl')?.dataset.id;
- if(b.hasAttribute('data-done')){done[id]?delete done[id]:done[id]=1;store.set('done',done);renderList();drawMap();return}
+ if(b.hasAttribute('data-pt')){openPl=openPl===id?null:id;renderList();return}
+ if(b.hasAttribute('data-done')){done[id]?delete done[id]:done[id]=1;store.set('done',done);renderList();return}
  if(b.hasAttribute('data-del')){mine=mine.filter(x=>x.id!==id);store.set('mine',mine);renderCats();renderList();drawMap();return}
  if(b.id==='pickmap'){picking=true;toast(t('pickmsg'));$('#map').scrollIntoView({behavior:'smooth',block:'center'});return}
  if(b.id==='usehere'){locate(false,ll=>{pickLL=ll;$('#f-loc').value=ll[0].toFixed(5)+', '+ll[1].toFixed(5);toast(t('gotloc'))});return}});
-map.on('click',e=>{if(!picking)return;picking=false;pickLL=[e.latlng.lat,e.latlng.lng];$('#f-loc').value=pickLL[0].toFixed(5)+', '+pickLL[1].toFixed(5);toast(t('gotloc'));$('#addf').scrollIntoView({behavior:'smooth'})});
+map.on('click',e=>{if(!picking)return;picking=false;pickLL=[e.latlng.lat,e.latlng.lng];$('#f-loc').value=pickLL[0].toFixed(5)+', '+pickLL[1].toFixed(5);toast(t('gotloc'));$('details.add').scrollIntoView({behavior:'smooth'})});
 $('#addf').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),v=(f.get('loc')||'').trim();
  let m=v.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||v.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||v.match(/[?&](?:q|query|ll|destination)=(-?\d+\.\d+)(?:,|%2C)(-?\d+\.\d+)/)||v.match(/^(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$/);
  let lat,lng;if(m){lat=+m[1];lng=+m[2]}else if(pickLL){[lat,lng]=pickLL}
  if(lat==null){toast(t('needloc'));return}
  const p={id:'m'+Date.now().toString(36),mine:true,cat:f.get('cat'),name:(f.get('name')||'').trim().slice(0,100),note:(f.get('note')||'').trim().slice(0,400),lat,lng,url:/^https:\/\//.test(v)?v:''};
- mine.push(p);store.set('mine',mine);pickLL=null;e.target.reset();cat='all';renderCats();renderList();focus(p.id);toast(t('added'))});
+ mine.push(p);store.set('mine',mine);pickLL=null;e.target.reset();cat='all';openPl=p.id;renderCats();renderList();focus(p.id);toast(t('added'))});
 
 render(true);
 if(!wx||Date.now()-wx.at>3*36e5)loadWx();

@@ -24,8 +24,8 @@
 {
 "id": "stop4",
 "cat": "book",
-"en": "Bus stop 4 · Shirakawa-go bus (West Exit)",
-"ko": "시라카와고행 버스 4번 승강장",
+"en": "West Exit bus stop 4 (Shirakawa-go bus)",
+"ko": "서쪽 출구 4번 승강장 (시라카와고행)",
 "lat": 36.57827,
 "lng": 136.64649,
 "nen": "Thu 26 Nov 11:10 → Shirakawa-go 12:25. Nohi Bus, car 01, seats 8C 8D 9C 9D. Be here by 10:55 with the e-ticket. The 17:30 return bus also drops off here (18:45).",
@@ -35,8 +35,8 @@
 {
 "id": "stop3",
 "cat": "book",
-"en": "Bus stop 3 · Airport bus (West Exit)",
-"ko": "공항 리무진 3번 승강장",
+"en": "West Exit bus stop 3 (airport bus)",
+"ko": "서쪽 출구 3번 승강장 (공항행)",
 "lat": 36.578,
 "lng": 136.6462,
 "nen": "Sat 28 Nov: limousine bus to Komatsu Airport (~40 min, ¥1,300 each). Check the departure times at the stop the day before; aim to be at the airport ~2 h before the 10:50 flight.",
