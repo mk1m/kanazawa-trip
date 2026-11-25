@@ -213,47 +213,57 @@ const T={
 const COL={book:'#2f4a7a',see:'#9e3341',eat:'#b7712a',cafe:'#7a5a3c',shop:'#6b4f7d',mine:'#4f7a4a'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
 const ITIN=[
- {k:'wed',tab:{en:'Arrival',ko:'도착'},w:3,date:'2026-11-25',en:'Arrival, teahouses and art',ko:'도착, 찻집 거리와 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
+ {k:'wed',tab:{en:'Arrival',ko:'도착'},w:3,date:'2026-11-25',en:'Arrival, teahouses and art',ko:'도착, 찻집 거리와 미술관',rain:{en:'Rain is forecast today, so indoor picks are the defaults (teahouse museum, gold-leaf museum, art museum, malls). Umbrellas are ~¥500 at convenience stores. Kenroku-en is on Friday, the sunniest day.',ko:'오늘은 비 예보 → 실내 위주로 기본 설정(찻집 박물관, 금박 공예관, 미술관, 쇼핑몰). 우산은 편의점에서 약 500엔. 겐로쿠엔은 가장 맑은 금요일에.'},slots:[
   S('09:15','Land at Komatsu, KE2189','고마쓰 도착 (KE2189)',['kmq'],{fx:1,nen:'Immigration and bags take ~30–45 min.',nko:'입국심사·수하물 약 30–45분.'}),
-  S('10:00','Airport bus → Kanazawa','공항 리무진 → 가나자와',['kmq'],{fx:1,nen:'Stop 1 outside arrivals, leaves 10–15 min after landing. ~40 min, ¥1,300 each. Get off at the West Exit.',nko:'도착장 앞 1번 승강장, 착륙 10–15분 후 출발. 약 40분, 1인 1,300엔. 서쪽 출구 하차.'}),
-  S('10:50','Drop bags','짐 맡기기',['hotel'],{fx:1}),
-  S('11:30','Lunch at Omicho Market','오미초 시장 점심',['ikiiki','yamasan','morimori','tonariya']),
-  S('13:00','Teahouse district, indoors','찻집 거리 (실내)',['shima','goldleaf','higashi','kazue']),
+  S('10:15','Airport bus → Kanazawa','공항 리무진 → 가나자와',['kmq'],{fx:1,nen:'Limousine bus from Stop 1 outside arrivals at 10:15. Tap to pay with a contactless card when you board (¥1,300 each, no ticket needed). ~40 min; get off at Kanazawa Station West Exit around 10:55.',nko:'도착장 앞 1번 승강장 10:15 리무진 버스. 탑승 시 컨택리스 카드로 태그 결제(1인 1,300엔, 티켓 불필요). 약 40분, 10:55경 가나자와역 서쪽 출구 하차.'}),
+  S('11:05','Drop bags','짐 맡기기',['hotel'],{fx:1,nen:'3 min walk from the bus stop. Leave bags at the front desk; check-in is later.',nko:'버스 정류장에서 도보 3분. 프런트에 짐 맡기기, 체크인은 나중에.'}),
+  S('11:45','Lunch at Omicho Market','오미초 시장 점심',['ikiiki','yamasan','morimori','tonariya'],{nen:'Bus 2 stops from the East Exit or a 15-min walk.',nko:'동쪽 출구에서 버스 2정거장 또는 도보 15분.'}),
+  S('13:15','Geisha teahouse','게이샤 찻집',['shima','higashi','kazue'],{nen:'Bus to Hashiba-cho, ~5 min from Omicho.',nko:'하시바초까지 버스, 오미초에서 약 5분.'}),
+  S('14:00','Gold leaf','금박',['goldleaf','hakuichi'],{nen:'Both are a minute from Ochaya Shima.',nko:'둘 다 오차야 시마에서 1분 거리.'}),
   S('14:30','Sweet break','디저트·커피',['hakuichi','kissa','townsfolk']),
-  S('15:30','Museum','미술관',['museum21','suzuki','crafts','prefart']),
-  S('17:00','Shopping, indoors','쇼핑 (실내)',['forus','uniqlo','daiwa','mza','donki','tatemachi']),
-  S('18:30','Dinner','저녁',['itaru','danshaku','miyuki','odenjun'])]},
+  S('15:15','Museum','미술관',['museum21','suzuki','crafts','prefart'],{nen:'Bus or taxi ~10 min to Korinbo / Hirosaka.',nko:'고린보·히로사카까지 버스·택시 약 10분.'}),
+  S('16:45','Shopping, indoors','쇼핑 (실내)',['daiwa','forus','uniqlo','mza','donki','tatemachi']),
+  S('18:30','Dinner','저녁',['itaru','danshaku','miyuki','odenjun']),
+  S('20:15','Night lights','야경',['tsuzumi','donki'],{nen:'The station gate is lit at night, 3 min from the hotel. Don Quijote is open until midnight.',nko:'역 쓰즈미몬 야간 조명, 호텔에서 3분. 돈키호테는 자정까지.'})]},
  {k:'thu',tab:{en:'Shirakawa-go',ko:'시라카와고'},w:4,date:'2026-11-26',en:'Omicho morning, then Shirakawa-go',ko:'오미초 아침, 그리고 시라카와고',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
   S('09:15','Coffee & bakery','커피 & 빵',['higashide','hippo','townsfolk']),
-  S('09:45','Morning stroll','아침 산책',['omicho','mza','forus']),
-  S('11:10','Bus to Shirakawa-go','시라카와고행 버스',['stop4'],{fx:1,bk:1,nen:'West Exit Stop 4 → 12:25. Nohi Bus car 01, seats 8C 8D 9C 9D. Be there by 10:55 with the e-ticket. Wear grippy shoes — snow likely.',nko:'서쪽 출구 4번 → 12:25 도착. 노히버스 1호차, 좌석 8C 8D 9C 9D. 10:55까지 e티켓 지참. 눈 예상, 미끄럼 방지 신발.'}),
+  S('09:45','Morning stroll','아침 산책',['omicho','mza','oyama']),
+  S('10:30','Back via the station','역으로 이동',['tsuzumi','anto','forus'],{nen:'Grab snacks for the bus; be at Stop 4 by 10:55.',nko:'버스 간식 사기, 10:55까지 4번 승강장.'}),
+  S('11:10','Bus to Shirakawa-go','시라카와고행 버스',['stop4'],{fx:1,bk:1,nen:'West Exit Stop 4 → 12:25. Nohi Bus car 01, seats 8C 8D 9C 9D. Show the e-ticket. Wear grippy shoes — snow likely.',nko:'서쪽 출구 4번 → 12:25 도착. 노히버스 1호차, 좌석 8C 8D 9C 9D. e티켓 제시. 눈 예상, 미끄럼 방지 신발.'}),
+  S('12:25','Arrive Shirakawa-go','시라카와고 도착',['skterm'],{fx:1,nen:'Coin lockers behind the terminal (100-yen coins).',nko:'터미널 뒤 코인로커(100엔 동전).'}),
   S('12:35','Hida beef lunch','히다규 점심',['irori','shiraogi','hiiragi']),
-  S('13:30','Farmhouse visit','갓쇼 가옥 관람',['wada','kanda','nagase','myozenji']),
-  S('14:30','Viewpoint','전망대',['deck'],{nen:'Last shuttle up 15:40; deck closes 15:30.',nko:'상행 셔틀 막차 15:40, 전망대 15:30 마감.'}),
-  S('15:20','Café','카페',['kyoshu','ochudo']),
-  S('16:00','Riverside & dusk','강변 & 해질녘',['deai','minkaen','hachiman']),
+  S('13:30','Farmhouse','갓쇼 가옥',['wada','nagase','kanda']),
+  S('14:10','Viewpoint','전망대',['deck'],{nen:'Shuttle from near Wada House (last one up 15:40) or 15–20 min uphill. Deck closes 15:30.',nko:'와다 가옥 근처 셔틀(상행 막차 15:40) 또는 도보 15–20분. 전망대 15:30 마감.'}),
+  S('15:00','Temple','사찰',['myozenji','nagase','hachiman']),
+  S('15:30','Café','카페',['kyoshu','ochudo']),
+  S('16:10','Riverside & dusk','강변 & 해질녘',['deai','minkaen','hachiman'],{nen:'Sunset ~16:40; lights come on in the farmhouses.',nko:'일몰 약 16:40, 가옥에 불이 켜짐.'}),
   S('17:30','Bus back to Kanazawa','가나자와행 버스',['skterm'],{fx:1,bk:1,nen:'Arrives West Exit Stop 4 at 18:45. Hokuriku Railroad car 01, seats 9C 9D 10C 10D.',nko:'18:45 서쪽 출구 4번 도착. 호쿠리쿠철도 1호차, 좌석 9C 9D 10C 10D.'}),
-  S('19:00','Dinner','저녁',['uogashi','aburaya','yabuken','kikuichi'])]},
+  S('19:00','Dinner','저녁',['uogashi','aburaya','yabuken','kikuichi']),
+  S('20:30','Evening shopping','저녁 쇼핑',['donki','anto'],{nen:'Don Quijote is open until midnight (taxi ~15 min). Anto closes at 20:00.',nko:'돈키호테 자정까지(택시 약 15분). 안토는 20:00 마감.'})]},
  {k:'fri',tab:{en:'Gardens & shops',ko:'정원 & 쇼핑'},w:5,date:'2026-11-27',en:'Gardens, samurai streets and shopping',ko:'정원, 무사 거리와 쇼핑',slots:[
   S('08:30','Breakfast','조식',['hotel'],{fx:1,nen:'Included at Hyatt House.',nko:'하얏트 하우스 조식 포함.'}),
-  S('09:30','Garden & castle','정원 & 성',['kenroku','castle','gyokusen','seisonkaku']),
-  S('11:15','Coffee break','커피',['kissa','higashide','townsfolk']),
-  S('12:15','Lunch','점심',['taiga','yamasan','tonariya','morimori']),
-  S('13:30','Samurai quarter','무사 거리',['nagamachi','nomura','ashigaru']),
-  S('15:00','Temples & old streets','사찰 & 옛 거리',['myoryuji','nishichaya','teramachi','oyama']),
-  S('16:30','Shopping','쇼핑',['forus','uniqlo','donki','tatemachi','daiwa','abcmart','gu','anto']),
-  S('18:30','Farewell dinner','마지막 저녁',['kikuichi','miyuki','danshaku','itaru','odenjun'])]},
+  S('09:15','Castle park','성 공원',['castle','gyokusen'],{nen:'Bus ~15 min from the East Exit (Kenrokuen-shita).',nko:'동쪽 출구에서 버스 약 15분(겐로쿠엔시타).'}),
+  S('10:00','Kenroku-en','겐로쿠엔',['kenroku','seisonkaku'],{nen:'Cross from Ishikawa-mon gate. Allow 1–1.5 h.',nko:'이시카와몬에서 건너가기. 1–1.5시간.'}),
+  S('11:30','Museum or tea','미술관 또는 차',['suzuki','crafts','prefart','kissa']),
+  S('12:30','Lunch','점심',['taiga','yamasan','tonariya','morimori']),
+  S('13:45','Samurai quarter','무사 거리',['nagamachi','nomura','ashigaru']),
+  S('14:45','Ninja Temple','닌자 사원',['myoryuji','nishichaya'],{nen:'Phone ahead to book the guided tour: +81 76-241-0888.',nko:'가이드 투어 전화 예약: +81 76-241-0888.'}),
+  S('15:45','Old streets','옛 거리',['nishichaya','teramachi']),
+  S('16:30','Coffee break','커피',['kissa','higashide','townsfolk']),
+  S('17:15','Shopping','쇼핑',['forus','uniqlo','tatemachi','daiwa','abcmart','gu','anto']),
+  S('18:45','Farewell dinner','마지막 저녁',['kikuichi','miyuki','danshaku','itaru','odenjun']),
+  S('20:30','Last-night shopping','마지막 밤 쇼핑',['donki','tsuzumi'],{nen:'Don Quijote until midnight, tax-free. Pack the night before your early bus.',nko:'돈키호테 자정까지, 면세. 이른 버스 대비 짐은 미리 싸기.'})]},
  {k:'sat',tab:{en:'Flying home',ko:'귀국'},w:6,date:'2026-11-28',en:'Flying home',ko:'귀국',slots:[
   S('06:45','Quick breakfast','간단한 조식',['hotel'],{fx:1,nen:'Check the breakfast start time at check-in.',nko:'체크인 때 조식 시작 시간 확인.'}),
   S('07:20','Check out','체크아웃',['hotel'],{fx:1}),
-  S('07:40','Airport bus → Komatsu','공항 리무진 → 고마쓰',['stop3'],{fx:1,nen:'West Exit Stop 3, ~40 min, ¥1,300 each. Check exact times at the stop the day before.',nko:'서쪽 출구 3번, 약 40분, 1인 1,300엔. 전날 시간표 확인.'}),
+  S('07:40','Airport bus → Komatsu','공항 리무진 → 고마쓰',['stop3'],{fx:1,nen:'West Exit Stop 3, ~40 min, ¥1,300 each. Tap to pay with a contactless card, same as on arrival. Check exact times at the stop the day before.',nko:'서쪽 출구 3번, 약 40분, 1인 1,300엔. 도착 때처럼 컨택리스 카드로 태그 결제. 전날 시간표 확인.'}),
   S('10:50','Flight KE2190 → Incheon','KE2190 → 인천',['kmq'],{fx:1,bk:1,nen:'Lands ICN 12:50. One international security line, so arrive ~2 h early.',nko:'인천 12:50 도착. 보안검색대 1개, 2시간 전 도착.'})]}];
 const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const jstDate=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
 let L_=store.get('lang',(navigator.language||'').startsWith('ko')?'ko':'en'),cat='all',sel=null,picking=false,pickLL=null,open=null,openPl=null;
 let day=(ITIN.find(d=>d.date===jstDate())||ITIN[0]).k;
-let folded=store.get('folded',false),done=store.get('done',{}),mine=store.get('mine',[]),choice=store.get('choice',{}),wx=store.get('wx',null);
+let folded=store.get('folded',false),done=store.get('done',{}),mine=store.get('mine',[]),choice=store.get('choice3',{}),wx=store.get('wx',null);
 let base=[];try{base=await (await fetch('places.json',{cache:'no-cache'})).json()}catch(e){}
 const $=s=>document.querySelector(s),t=k=>T[L_][k];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -263,10 +273,10 @@ const mapsUrl=p=>p.url?p.url:p.pid?`https://www.google.com/maps/search/?api=1&qu
 const dirUrl=p=>`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}${p.pid?'&destination_place_id='+p.pid:''}&travelmode=transit`;
 const D=()=>ITIN.find(d=>d.k===day);
 const pick=(d,i)=>{const s=d.slots[i],c=choice[d.k+i];return s.opts.includes(c)?c:s.opts[0]};
-let plans=store.get('plans',{}),editing=false,resetArm=false;
+let plans=store.get('plans3',{}),editing=false,resetArm=false;
 const defPlan=d=>d.slots.map((s,i)=>({u:'o'+i,s:i,t:s.t}));
 const getPlan=d=>{const p=plans[d.k];return Array.isArray(p)?p.filter(x=>x.s>=0?d.slots[x.s]:byId(x.id)):defPlan(d)};
-const savePlan=(d,p)=>{plans[d.k]=p;store.set('plans',plans)};
+const savePlan=(d,p)=>{plans[d.k]=p;store.set('plans3',plans)};
 const itemId=(d,it)=>it.s>=0?pick(d,it.s):it.id;
 const normT=v=>{v=(v||'').trim().replace(/[^0-9:]/g,'');let m=v.match(/^(\d{1,2}):?(\d{2})$/);if(!m)return '';const h=+m[1],mi=+m[2];return h<24&&mi<60?String(h).padStart(2,'0')+':'+m[2]:''};
 const tmin=x=>/^\d{1,2}:\d{2}$/.test(x||'')?(+x.split(':')[0])*60+ +x.split(':')[1]:null;
@@ -389,9 +399,9 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.dataset.mv){const d=D(),p=getPlan(d).slice(),u=b.closest('.st').dataset.u,i=p.findIndex(x=>x.u===u),j=i+ +b.dataset.mv;if(j<0||j>=p.length)return;const ti=p[i].t,tj=p[j].t;[p[i],p[j]]=[{...p[j],t:ti},{...p[i],t:tj}];savePlan(d,p);renderIt();drawMap();setTimeout(()=>document.querySelector(`.st[data-u="${u}"] [data-mv="${b.dataset.mv}"]`)?.focus(),0);return}
  if(b.hasAttribute('data-rm')){const d=D(),u=b.closest('.st').dataset.u;savePlan(d,getPlan(d).filter(x=>x.u!==u));renderIt();drawMap();toast(t('removed'));return}
  if(b.id==='addgo'){const id=$('#addsel').value;if(!id){$('#addsel').focus();return}const d=D();addToPlan(d,id,normT($('#addt').value));sel=id;renderIt();drawMap();toast(`${t('addedto')} ${t('wd')[d.w]} ${d.date.slice(8)}`);return}
- if(b.id==='reset'){if(!resetArm){resetArm=true;renderIt();return}resetArm=false;const d=D();delete plans[d.k];store.set('plans',plans);d.slots.forEach((_,i)=>delete choice[d.k+i]);store.set('choice',choice);renderIt();drawMap(true);return}
+ if(b.id==='reset'){if(!resetArm){resetArm=true;renderIt();return}resetArm=false;const d=D();delete plans[d.k];store.set('plans3',plans);d.slots.forEach((_,i)=>delete choice[d.k+i]);store.set('choice3',choice);renderIt();drawMap(true);return}
  if(b.dataset.ap){quickAdd(b.dataset.ap);return}
- if(b.dataset.sw){const d=D(),it=getPlan(d).find(x=>x.u===b.closest('.st').dataset.u);if(!it||it.s<0)return;const i=it.s;choice[day+i]=b.dataset.sw;store.set('choice',choice);sel=b.dataset.sw;renderIt();drawMap();initSl();toast(t('swapped'));return}
+ if(b.dataset.sw){const d=D(),it=getPlan(d).find(x=>x.u===b.closest('.st').dataset.u);if(!it||it.s<0)return;const i=it.s;choice[day+i]=b.dataset.sw;store.set('choice3',choice);sel=b.dataset.sw;renderIt();drawMap();initSl();toast(t('swapped'));return}
  if(b.dataset.show){focus(b.dataset.show);return}
  if(b.dataset.c){cat=b.dataset.c;openPl=null;renderCats();renderList();return}
  const id=b.closest('.pl')?.dataset.id;
