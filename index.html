@@ -58,6 +58,7 @@ a{color:inherit}
 .tl{list-style:none;margin:8px 0 0;padding:0 20px 14px;position:relative}
 .tl::before{content:"";position:absolute;left:83px;top:22px;bottom:34px;width:1.5px;background:linear-gradient(var(--gold),color-mix(in srgb,var(--gold) 45%,transparent))}
 .st{position:relative}
+.st.past:not(.on){opacity:.42}.st.past:not(.on) .nm{text-decoration:line-through;text-decoration-thickness:1px}
 .rw{display:grid;grid-template-columns:44px 28px minmax(0,1fr);gap:0 12px;align-items:start;width:100%;border:0;background:none;text-align:left;padding:11px 0}
 .tm{font-size:13px;color:var(--soft);font-variant-numeric:tabular-nums;padding-top:3px;white-space:nowrap}
 .dt{width:24px;height:24px;margin:0 2px;border-radius:50%;background:var(--paper);border:1.5px solid currentColor;display:grid;place-items:center;font-size:11px;font-weight:600;position:relative;z-index:1}
@@ -367,10 +368,12 @@ function renderIt(){const d=D(),plan=getPlan(d);$('#it').classList.toggle('editi
   $('#edtools').innerHTML=`<div class="edh">${t('addhd')}</div><div class="addst"><select id="addsel" aria-label="${t('choose')}"><option value="">${t('choose')}</option>${opts}</select><input type="text" inputmode="numeric" maxlength="5" placeholder="HH:MM" id="addt" aria-label="${t('time')}"><button class="go" id="addgo">${t('addstop')}</button></div>
   <div class="edbar"><button class="tx" id="reset">${resetArm?t('reset2'):t('reset')}</button><button class="go" style="border:0" id="eddone">${t('done2')}</button></div>`;return}
  $('#edtools').innerHTML='';
+ const jn=new Date(Date.now()+9*36e5),today=jn.toISOString().slice(0,10),nowM=jn.getUTCHours()*60+jn.getUTCMinutes();
+ const isPast=i=>{if(d.date<today)return true;if(d.date>today)return false;const n=plan.slice(i+1).map(x=>tmin(normT(x.t))).find(v=>v!==null);return n!=null&&n<=nowM};
  $('#it').innerHTML=plan.map((it,i)=>{const s=it.s>=0?d.slots[it.s]:null,id=itemId(d,it),p=byId(id)||{},key=d.k+it.u,c=COL[p.cat]||'#555',cl=isClosed(p,d.w),on=open===key,note=s?(L_==='ko'?s.nko:s.nen):'';
   const alts=s&&s.opts.length>1?`<div class="alh">${t('alts')}</div><ul class="alt">${s.opts.map(o=>{const q=byId(o);if(!q)return'';
     return `<li><button data-sw="${o}" aria-pressed="${o===id}"><span class="rd"></span><span>${esc(nm(q))}${isClosed(q,d.w)?`<small>${t('closed')}</small>`:''}</span></button></li>`}).join('')}</ul>`:'';
-  return `<li class="st${on?' on':''}" data-u="${esc(it.u)}" style="color:${c}"><button class="rw" data-tg aria-expanded="${on}"><span class="tm">${esc(it.t||'')}</span><span class="dt"><i>${i+1}</i></span>
+  return `<li class="st${on?' on':''}${isPast(i)?' past':''}" data-u="${esc(it.u)}" style="color:${c}"><button class="rw" data-tg aria-expanded="${on}"><span class="tm">${esc(it.t||'')}</span><span class="dt"><i>${i+1}</i></span>
    <span style="color:var(--ink)"><span class="nm">${esc(nm(p)||'')}</span><span class="lb">${esc(s?s[L_]:t('yours'))}${s&&s.bk?`<span class="bk">${t('booked')}</span>`:''}${cl?`<span class="cl">${t('closed')}</span>`:''}</span></span></button>
    <div class="more" style="color:var(--ink)">${slider(p)||noPhoto(p)}${note?`<p>${esc(note)}</p>`:''}${nt(p)?`<p>${esc(nt(p))}</p>`:''}
    <div class="acts"><a class="go" href="${esc(dirUrl(p))}" target="_blank" rel="noopener">${t('dir')}</a><button class="tx" data-show="${esc(id)}">${t('onmap')}</button></div>${alts}</div></li>`}).join('')}
@@ -386,6 +389,7 @@ function renderText(){document.documentElement.lang=L_;$('#title').textContent=t
  $('#h-places').textContent=t('places');$('#h-add').textContent=t('add');$('#f-name').placeholder=t('name');$('#f-loc').placeholder=t('loc');$('#f-note').placeholder=t('note');
  $('#f-cat').innerHTML=['eat','cafe','see','shop'].map(k=>`<option value="${k}">${t(k)}</option>`).join('');
  $('#pickmap').textContent=t('pick');$('#usehere').textContent=t('here');$('#f-save').textContent=t('save');$('#f-help').textContent=t('help');$('#foot').textContent=t('foot')}
+const tick=()=>{if(editing||document.hidden)return;const n=document.querySelectorAll('.st.past').length;const h=$('#it').innerHTML;renderIt();if(document.querySelectorAll('.st.past').length!==n)initSl();else if($('#it').innerHTML!==h)initSl()};setInterval(tick,60000);document.addEventListener('visibilitychange',tick);
 function render(fit){applyMapLang();renderText();renderOff();renderDays();renderHead();renderIt();renderCats();renderList();drawMap(fit);initSl()}
 
 async function loadWx(){const b=$('#wxbtn');if(b)b.textContent='…';
