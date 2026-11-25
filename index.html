@@ -156,6 +156,9 @@ details.add[open] summary::before{content:"− "}
 .addst .go{grid-column:1/-1;justify-content:center;border:0}
 .edbar{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:12px}
 .edh{font-size:13px;color:var(--soft);margin:14px 0 4px}
+.offb{font-size:13px;color:var(--soft);min-height:30px;padding:4px 0 0}
+.offb.ok{text-decoration:none;color:var(--c-mine)}
+.offmsg{margin:0;padding:8px 20px;background:var(--goldwash);font-size:13px;color:var(--ink)}
 #itwrap.folded{display:none}
 @media(prefers-reduced-motion:no-preference){.st .more,.pl .more{animation:op .18s ease-out}@keyframes op{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}}
 @media(min-width:900px){
@@ -168,7 +171,8 @@ details.add[open] summary::before{content:"− "}
 </style>
 </head>
 <body>
-<header class="top"><div><h1 id="title"></h1><p id="sub"></p></div><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
+<header class="top"><div><h1 id="title"></h1><p id="sub"></p><button class="tx offb" id="offbtn"></button></div><div class="lang"><button data-l="en">EN</button><button data-l="ko">한국어</button></div></header>
+<p class="offmsg" id="offmsg" hidden></p>
 <nav class="days"><div class="dtabs" id="days" role="tablist"></div><button class="fold" id="fold" aria-expanded="true"></button></nav>
 <div class="wrap">
  <section id="itwrap"><div class="dayhead"><div class="dh"><h2 id="dtitle"></h2><button class="tx edbtn" id="edit"></button></div><div class="wx" id="wx"></div><p class="hint" id="hint" hidden></p></div><ol class="tl" id="it"></ol><div id="edtools"></div></section>
@@ -195,20 +199,21 @@ details.add[open] summary::before{content:"− "}
 <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js" crossorigin=""></script>
 <script>
 (async()=>{
+if(typeof L==='undefined'){const S=new Proxy(function(){},{get:(o,k)=>k==='then'?undefined:S,apply:()=>S,construct:()=>S});window.L=S}
 const T={
  en:{title:'Kanazawa & Shirakawa‑go',sub:'25–28 November 2026',places:'All places',all:'All',book:'Transport',see:'Sights',eat:'Food',cafe:'Cafés',shop:'Shopping',mine:'Added',
   maps:'Google Maps',dir:'Directions',onmap:'Show on map',inlist:'Details',been:'Mark as visited',undo:'Visited',del:'Remove',booked:'Booked',alts:'Other options',closed:'Closed today',
   hide:'Hide ▴',show:'Plan ▾',add:'Add a place',name:'Name',loc:'Google Maps link or “lat, lng”',note:'Note (optional)',pick:'Pick on map',here:'Use my location',save:'Add place',
   help:'Changes you make here are saved on this phone only.',pickmsg:'Tap the map to set the location',gotloc:'Location set',noloc:'Location unavailable. Allow location access for this browser.',
   needloc:'Add a location: paste a Google Maps link, pick on the map, or use your location.',added:'Place added',swapped:'Plan updated',
-  rf:'Refresh',edit:'Edit plan',done2:'Done',reset:'Reset to suggested plan',reset2:'Tap again to reset',addstop:'Add stop',addhd:'Add a stop',choose:'Choose a place',addplan:'Add to plan',addedto:'Added to',removed:'Stop removed',yours:'Your stop',up:'Move up',down:'Move down',rmv:'Remove stop',time:'Time',photo:'Photo:',photos:'See photos on Google Maps',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
+  rf:'Refresh',off:'Save for offline use',offing:'Saving for offline',offdone:'Saved for offline',offfail:'Some items couldn’t be saved. Try again on Wi-Fi.',offno:'This browser can’t save the site for offline use.',offmsg:'You’re offline. The saved plan, map and photos still work; directions and weather need a connection.',edit:'Edit plan',done2:'Done',reset:'Reset to suggested plan',reset2:'Tap again to reset',addstop:'Add stop',addhd:'Add a stop',choose:'Choose a place',addplan:'Add to plan',addedto:'Added to',removed:'Stop removed',yours:'Your stop',up:'Move up',down:'Move down',rmv:'Remove stop',time:'Time',photo:'Photo:',photos:'See photos on Google Maps',upd:'Updated',wxerr:'Couldn’t load the forecast. Try again.',wxnone:'Forecast loading…',foot:'Map © OpenFreeMap, OpenStreetMap. Weather from Open-Meteo.',
   wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],wdl:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],kz:'Kanazawa',sk:'Shirakawa-go',rain:'rain'},
  ko:{title:'가나자와 & 시라카와고',sub:'2026년 11월 25–28일',places:'전체 장소',all:'전체',book:'교통',see:'관광',eat:'맛집',cafe:'카페',shop:'쇼핑',mine:'추가',
   maps:'구글 지도',dir:'길찾기',onmap:'지도에서 보기',inlist:'자세히',been:'다녀옴 표시',undo:'다녀옴',del:'삭제',booked:'예약됨',alts:'다른 선택지',closed:'오늘 휴무',
   hide:'접기 ▴',show:'일정 ▾',add:'장소 추가',name:'이름',loc:'구글 지도 링크 또는 “위도, 경도”',note:'메모 (선택)',pick:'지도에서 선택',here:'현재 위치',save:'추가하기',
   help:'여기서 바꾼 내용은 이 휴대폰에만 저장됩니다.',pickmsg:'지도를 탭해 위치를 정하세요',gotloc:'위치 설정됨',noloc:'위치를 사용할 수 없어요. 브라우저 위치 권한을 허용하세요.',
   needloc:'위치를 추가하세요: 구글 지도 링크, 지도에서 선택, 또는 현재 위치.',added:'장소 추가됨',swapped:'일정 변경됨',
-  rf:'새로고침',edit:'일정 편집',done2:'완료',reset:'추천 일정으로 되돌리기',reset2:'한 번 더 누르면 초기화',addstop:'추가',addhd:'일정 추가',choose:'장소 선택',addplan:'일정에 추가',addedto:'추가됨:',removed:'삭제됨',yours:'추가한 일정',up:'위로',down:'아래로',rmv:'삭제',time:'시간',photo:'사진:',photos:'구글 지도에서 사진 보기',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
+  rf:'새로고침',off:'오프라인용으로 저장',offing:'오프라인 저장 중',offdone:'오프라인 저장 완료',offfail:'일부 항목을 저장하지 못했어요. Wi-Fi에서 다시 시도하세요.',offno:'이 브라우저는 오프라인 저장을 지원하지 않아요.',offmsg:'오프라인 상태예요. 저장된 일정, 지도, 사진은 사용할 수 있고, 길찾기와 날씨는 인터넷이 필요해요.',edit:'일정 편집',done2:'완료',reset:'추천 일정으로 되돌리기',reset2:'한 번 더 누르면 초기화',addstop:'추가',addhd:'일정 추가',choose:'장소 선택',addplan:'일정에 추가',addedto:'추가됨:',removed:'삭제됨',yours:'추가한 일정',up:'위로',down:'아래로',rmv:'삭제',time:'시간',photo:'사진:',photos:'구글 지도에서 사진 보기',upd:'업데이트',wxerr:'날씨를 불러오지 못했어요. 다시 시도하세요.',wxnone:'날씨 불러오는 중…',foot:'지도 © OpenFreeMap, OpenStreetMap. 날씨: Open-Meteo.',
   wd:['일','월','화','수','목','금','토'],wdl:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],kz:'가나자와',sk:'시라카와고',rain:'비'}};
 const COL={book:'#2f4a7a',see:'#9e3341',eat:'#b7712a',cafe:'#7a5a3c',shop:'#6b4f7d',mine:'#4f7a4a'};
 const S=(t,en,ko,opts,o={})=>({t,en,ko,opts,...o});
@@ -381,17 +386,51 @@ function renderText(){document.documentElement.lang=L_;$('#title').textContent=t
  $('#h-places').textContent=t('places');$('#h-add').textContent=t('add');$('#f-name').placeholder=t('name');$('#f-loc').placeholder=t('loc');$('#f-note').placeholder=t('note');
  $('#f-cat').innerHTML=['eat','cafe','see','shop'].map(k=>`<option value="${k}">${t(k)}</option>`).join('');
  $('#pickmap').textContent=t('pick');$('#usehere').textContent=t('here');$('#f-save').textContent=t('save');$('#f-help').textContent=t('help');$('#foot').textContent=t('foot')}
-function render(fit){applyMapLang();renderText();renderDays();renderHead();renderIt();renderCats();renderList();drawMap(fit);initSl()}
+function render(fit){applyMapLang();renderText();renderOff();renderDays();renderHead();renderIt();renderCats();renderList();drawMap(fit);initSl()}
 
 async function loadWx(){const b=$('#wxbtn');if(b)b.textContent='…';
  try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=36.578,36.262&longitude=136.648,136.907&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=7');
   if(!r.ok)throw 0;wx={at:Date.now(),d:await r.json()};store.set('wx',wx)}catch(e){toast(t('wxerr'))}renderHead()}
 
+
+/* offline */
+const OCACHE='kanazawa-v1',STYLE_URL='https://tiles.openfreemap.org/styles/positron';
+const BOXES=[[36.545,136.615,36.600,136.690,10,14],[36.245,136.890,36.275,136.920,10,14],[36.380,136.390,36.410,136.420,12,14],[36.20,136.30,36.65,136.98,5,11]];
+const lx=(lng,z)=>Math.floor((lng+180)/360*2**z),ly=(lat,z)=>{const r=lat*Math.PI/180;return Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*2**z)};
+let offState=store.get('offline',null),offBusy=false;
+function renderOff(p){const b=$('#offbtn');if(!b)return;b.classList.toggle('ok',!!offState&&!offBusy);
+ if(offBusy)b.textContent=`${t('offing')} ${p||0}%`;else if(offState){const d=new Date(offState);b.textContent=`✓ ${t('offdone')} ${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`}else b.textContent=t('off');
+ const m=$('#offmsg');m.textContent=t('offmsg');m.hidden=navigator.onLine!==false}
+async function saveOffline(){if(offBusy)return;if(!('caches' in window)){toast(t('offno'));return}offBusy=true;renderOff(0);
+ const urls=new Set(['./','./index.html','./places.json','./icon.png','./manifest.json','./sw.js',
+  'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js','https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css','https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js','https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js',
+  'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap']);
+ document.querySelectorAll('link[rel=stylesheet]').forEach(l=>urls.add(l.href));
+ try{const css=await (await fetch('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap')).text();(css.match(/https:\/\/fonts\.gstatic\.com\/[^)]+/g)||[]).slice(0,400).forEach(u=>urls.add(u))}catch(e){}
+ all().forEach(p=>(p.img||[]).forEach(x=>urls.add(x[0])));
+ try{const st=await (await fetch(STYLE_URL)).json();urls.add(STYLE_URL);
+  if(st.sprite){(Array.isArray(st.sprite)?st.sprite.map(x=>x.url):[st.sprite]).forEach(sp=>['.json','.png','@2x.json','@2x.png'].forEach(x=>urls.add(sp+x)))}
+  const fonts=new Set();st.layers.forEach(l=>{const f=l.layout&&l.layout['text-font'];if(Array.isArray(f)&&f.every(x=>typeof x==='string'))fonts.add(f.join(','))});
+  if(st.glyphs)fonts.forEach(f=>['0-255','256-511','512-767','8192-8447','12288-12543','65280-65535'].forEach(r=>urls.add(st.glyphs.replace('{fontstack}',encodeURIComponent(f)).replace('{range}',r))));
+  for(const src of Object.values(st.sources||{})){let tiles=src.tiles,minz=src.minzoom??0,maxz=src.maxzoom??14;
+   if(src.url){urls.add(src.url);try{const tj=await (await fetch(src.url)).json();tiles=tj.tiles;minz=tj.minzoom??minz;maxz=tj.maxzoom??maxz}catch(e){}}
+   if(!tiles||!tiles[0])continue;
+   BOXES.forEach(([s0,w,n,e,z0,z1])=>{for(let z=Math.max(z0,minz);z<=Math.min(z1,maxz);z++){for(let x=lx(w,z);x<=lx(e,z);x++)for(let y=ly(n,z);y<=ly(s0,z);y++)urls.add(tiles[0].replace('{z}',z).replace('{x}',x).replace('{y}',y))}})}
+ }catch(e){}
+ const list=[...urls],c=await caches.open(OCACHE);let done=0,fail=0,i=0;
+ async function one(u){try{let r;try{r=await fetch(u,{mode:u.startsWith('http')?'cors':'same-origin',cache:'no-cache'})}catch(e){r=await fetch(u,{mode:'no-cors'})}
+   if(r&&(r.ok||r.type==='opaque'))await c.put(u.startsWith('./')?new URL(u,location.href).href:u,r);else fail++}catch(e){fail++}
+  done++;if(done%5===0||done===list.length)renderOff(Math.round(done/list.length*100))}
+ await Promise.all(Array.from({length:6},async()=>{while(i<list.length){await one(list[i++])}}));
+ offBusy=false;if(fail>list.length*0.1){toast(t('offfail'));renderOff()}else{offState=Date.now();store.set('offline',offState);renderOff()}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+addEventListener('online',()=>renderOff());addEventListener('offline',()=>renderOff());
 /* events */
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  if(b.dataset.sl){slStep(b);return}
  if(b.dataset.l){L_=b.dataset.l;store.set('lang',L_);render();return}
  if(b.id==='wxbtn'){loadWx();return}
+ if(b.id==='offbtn'){saveOffline();return}
  if(b.id==='fold'){folded=!folded;store.set('folded',folded);renderDays();return}
  if(b.dataset.k){day=b.dataset.k;open=null;sel=null;editing=false;resetArm=false;if(folded){folded=false;store.set('folded',false)}render(true);return}
  if(b.hasAttribute('data-tg')){const u=b.closest('.st').dataset.u,key=day+u,d=D(),it=getPlan(d).find(x=>x.u===u);open=open===key?null:key;renderIt();initSl();if(open&&it){sel=itemId(d,it);drawMap()}return}
